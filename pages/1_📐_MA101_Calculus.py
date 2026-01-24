@@ -1022,8 +1022,53 @@ with tabs[7]:
         - Structural analysis
         """)
 
-# ==================== TAB 5: PRACTICE PROBLEMS ====================
-with tabs[4]:
+# ==================== TAB 9: GRADUATE TOPICS ====================
+with tabs[8]:
+    st.markdown("## 🎓 Graduate Topics")
+    
+    st.markdown("### 1️⃣ Real Analysis Foundations")
+    
+    st.markdown("""
+    <div class="definition">
+        <strong>Epsilon-Delta Definition of Limit</strong><br>
+        lim<sub>x→a</sub> f(x) = L if:<br>
+        For every ε > 0, there exists δ > 0 such that<br>
+        0 < |x - a| < δ implies |f(x) - L| < ε
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 2️⃣ Complex Analysis")
+    
+    st.markdown("""
+    <div class="theorem">
+        <strong>Cauchy-Riemann Equations</strong><br>
+        For f(z) = u(x,y) + iv(x,y) to be analytic:<br>
+        ∂u/∂x = ∂v/∂y and ∂u/∂y = -∂v/∂x
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 3️⃣ Applications in Machine Learning")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        **Gradient Descent:**
+        - Optimization using derivatives
+        - Backpropagation in neural networks
+        - Stochastic gradient descent
+        """)
+    
+    with col2:
+        st.markdown("""
+        **Advanced Topics:**
+        - Lagrange multipliers (constrained optimization)
+        - Variational calculus
+        - Optimal control theory
+        """)
+
+# ==================== TAB 10: PRACTICE PROBLEMS ====================
+with tabs[9]:
     st.markdown("## 🧮 Practice Problems")
     
     st.markdown("""
@@ -1076,8 +1121,8 @@ with tabs[4]:
             if st.button(f"Show Solution", key=f"sol_{idx}"):
                 st.success(f"✅ **Solution:** {problem['solution']}")
 
-# ==================== TAB 6: VISUALIZATIONS ====================
-with tabs[5]:
+# ==================== TAB 11: VISUALIZATIONS ====================
+with tabs[10]:
     st.markdown("## 📈 Interactive Visualizations")
     
     st.markdown("### 🎨 Function Explorer")
