@@ -112,12 +112,17 @@ with col4:
 
 st.markdown("---")
 
-# Navigation tabs
+# Navigation tabs - Expanded for graduate level
 tabs = st.tabs([
     "📚 Overview",
     "📖 Differential Calculus",
     "∫ Integral Calculus",
+    "🔬 Multivariable Calculus",
+    "∇ Vector Calculus",
+    "📐 Differential Equations",
+    "🌊 Fourier Analysis",
     "📊 Applications",
+    "🎓 Graduate Topics",
     "🧮 Practice Problems",
     "📈 Visualizations"
 ])
@@ -543,8 +548,390 @@ with tabs[2]:
     </div>
     """, unsafe_allow_html=True)
 
-# ==================== TAB 4: APPLICATIONS ====================
+# ==================== TAB 4: MULTIVARIABLE CALCULUS ====================
 with tabs[3]:
+    st.markdown("## 🔬 Multivariable Calculus")
+    
+    st.markdown("### 1️⃣ Partial Derivatives")
+    
+    st.markdown("""
+    <div class="definition">
+        <strong>Definition: Partial Derivative</strong><br>
+        For a function f(x, y), the partial derivatives are:<br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
+            ∂f/∂x = lim<sub>h→0</sub> [f(x+h, y) - f(x, y)] / h<br>
+            ∂f/∂y = lim<sub>h→0</sub> [f(x, y+h) - f(x, y)] / h
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="example-box">
+        <strong>📝 Example: Partial Derivatives</strong><br><br>
+        Find ∂f/∂x and ∂f/∂y for f(x, y) = x²y + 3xy² - 5<br><br>
+        <strong>Solution:</strong><br>
+        ∂f/∂x = 2xy + 3y² (treat y as constant)<br>
+        ∂f/∂y = x² + 6xy (treat x as constant)
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # 3D Surface visualization
+    st.markdown("#### 📊 3D Surface Visualization")
+    
+    func_3d = st.selectbox("Select 3D function", ["x² + y²", "sin(x)cos(y)", "x²y", "e^(-(x²+y²))"])
+    
+    # Create mesh grid
+    x_3d = np.linspace(-3, 3, 50)
+    y_3d = np.linspace(-3, 3, 50)
+    X, Y = np.meshgrid(x_3d, y_3d)
+    
+    if func_3d == "x² + y²":
+        Z = X**2 + Y**2
+    elif func_3d == "sin(x)cos(y)":
+        Z = np.sin(X) * np.cos(Y)
+    elif func_3d == "x²y":
+        Z = X**2 * Y
+    else:  # e^(-(x²+y²))
+        Z = np.exp(-(X**2 + Y**2))
+    
+    # Create contour data for Altair
+    contour_data = []
+    for i in range(len(x_3d)):
+        for j in range(len(y_3d)):
+            contour_data.append({
+                'x': x_3d[i],
+                'y': y_3d[j],
+                'z': Z[j, i]
+            })
+    
+    df_contour = pd.DataFrame(contour_data)
+    
+    # Heatmap visualization
+    heatmap = alt.Chart(df_contour).mark_rect().encode(
+        x=alt.X('x:Q', title='x'),
+        y=alt.Y('y:Q', title='y'),
+        color=alt.Color('z:Q', scale=alt.Scale(scheme='viridis'), title='f(x,y)'),
+        tooltip=['x', 'y', 'z']
+    ).properties(
+        width=600,
+        height=500,
+        title=f"Heatmap of f(x,y) = {func_3d}"
+    )
+    
+    st.altair_chart(heatmap, use_container_width=True)
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Gradient and Directional Derivatives")
+    
+    st.markdown("""
+    <div class="theorem">
+        <strong>Theorem: Gradient Vector</strong><br>
+        The gradient of f(x, y) is:<br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
+            ∇f = (∂f/∂x, ∂f/∂y)
+        </div>
+        The gradient points in the direction of steepest ascent.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 3️⃣ Double and Triple Integrals")
+    
+    st.markdown("""
+    <div class="definition">
+        <strong>Double Integral</strong><br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
+            ∬<sub>R</sub> f(x,y) dA = ∫<sub>a</sub><sup>b</sup> ∫<sub>c</sub><sup>d</sup> f(x,y) dy dx
+        </div>
+        Represents volume under the surface f(x,y).
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==================== TAB 5: VECTOR CALCULUS ====================
+with tabs[4]:
+    st.markdown("## ∇ Vector Calculus")
+    
+    st.markdown("### 1️⃣ Vector Fields")
+    
+    st.markdown("""
+    <div class="definition">
+        <strong>Vector Field</strong><br>
+        A vector field assigns a vector to each point in space:<br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
+            F(x, y) = P(x,y)i + Q(x,y)j
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Vector field visualization
+    st.markdown("#### 🧭 Vector Field Visualization")
+    
+    field_type = st.selectbox("Select vector field", ["Radial: (x, y)", "Rotational: (-y, x)", "Gradient: (y, x)"])
+    
+    # Create grid for vector field
+    x_vec = np.linspace(-2, 2, 15)
+    y_vec = np.linspace(-2, 2, 15)
+    X_vec, Y_vec = np.meshgrid(x_vec, y_vec)
+    
+    if field_type == "Radial: (x, y)":
+        U, V = X_vec, Y_vec
+    elif field_type == "Rotational: (-y, x)":
+        U, V = -Y_vec, X_vec
+    else:  # Gradient
+        U, V = Y_vec, X_vec
+    
+    # Normalize for better visualization
+    magnitude = np.sqrt(U**2 + V**2)
+    U_norm = U / (magnitude + 0.1)
+    V_norm = V / (magnitude + 0.1)
+    
+    # Create arrow data
+    arrow_data = []
+    for i in range(len(x_vec)):
+        for j in range(len(y_vec)):
+            arrow_data.append({
+                'x': x_vec[i],
+                'y': y_vec[j],
+                'dx': U_norm[j, i] * 0.2,
+                'dy': V_norm[j, i] * 0.2
+            })
+    
+    df_arrows = pd.DataFrame(arrow_data)
+    
+    st.info(f"🧭 Vector field: F(x,y) = {field_type}")
+    st.caption("Note: Arrows show direction and relative magnitude of the vector field")
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Line Integrals")
+    
+    st.markdown("""
+    <div class="theorem">
+        <strong>Line Integral of a Vector Field</strong><br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
+            ∫<sub>C</sub> F·dr = ∫<sub>a</sub><sup>b</sup> F(r(t))·r'(t) dt
+        </div>
+        Represents work done by force field F along curve C.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 3️⃣ Green's Theorem")
+    
+    st.markdown("""
+    <div class="theorem">
+        <strong>Green's Theorem</strong><br>
+        For a positively oriented simple closed curve C and region D:<br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
+            ∮<sub>C</sub> (P dx + Q dy) = ∬<sub>D</sub> (∂Q/∂x - ∂P/∂y) dA
+        </div>
+        Relates line integral around curve to double integral over region.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 4️⃣ Divergence and Curl")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        **Divergence:**
+        <div style="text-align: center; margin: 1rem 0;">
+            div F = ∇·F = ∂P/∂x + ∂Q/∂y + ∂R/∂z
+        </div>
+        Measures "outflow" from a point.
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        **Curl:**
+        <div style="text-align: center; margin: 1rem 0;">
+            curl F = ∇×F
+        </div>
+        Measures "rotation" of the field.
+        """, unsafe_allow_html=True)
+
+# ==================== TAB 6: DIFFERENTIAL EQUATIONS ====================
+with tabs[5]:
+    st.markdown("## 📐 Differential Equations")
+    
+    st.markdown("### 1️⃣ First-Order ODEs")
+    
+    st.markdown("""
+    <div class="definition">
+        <strong>Separable Differential Equations</strong><br>
+        Form: dy/dx = g(x)h(y)<br>
+        Solution method: Separate variables and integrate both sides.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="example-box">
+        <strong>📝 Example: Separable ODE</strong><br><br>
+        Solve: dy/dx = xy<br><br>
+        <strong>Solution:</strong><br>
+        dy/y = x dx<br>
+        ∫ dy/y = ∫ x dx<br>
+        ln|y| = x²/2 + C<br>
+        y = Ae^(x²/2) where A = e^C
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Direction field visualization
+    st.markdown("#### 🎯 Direction Field Visualizer")
+    
+    de_type = st.selectbox("Select differential equation", ["dy/dx = x", "dy/dx = y", "dy/dx = x - y", "dy/dx = x² + y²"])
+    
+    x_de = np.linspace(-3, 3, 20)
+    y_de = np.linspace(-3, 3, 20)
+    X_de, Y_de = np.meshgrid(x_de, y_de)
+    
+    if de_type == "dy/dx = x":
+        slopes = X_de
+    elif de_type == "dy/dx = y":
+        slopes = Y_de
+    elif de_type == "dy/dx = x - y":
+        slopes = X_de - Y_de
+    else:  # x² + y²
+        slopes = X_de**2 + Y_de**2
+    
+    st.info(f"📊 Direction field for: {de_type}")
+    st.caption("Each small line segment shows the slope dy/dx at that point")
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Second-Order Linear ODEs")
+    
+    st.markdown("""
+    <div class="theorem">
+        <strong>Homogeneous Linear ODE</strong><br>
+        Form: ay'' + by' + cy = 0<br>
+        Characteristic equation: ar² + br + c = 0<br><br>
+        Solutions depend on discriminant b² - 4ac:<br>
+        • b² - 4ac > 0: y = C₁e^(r₁x) + C₂e^(r₂x)<br>
+        • b² - 4ac = 0: y = (C₁ + C₂x)e^(rx)<br>
+        • b² - 4ac < 0: y = e^(αx)(C₁cos(βx) + C₂sin(βx))
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 3️⃣ Applications")
+    
+    app_de_col1, app_de_col2 = st.columns(2)
+    
+    with app_de_col1:
+        st.markdown("""
+        **Physics & Engineering:**
+        - Spring-mass systems
+        - RC/RLC circuits
+        - Heat diffusion
+        - Wave propagation
+        """)
+    
+    with app_de_col2:
+        st.markdown("""
+        **Computer Science:**
+        - Population models
+        - Algorithm analysis
+        - Neural network dynamics
+        - Control systems
+        """)
+
+# ==================== TAB 7: FOURIER ANALYSIS ====================
+with tabs[6]:
+    st.markdown("## 🌊 Fourier Analysis")
+    
+    st.markdown("### 1️⃣ Fourier Series")
+    
+    st.markdown("""
+    <div class="definition">
+        <strong>Fourier Series Expansion</strong><br>
+        Any periodic function f(x) with period 2π can be expressed as:<br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.1rem;">
+            f(x) = a₀/2 + Σ[aₙcos(nx) + bₙsin(nx)]
+        </div>
+        where:<br>
+        aₙ = (1/π)∫₋π^π f(x)cos(nx)dx<br>
+        bₙ = (1/π)∫₋π^π f(x)sin(nx)dx
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Interactive Fourier series approximation
+    st.markdown("#### 🎵 Fourier Series Approximation")
+    
+    wave_type = st.selectbox("Select function to approximate", ["Square Wave", "Sawtooth Wave", "Triangle Wave"])
+    n_terms = st.slider("Number of Fourier terms", 1, 20, 5)
+    
+    x_fourier = np.linspace(-np.pi, np.pi, 500)
+    
+    # Original function
+    if wave_type == "Square Wave":
+        y_original = np.sign(np.sin(x_fourier))
+        # Fourier approximation
+        y_approx = np.zeros_like(x_fourier)
+        for n in range(1, n_terms + 1):
+            if n % 2 == 1:  # Only odd terms
+                y_approx += (4/(n*np.pi)) * np.sin(n*x_fourier)
+    elif wave_type == "Sawtooth Wave":
+        y_original = x_fourier
+        y_approx = np.zeros_like(x_fourier)
+        for n in range(1, n_terms + 1):
+            y_approx += (2*(-1)**(n+1)/n) * np.sin(n*x_fourier)
+    else:  # Triangle Wave
+        y_original = np.abs(x_fourier)
+        y_approx = np.zeros_like(x_fourier)
+        for n in range(1, n_terms + 1):
+            if n % 2 == 1:
+                y_approx += (8/(np.pi**2 * n**2)) * (-1)**((n-1)/2) * np.cos(n*x_fourier)
+    
+    # Create dataframe for plotting
+    df_fourier = pd.DataFrame({
+        'x': np.concatenate([x_fourier, x_fourier]),
+        'y': np.concatenate([y_original, y_approx]),
+        'type': ['Original'] * len(x_fourier) + [f'Fourier ({n_terms} terms)'] * len(x_fourier)
+    })
+    
+    fourier_chart = alt.Chart(df_fourier).mark_line(strokeWidth=2).encode(
+        x=alt.X('x:Q', title='x'),
+        y=alt.Y('y:Q', title='f(x)'),
+        color=alt.Color('type:N', scale=alt.Scale(domain=['Original', f'Fourier ({n_terms} terms)'],
+                                                    range=['#3b82f6', '#ef4444'])),
+        tooltip=['x', 'y', 'type']
+    ).properties(
+        width=700,
+        height=400,
+        title=f"Fourier Series Approximation of {wave_type}"
+    ).interactive()
+    
+    st.altair_chart(fourier_chart, use_container_width=True)
+    
+    st.info(f"📊 Using {n_terms} Fourier terms. Increase for better approximation!")
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Fourier Transform")
+    
+    st.markdown("""
+    <div class="theorem">
+        <strong>Fourier Transform</strong><br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.1rem;">
+            F(ω) = ∫₋∞^∞ f(t)e^(-iωt) dt
+        </div>
+        Inverse Fourier Transform:<br>
+        <div style="text-align: center; margin: 1rem 0; font-size: 1.1rem;">
+            f(t) = (1/2π)∫₋∞^∞ F(ω)e^(iωt) dω
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 3️⃣ Applications")
+    
+    st.markdown("""
+    **Modern Applications:**
+    - Signal processing & telecommunications
+    - Image compression (JPEG)
+    - Audio analysis (MP3)
+    - Quantum mechanics
+    - Machine learning (spectral methods)
+    - Computer vision (frequency domain filtering)
+    """)
+
+# ==================== TAB 8: APPLICATIONS ====================
+with tabs[7]:
     st.markdown("## 📊 Applications of Calculus")
     
     st.markdown("### 1️⃣ Area Under Curves")
