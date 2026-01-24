@@ -264,6 +264,12 @@ for code, course in sorted_courses:
         with col3:
             conc_str = ", ".join(course['concentrations'])
             st.metric("Concentrations", conc_str if len(conc_str) < 20 else f"{len(course['concentrations'])} tracks")
+        
+        # Deep dive button for courses with dedicated pages
+        if code in ["MA101"]:  # Add more course codes as we create pages
+            st.markdown("---")
+            if st.button(f"📖 Deep Dive into {code}", key=f"dive_{code}", use_container_width=True):
+                st.info(f"💡 Navigate to **pages/courses/{code}_*.py** in the sidebar for detailed course materials!")
 
 # Summary statistics
 if filtered_courses:
