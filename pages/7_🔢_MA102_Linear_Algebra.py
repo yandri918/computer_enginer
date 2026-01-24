@@ -195,10 +195,10 @@ with tabs[1]:
         v = [v₁, v₂, ..., vₙ]ᵀ<br><br>
         
         <strong>Operations:</strong><br>
-        &bull; <strong>Addition:</strong> u + v = [u₁+v₁, u₂+v₂, ..., uₙ+vₙ]ᵀ<br>
-        &bull; <strong>Scalar multiplication:</strong> cv = [cv₁, cv₂, ..., cvₙ]ᵀ<br>
-        &bull; <strong>Dot product:</strong> u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ<br>
-        &bull; <strong>Norm:</strong> ||v|| = √(v·v) = √(v₁² + v₂² + ... + vₙ²)
+        • <strong>Addition:</strong> u + v = [u₁+v₁, u₂+v₂, ..., uₙ+vₙ]ᵀ<br>
+        • <strong>Scalar multiplication:</strong> cv = [cv₁, cv₂, ..., cvₙ]ᵀ<br>
+        • <strong>Dot product:</strong> u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ<br>
+        • <strong>Norm:</strong> ||v|| = √(v·v) = √(v₁² + v₂² + ... + vₙ²)
     </div>
     """, unsafe_allow_html=True)
     
@@ -308,10 +308,10 @@ with tabs[2]:
         A = [aᵢⱼ] where i = 1,...,m and j = 1,...,n<br><br>
         
         <strong>Operations:</strong><br>
-        &bull; <strong>Addition:</strong> (A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ<br>
-        &bull; <strong>Scalar multiplication:</strong> (cA)ᵢⱼ = c·aᵢⱼ<br>
-        &bull; <strong>Multiplication:</strong> (AB)ᵢⱼ = Σₖ aᵢₖbₖⱼ<br>
-        &bull; <strong>Transpose:</strong> (Aᵀ)ᵢⱼ = aⱼᵢ
+        • <strong>Addition:</strong> (A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ<br>
+        • <strong>Scalar multiplication:</strong> (cA)ᵢⱼ = c·aᵢⱼ<br>
+        • <strong>Multiplication:</strong> (AB)ᵢⱼ = Σₖ aᵢₖbₖⱼ<br>
+        • <strong>Transpose:</strong> (Aᵀ)ᵢⱼ = aⱼᵢ
     </div>
     """, unsafe_allow_html=True)
     
@@ -357,10 +357,10 @@ with tabs[2]:
     st.markdown("""
     <div class="theorem-box">
         <strong>Determinant Properties:</strong><br>
-        &bull; det(AB) = det(A)·det(B)<br>
-        &bull; det(Aᵀ) = det(A)<br>
-        &bull; det(A⁻¹) = 1/det(A)<br>
-        &bull; det(cA) = cⁿ·det(A) for n×n matrix<br><br>
+        • det(AB) = det(A)·det(B)<br>
+        • det(Aᵀ) = det(A)<br>
+        • det(A⁻¹) = 1/det(A)<br>
+        • det(cA) = cⁿ·det(A) for n×n matrix<br><br>
         
         <strong>2×2 Matrix:</strong><br>
         det([a b; c d]) = ad - bc<br><br>
@@ -379,10 +379,10 @@ with tabs[2]:
         A is invertible if ∃ A⁻¹ such that AA⁻¹ = A⁻¹A = I<br><br>
         
         <strong>Conditions for Invertibility:</strong><br>
-        &bull; det(A) ≠ 0<br>
-        &bull; Columns are linearly independent<br>
-        &bull; Rows are linearly independent<br>
-        &bull; rank(A) = n for n×n matrix<br><br>
+        • det(A) ≠ 0<br>
+        • Columns are linearly independent<br>
+        • Rows are linearly independent<br>
+        • rank(A) = n for n×n matrix<br><br>
         
         <strong>2×2 Inverse:</strong><br>
         A⁻¹ = (1/det(A)) × [d -b; -c a] for A = [a b; c d]
@@ -410,9 +410,9 @@ with tabs[3]:
         where A is m×n matrix, x is n×1 vector, b is m×1 vector<br><br>
         
         <strong>Solution Types:</strong><br>
-        &bull; <strong>Unique solution:</strong> rank(A) = rank([A|b]) = n<br>
-        &bull; <strong>Infinite solutions:</strong> rank(A) = rank([A|b]) < n<br>
-        &bull; <strong>No solution:</strong> rank(A) < rank([A|b])
+        • <strong>Unique solution:</strong> rank(A) = rank([A|b]) = n<br>
+        • <strong>Infinite solutions:</strong> rank(A) = rank([A|b]) < n<br>
+        • <strong>No solution:</strong> rank(A) < rank([A|b])
     </div>
     """, unsafe_allow_html=True)
     
@@ -452,13 +452,13 @@ with tabs[3]:
         3. Add a multiple of one row to another<br><br>
         
         <strong>Row Echelon Form (REF):</strong><br>
-        &bull; All zero rows at bottom<br>
-        &bull; Leading entry of each row is to the right of the one above<br><br>
+        • All zero rows at bottom<br>
+        • Leading entry of each row is to the right of the one above<br><br>
         
         <strong>Reduced Row Echelon Form (RREF):</strong><br>
-        &bull; REF conditions<br>
-        &bull; Leading entry in each row is 1<br>
-        &bull; Leading 1 is only non-zero entry in its column
+        • REF conditions<br>
+        • Leading entry in each row is 1<br>
+        • Leading 1 is only non-zero entry in its column
     </div>
     """, unsafe_allow_html=True)
 
@@ -564,9 +564,9 @@ with tabs[5]:
         det(A - λI) = 0<br><br>
         
         <strong>Properties:</strong><br>
-        &bull; Sum of eigenvalues = trace(A)<br>
-        &bull; Product of eigenvalues = det(A)<br>
-        &bull; Eigenvectors for different eigenvalues are linearly independent
+        • Sum of eigenvalues = trace(A)<br>
+        • Product of eigenvalues = det(A)<br>
+        • Eigenvectors for different eigenvalues are linearly independent
     </div>
     """, unsafe_allow_html=True)
     
@@ -601,17 +601,17 @@ with tabs[5]:
     <div class="theory-box">
         <strong>Diagonalization:</strong><br>
         Matrix A is diagonalizable if A = PDP⁻¹ where:<br>
-        &bull; D is diagonal matrix of eigenvalues<br>
-        &bull; P is matrix of eigenvectors<br><br>
+        • D is diagonal matrix of eigenvalues<br>
+        • P is matrix of eigenvectors<br><br>
         
         <strong>Conditions:</strong><br>
-        &bull; A has n linearly independent eigenvectors<br>
-        &bull; Symmetric matrices are always diagonalizable<br><br>
+        • A has n linearly independent eigenvectors<br>
+        • Symmetric matrices are always diagonalizable<br><br>
         
         <strong>Applications:</strong><br>
-        &bull; Computing Aⁿ = PDⁿP⁻¹<br>
-        &bull; Solving differential equations<br>
-        &bull; Principal Component Analysis (PCA)
+        • Computing Aⁿ = PDⁿP⁻¹<br>
+        • Solving differential equations<br>
+        • Principal Component Analysis (PCA)
     </div>
     """, unsafe_allow_html=True)
 
@@ -627,10 +627,10 @@ with tabs[6]:
         ⟨u, v⟩ = u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ = uᵀv<br><br>
         
         <strong>Properties:</strong><br>
-        &bull; ⟨u, v⟩ = ⟨v, u⟩ (Symmetry)<br>
-        &bull; ⟨u + v, w⟩ = ⟨u, w⟩ + ⟨v, w⟩ (Linearity)<br>
-        &bull; ⟨cu, v⟩ = c⟨u, v⟩<br>
-        &bull; ⟨u, u⟩ ≥ 0, equality iff u = 0<br><br>
+        • ⟨u, v⟩ = ⟨v, u⟩ (Symmetry)<br>
+        • ⟨u + v, w⟩ = ⟨u, w⟩ + ⟨v, w⟩ (Linearity)<br>
+        • ⟨cu, v⟩ = c⟨u, v⟩<br>
+        • ⟨u, u⟩ ≥ 0, equality iff u = 0<br><br>
         
         <strong>Orthogonality:</strong><br>
         Vectors u and v are orthogonal if ⟨u, v⟩ = 0
@@ -687,14 +687,14 @@ with tabs[7]:
         </div>
         
         where:<br>
-        &bull; U is m×m orthogonal matrix (left singular vectors)<br>
-        &bull; Σ is m×n diagonal matrix (singular values σ₁ ≥ σ₂ ≥ ... ≥ 0)<br>
-        &bull; V is n×n orthogonal matrix (right singular vectors)<br><br>
+        • U is m×m orthogonal matrix (left singular vectors)<br>
+        • Σ is m×n diagonal matrix (singular values σ₁ ≥ σ₂ ≥ ... ≥ 0)<br>
+        • V is n×n orthogonal matrix (right singular vectors)<br><br>
         
         <strong>Properties:</strong><br>
-        &bull; Singular values are square roots of eigenvalues of AᵀA<br>
-        &bull; rank(A) = number of non-zero singular values<br>
-        &bull; ||A||₂ = σ₁ (largest singular value)
+        • Singular values are square roots of eigenvalues of AᵀA<br>
+        • rank(A) = number of non-zero singular values<br>
+        • ||A||₂ = σ₁ (largest singular value)
     </div>
     """, unsafe_allow_html=True)
     
@@ -747,20 +747,20 @@ with tabs[8]:
     st.markdown("""
     <div class="application-box">
         <strong>Principal Component Analysis (PCA):</strong><br>
-        &bull; Dimensionality reduction<br>
-        &bull; Feature extraction<br>
-        &bull; Data visualization<br>
-        &bull; Uses eigendecomposition of covariance matrix<br><br>
+        • Dimensionality reduction<br>
+        • Feature extraction<br>
+        • Data visualization<br>
+        • Uses eigendecomposition of covariance matrix<br><br>
         
         <strong>Linear Regression:</strong><br>
-        &bull; Minimize ||Ax - b||²<br>
-        &bull; Solution: x = (AᵀA)⁻¹Aᵀb<br>
-        &bull; Uses least squares and pseudoinverse<br><br>
+        • Minimize ||Ax - b||²<br>
+        • Solution: x = (AᵀA)⁻¹Aᵀb<br>
+        • Uses least squares and pseudoinverse<br><br>
         
         <strong>Recommender Systems:</strong><br>
-        &bull; Matrix factorization<br>
-        &bull; SVD for collaborative filtering<br>
-        &bull; Low-rank approximations
+        • Matrix factorization<br>
+        • SVD for collaborative filtering<br>
+        • Low-rank approximations
     </div>
     """, unsafe_allow_html=True)
     
@@ -793,15 +793,15 @@ with tabs[8]:
     st.markdown("""
     <div class="application-box">
         <strong>PageRank Algorithm:</strong><br>
-        &bull; Google's ranking algorithm<br>
-        &bull; Uses eigenvector of adjacency matrix<br>
-        &bull; Dominant eigenvector gives importance scores<br><br>
+        • Google's ranking algorithm<br>
+        • Uses eigenvector of adjacency matrix<br>
+        • Dominant eigenvector gives importance scores<br><br>
         
         <strong>Graph Theory:</strong><br>
-        &bull; Adjacency matrices<br>
-        &bull; Spectral graph theory<br>
-        &bull; Community detection<br>
-        &bull; Network centrality measures
+        • Adjacency matrices<br>
+        • Spectral graph theory<br>
+        • Community detection<br>
+        • Network centrality measures
     </div>
     """, unsafe_allow_html=True)
 
