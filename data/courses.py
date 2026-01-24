@@ -392,6 +392,26 @@ COURSES = {
         "type": "General Education"
     },
     
+    "ID101": {
+        "name": "Bahasa Indonesia",
+        "credits": 2,
+        "category": "General",
+        "semester": 1,
+        "prerequisites": [],
+        "description": "Comprehensive Indonesian language course covering academic writing, formal communication, scientific papers, and professional correspondence for engineering students.",
+        "learning_outcomes": [
+            "Write academic papers in proper Indonesian",
+            "Deliver effective presentations in Indonesian",
+            "Compose professional correspondence",
+            "Understand Indonesian grammar and syntax",
+            "Apply EYD (Ejaan Yang Disempurnakan) correctly"
+        ],
+        "concentrations": ["IT", "Finance", "Management"],
+        "difficulty": 2,
+        "hours_per_week": 3,
+        "type": "General Education"
+    },
+    
     # ==================== CONCENTRATION COURSES ====================
     "FI301": {
         "name": "Concentration - Finance",
