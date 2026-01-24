@@ -289,8 +289,10 @@ with tabs[1]:
         span{v₁, v₂, ..., vₙ} = {c₁v₁ + c₂v₂ + ... + cₙvₙ | cᵢ ∈ ℝ}<br><br>
         
         <strong>Basis:</strong><br>
-        A linearly independent set that spans the space<br>
-        <strong>Dimension:</strong> Number of vectors in a basis
+        A linearly independent set that spans the space<br><br>
+        
+        <strong>Dimension:</strong><br>
+        Number of vectors in a basis
     </div>
     """, unsafe_allow_html=True)
 
