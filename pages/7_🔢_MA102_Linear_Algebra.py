@@ -65,14 +65,16 @@ st.markdown("""
         margin: 1rem 0;
     }
 </style>
-""")
+""", unsafe_allow_html=True)
 
 # Header
 st.markdown("""
-<div style="font-size: 1.2rem; opacity: 0.9;">MA102
-    Linear Algebra
-    <div>🔢 3 Credits | Semester 2 | Mathematics
-""")
+<div class="course-header">
+    <div style="font-size: 1.2rem; opacity: 0.9;">MA102</div>
+    <div class="course-title">Linear Algebra</div>
+    <div>🔢 3 Credits | Semester 2 | Mathematics</div>
+</div>
+""", unsafe_allow_html=True)
 
 # Course Info
 col1, col2, col3, col4 = st.columns(4)
@@ -106,12 +108,14 @@ with tabs[0]:
     st.markdown("## 📚 Course Overview")
     
     st.markdown("""
-    <h3>Course Description</h3>
+    <div class="theory-box">
+        <h3>Course Description</h3>
         <p>Comprehensive study of linear algebra from vectors to advanced decompositions. Covers vector spaces, 
         matrices, linear transformations, eigenvalues, orthogonality, and singular value decomposition. 
         Emphasizes both theoretical foundations and practical applications in data science, machine learning, 
         and computer graphics.</p>
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("### 🎯 Learning Outcomes")
     
@@ -186,22 +190,17 @@ with tabs[1]:
     st.markdown("### 1️⃣ Vector Operations")
     
     st.markdown("""
-    **Vector in ℝⁿ:**  
-
-        v = [v₁, v₂, ..., vₙ]ᵀ
-
-
+    <div class="theory-box">
+        <strong>Vector in ℝⁿ:</strong><br>
+        v = [v₁, v₂, ..., vₙ]ᵀ<br><br>
         
-        **Operations:**  
-
-        • **Addition:** u + v = [u₁+v₁, u₂+v₂, ..., uₙ+vₙ]ᵀ  
-
-        • **Scalar multiplication:** cv = [cv₁, cv₂, ..., cvₙ]ᵀ  
-
-        • **Dot product:** u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ  
-
-        • **Norm:** ||v|| = √(v·v) = √(v₁² + v₂² + ... + vₙ²)
-    """)
+        <strong>Operations:</strong><br>
+        • <strong>Addition:</strong> u + v = [u₁+v₁, u₂+v₂, ..., uₙ+vₙ]ᵀ<br>
+        • <strong>Scalar multiplication:</strong> cv = [cv₁, cv₂, ..., cvₙ]ᵀ<br>
+        • <strong>Dot product:</strong> u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ<br>
+        • <strong>Norm:</strong> ||v|| = √(v·v) = √(v₁² + v₂² + ... + vₙ²)
+    </div>
+    """, unsafe_allow_html=True)
     
     # Interactive vector calculator
     st.markdown("#### 🧮 2D Vector Calculator")
@@ -262,59 +261,40 @@ with tabs[1]:
     st.markdown("### 2️⃣ Vector Spaces")
     
     st.markdown("""
-    **Definition: Vector Space**  
-
-        A set V with operations + and · is a vector space if:
-
-
-        **Closure:**  
-
-        1. u + v ∈ V for all u, v ∈ V  
-
-        2. cv ∈ V for all c ∈ ℝ, v ∈ V
-
-
-        **Axioms:**  
-
-        3. Commutativity: u + v = v + u  
-
-        4. Associativity: (u + v) + w = u + (v + w)  
-
-        5. Zero vector: ∃ 0 such that v + 0 = v  
-
-        6. Additive inverse: ∃ -v such that v + (-v) = 0  
-
+    <div class="theorem-box">
+        <strong>Definition: Vector Space</strong><br>
+        A set V with operations + and · is a vector space if:<br><br>
+        <strong>Closure:</strong><br>
+        1. u + v ∈ V for all u, v ∈ V<br>
+        2. cv ∈ V for all c ∈ ℝ, v ∈ V<br><br>
+        <strong>Axioms:</strong><br>
+        3. Commutativity: u + v = v + u<br>
+        4. Associativity: (u + v) + w = u + (v + w)<br>
+        5. Zero vector: ∃ 0 such that v + 0 = v<br>
+        6. Additive inverse: ∃ -v such that v + (-v) = 0<br>
         7-10. Scalar multiplication properties
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("### 3️⃣ Linear Independence")
     
     st.markdown("""
-    **Linear Independence:**  
-
-        Vectors v₁, v₂, ..., vₙ are linearly independent if:  
-
-        c₁v₁ + c₂v₂ + ... + cₙvₙ = 0 ⟹ c₁ = c₂ = ... = cₙ = 0
-
-
+    <div class="theory-box">
+        <strong>Linear Independence:</strong><br>
+        Vectors v₁, v₂, ..., vₙ are linearly independent if:<br>
+        c₁v₁ + c₂v₂ + ... + cₙvₙ = 0 ⟹ c₁ = c₂ = ... = cₙ = 0<br><br>
         
-        **Span:**  
-
-        span{v₁, v₂, ..., vₙ} = {c₁v₁ + c₂v₂ + ... + cₙvₙ | cᵢ ∈ ℝ}
-
-
+        <strong>Span:</strong><br>
+        span{v₁, v₂, ..., vₙ} = {c₁v₁ + c₂v₂ + ... + cₙvₙ | cᵢ ∈ ℝ}<br><br>
         
-        **Basis:**  
-
-        A linearly independent set that spans the space
-
-
+        <strong>Basis:</strong><br>
+        A linearly independent set that spans the space<br><br>
         
-        **Dimension:**  
-
+        <strong>Dimension:</strong><br>
         Number of vectors in a basis
-    """)
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== TAB 3: MATRICES ====================
 with tabs[2]:
@@ -323,22 +303,17 @@ with tabs[2]:
     st.markdown("### 1️⃣ Matrix Operations")
     
     st.markdown("""
-    **Matrix A (m × n):**  
-
-        A = [aᵢⱼ] where i = 1,...,m and j = 1,...,n
-
-
+    <div class="theory-box">
+        <strong>Matrix A (m × n):</strong><br>
+        A = [aᵢⱼ] where i = 1,...,m and j = 1,...,n<br><br>
         
-        **Operations:**  
-
-        • **Addition:** (A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ  
-
-        • **Scalar multiplication:** (cA)ᵢⱼ = c·aᵢⱼ  
-
-        • **Multiplication:** (AB)ᵢⱼ = Σₖ aᵢₖbₖⱼ  
-
-        • **Transpose:** (Aᵀ)ᵢⱼ = aⱼᵢ
-    """)
+        <strong>Operations:</strong><br>
+        • <strong>Addition:</strong> (A + B)ᵢⱼ = aᵢⱼ + bᵢⱼ<br>
+        • <strong>Scalar multiplication:</strong> (cA)ᵢⱼ = c·aᵢⱼ<br>
+        • <strong>Multiplication:</strong> (AB)ᵢⱼ = Σₖ aᵢₖbₖⱼ<br>
+        • <strong>Transpose:</strong> (Aᵀ)ᵢⱼ = aⱼᵢ
+    </div>
+    """, unsafe_allow_html=True)
     
     # Interactive matrix calculator
     st.markdown("#### 🧮 2×2 Matrix Calculator")
@@ -380,55 +355,39 @@ with tabs[2]:
     st.markdown("### 2️⃣ Determinants")
     
     st.markdown("""
-    **Determinant Properties:**  
-
-        • det(AB) = det(A)·det(B)  
-
-        • det(Aᵀ) = det(A)  
-
-        • det(A⁻¹) = 1/det(A)  
-
-        • det(cA) = cⁿ·det(A) for n×n matrix
-
-
+    <div class="theorem-box">
+        <strong>Determinant Properties:</strong><br>
+        • det(AB) = det(A)·det(B)<br>
+        • det(Aᵀ) = det(A)<br>
+        • det(A⁻¹) = 1/det(A)<br>
+        • det(cA) = cⁿ·det(A) for n×n matrix<br><br>
         
-        **2×2 Matrix:**  
-
-        det([a b; c d]) = ad - bc
-
-
+        <strong>2×2 Matrix:</strong><br>
+        det([a b; c d]) = ad - bc<br><br>
         
-        **3×3 Matrix (Cofactor expansion):**  
-
+        <strong>3×3 Matrix (Cofactor expansion):</strong><br>
         det(A) = a₁₁C₁₁ + a₁₂C₁₂ + a₁₃C₁₃
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("### 3️⃣ Matrix Inverse")
     
     st.markdown("""
-    **Inverse Matrix:**  
-
-        A is invertible if ∃ A⁻¹ such that AA⁻¹ = A⁻¹A = I
-
-
+    <div class="theory-box">
+        <strong>Inverse Matrix:</strong><br>
+        A is invertible if ∃ A⁻¹ such that AA⁻¹ = A⁻¹A = I<br><br>
         
-        **Conditions for Invertibility:**  
-
-        • det(A) ≠ 0  
-
-        • Columns are linearly independent  
-
-        • Rows are linearly independent  
-
-        • rank(A) = n for n×n matrix
-
-
+        <strong>Conditions for Invertibility:</strong><br>
+        • det(A) ≠ 0<br>
+        • Columns are linearly independent<br>
+        • Rows are linearly independent<br>
+        • rank(A) = n for n×n matrix<br><br>
         
-        **2×2 Inverse:**  
-
+        <strong>2×2 Inverse:</strong><br>
         A⁻¹ = (1/det(A)) × [d -b; -c a] for A = [a b; c d]
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     if abs(det_A) > 0.01:
         A_inv = np.linalg.inv(A)
@@ -444,17 +403,18 @@ with tabs[3]:
     st.markdown("### 1️⃣ Solving Linear Systems")
     
     st.markdown("""
-    **System of Linear Equations:**
-    
-    Ax = b
-    
-    where A is m×n matrix, x is n×1 vector, b is m×1 vector
-    
-    **Solution Types:**
-    - **Unique solution:** rank(A) = rank([A|b]) = n
-    - **Infinite solutions:** rank(A) = rank([A|b]) < n
-    - **No solution:** rank(A) < rank([A|b])
-    """)
+    <div class="theory-box">
+        <strong>System of Linear Equations:</strong><br>
+        Ax = b<br><br>
+        
+        where A is m×n matrix, x is n×1 vector, b is m×1 vector<br><br>
+        
+        <strong>Solution Types:</strong><br>
+        • <strong>Unique solution:</strong> rank(A) = rank([A|b]) = n<br>
+        • <strong>Infinite solutions:</strong> rank(A) = rank([A|b]) < n<br>
+        • <strong>No solution:</strong> rank(A) < rank([A|b])
+    </div>
+    """, unsafe_allow_html=True)
     
     # Interactive linear system solver
     st.markdown("#### 🧮 2×2 Linear System Solver")
@@ -485,32 +445,22 @@ with tabs[3]:
     st.markdown("### 2️⃣ Gaussian Elimination")
     
     st.markdown("""
-    **Row Operations:**  
-
-        1. Swap two rows  
-
-        2. Multiply a row by a non-zero scalar  
-
-        3. Add a multiple of one row to another
-
-
+    <div class="theorem-box">
+        <strong>Row Operations:</strong><br>
+        1. Swap two rows<br>
+        2. Multiply a row by a non-zero scalar<br>
+        3. Add a multiple of one row to another<br><br>
         
-        **Row Echelon Form (REF):**  
-
-        • All zero rows at bottom  
-
-        • Leading entry of each row is to the right of the one above
-
-
+        <strong>Row Echelon Form (REF):</strong><br>
+        • All zero rows at bottom<br>
+        • Leading entry of each row is to the right of the one above<br><br>
         
-        **Reduced Row Echelon Form (RREF):**  
-
-        • REF conditions  
-
-        • Leading entry in each row is 1  
-
+        <strong>Reduced Row Echelon Form (RREF):</strong><br>
+        • REF conditions<br>
+        • Leading entry in each row is 1<br>
         • Leading 1 is only non-zero entry in its column
-    """)
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== TAB 5: LINEAR TRANSFORMATIONS ====================
 with tabs[4]:
@@ -519,23 +469,17 @@ with tabs[4]:
     st.markdown("### 1️⃣ Definition")
     
     st.markdown("""
-    **Linear Transformation T: V → W**  
-
-        T is linear if for all u, v ∈ V and c ∈ ℝ:
-
-
-        1. T(u + v) = T(u) + T(v) (Additivity)  
-
-        2. T(cu) = cT(u) (Homogeneity)
-
-
+    <div class="theory-box">
+        <strong>Linear Transformation T: V → W</strong><br>
+        T is linear if for all u, v ∈ V and c ∈ ℝ:<br><br>
+        1. T(u + v) = T(u) + T(v) (Additivity)<br>
+        2. T(cu) = cT(u) (Homogeneity)<br><br>
         
-        **Matrix Representation:**  
-
-        Every linear transformation T: ℝⁿ → ℝᵐ can be represented as:  
-
+        <strong>Matrix Representation:</strong><br>
+        Every linear transformation T: ℝⁿ → ℝᵐ can be represented as:<br>
         T(x) = Ax for some m×n matrix A
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("### 2️⃣ Common Transformations in ℝ²")
@@ -609,27 +553,22 @@ with tabs[5]:
     st.markdown("### 1️⃣ Definition")
     
     st.markdown("""
-    **Eigenvalue and Eigenvector:**  
-
-        For matrix A, scalar λ is an eigenvalue and v ≠ 0 is an eigenvector if:  
-
+    <div class="theorem-box">
+        <strong>Eigenvalue and Eigenvector:</strong><br>
+        For matrix A, scalar λ is an eigenvalue and v ≠ 0 is an eigenvector if:<br>
         <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
             Av = λv
+        </div>
         
-        **Characteristic Equation:**  
-
-        det(A - λI) = 0
-
-
+        <strong>Characteristic Equation:</strong><br>
+        det(A - λI) = 0<br><br>
         
-        **Properties:**  
-
-        • Sum of eigenvalues = trace(A)  
-
-        • Product of eigenvalues = det(A)  
-
+        <strong>Properties:</strong><br>
+        • Sum of eigenvalues = trace(A)<br>
+        • Product of eigenvalues = det(A)<br>
         • Eigenvectors for different eigenvalues are linearly independent
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     # Eigenvalue calculator
     st.markdown("#### 🧮 Eigenvalue Calculator (2×2)")
@@ -659,32 +598,22 @@ with tabs[5]:
     st.markdown("### 2️⃣ Diagonalization")
     
     st.markdown("""
-    **Diagonalization:**  
-
-        Matrix A is diagonalizable if A = PDP⁻¹ where:  
-
-        • D is diagonal matrix of eigenvalues  
-
-        • P is matrix of eigenvectors
-
-
+    <div class="theory-box">
+        <strong>Diagonalization:</strong><br>
+        Matrix A is diagonalizable if A = PDP⁻¹ where:<br>
+        • D is diagonal matrix of eigenvalues<br>
+        • P is matrix of eigenvectors<br><br>
         
-        **Conditions:**  
-
-        • A has n linearly independent eigenvectors  
-
-        • Symmetric matrices are always diagonalizable
-
-
+        <strong>Conditions:</strong><br>
+        • A has n linearly independent eigenvectors<br>
+        • Symmetric matrices are always diagonalizable<br><br>
         
-        **Applications:**  
-
-        • Computing Aⁿ = PDⁿP⁻¹  
-
-        • Solving differential equations  
-
+        <strong>Applications:</strong><br>
+        • Computing Aⁿ = PDⁿP⁻¹<br>
+        • Solving differential equations<br>
         • Principal Component Analysis (PCA)
-    """)
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== TAB 7: ORTHOGONALITY ====================
 with tabs[6]:
@@ -693,76 +622,55 @@ with tabs[6]:
     st.markdown("### 1️⃣ Inner Products")
     
     st.markdown("""
-    **Inner Product (Dot Product):**  
-
-        ⟨u, v⟩ = u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ = uᵀv
-
-
+    <div class="theory-box">
+        <strong>Inner Product (Dot Product):</strong><br>
+        ⟨u, v⟩ = u·v = u₁v₁ + u₂v₂ + ... + uₙvₙ = uᵀv<br><br>
         
-        **Properties:**  
-
-        • ⟨u, v⟩ = ⟨v, u⟩ (Symmetry)  
-
-        • ⟨u + v, w⟩ = ⟨u, w⟩ + ⟨v, w⟩ (Linearity)  
-
-        • ⟨cu, v⟩ = c⟨u, v⟩  
-
-        • ⟨u, u⟩ ≥ 0, equality iff u = 0
-
-
+        <strong>Properties:</strong><br>
+        • ⟨u, v⟩ = ⟨v, u⟩ (Symmetry)<br>
+        • ⟨u + v, w⟩ = ⟨u, w⟩ + ⟨v, w⟩ (Linearity)<br>
+        • ⟨cu, v⟩ = c⟨u, v⟩<br>
+        • ⟨u, u⟩ ≥ 0, equality iff u = 0<br><br>
         
-        **Orthogonality:**  
-
+        <strong>Orthogonality:</strong><br>
         Vectors u and v are orthogonal if ⟨u, v⟩ = 0
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("### 2️⃣ Gram-Schmidt Process")
     
     st.markdown("""
-    **Gram-Schmidt Orthogonalization:**  
-
-        Given linearly independent vectors {v₁, v₂, ..., vₙ}, construct orthogonal {u₁, u₂, ..., uₙ}:
-
-
+    <div class="theorem-box">
+        <strong>Gram-Schmidt Orthogonalization:</strong><br>
+        Given linearly independent vectors {v₁, v₂, ..., vₙ}, construct orthogonal {u₁, u₂, ..., uₙ}:<br><br>
         
-        u₁ = v₁  
-
-        u₂ = v₂ - proj_{u₁}(v₂)  
-
-        u₃ = v₃ - proj_{u₁}(v₃) - proj_{u₂}(v₃)  
-
-        ...
-
-
+        u₁ = v₁<br>
+        u₂ = v₂ - proj_{u₁}(v₂)<br>
+        u₃ = v₃ - proj_{u₁}(v₃) - proj_{u₂}(v₃)<br>
+        ...<br><br>
         
-        where proj_u(v) = (⟨v,u⟩/⟨u,u⟩)u
-
-
+        where proj_u(v) = (⟨v,u⟩/⟨u,u⟩)u<br><br>
         
-        **Orthonormal basis:**  
-
+        <strong>Orthonormal basis:</strong><br>
         Normalize: eᵢ = uᵢ/||uᵢ||
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("### 3️⃣ Orthogonal Projections")
     
     st.markdown("""
-    **Projection onto subspace W:**  
-
-        proj_W(v) = (vᵀu₁)u₁ + (vᵀu₂)u₂ + ... + (vᵀuₖ)uₖ  
-
-        where {u₁, u₂, ..., uₖ} is orthonormal basis for W
-
-
+    <div class="application-box">
+        <strong>Projection onto subspace W:</strong><br>
+        proj_W(v) = (vᵀu₁)u₁ + (vᵀu₂)u₂ + ... + (vᵀuₖ)uₖ<br>
+        where {u₁, u₂, ..., uₖ} is orthonormal basis for W<br><br>
         
-        **Least Squares:**  
-
-        Best approximation to Ax = b when no exact solution exists:  
-
+        <strong>Least Squares:</strong><br>
+        Best approximation to Ax = b when no exact solution exists:<br>
         x̂ = (AᵀA)⁻¹Aᵀb (Normal equation)
-    """)
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== TAB 8: SVD ====================
 with tabs[7]:
@@ -771,31 +679,24 @@ with tabs[7]:
     st.markdown("### 1️⃣ Singular Value Decomposition")
     
     st.markdown("""
-    **SVD Theorem:**  
-
-        Every m×n matrix A can be factored as:  
-
+    <div class="theorem-box">
+        <strong>SVD Theorem:</strong><br>
+        Every m×n matrix A can be factored as:<br>
         <div style="text-align: center; margin: 1rem 0; font-size: 1.3rem;">
             A = UΣVᵀ
+        </div>
         
-        where:  
-
-        • U is m×m orthogonal matrix (left singular vectors)  
-
-        • Σ is m×n diagonal matrix (singular values σ₁ ≥ σ₂ ≥ ... ≥ 0)  
-
-        • V is n×n orthogonal matrix (right singular vectors)
-
-
+        where:<br>
+        • U is m×m orthogonal matrix (left singular vectors)<br>
+        • Σ is m×n diagonal matrix (singular values σ₁ ≥ σ₂ ≥ ... ≥ 0)<br>
+        • V is n×n orthogonal matrix (right singular vectors)<br><br>
         
-        **Properties:**  
-
-        • Singular values are square roots of eigenvalues of AᵀA  
-
-        • rank(A) = number of non-zero singular values  
-
+        <strong>Properties:</strong><br>
+        • Singular values are square roots of eigenvalues of AᵀA<br>
+        • rank(A) = number of non-zero singular values<br>
         • ||A||₂ = σ₁ (largest singular value)
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     # SVD calculator
     st.markdown("#### 🧮 SVD Calculator (2×2)")
@@ -822,28 +723,20 @@ with tabs[7]:
     st.markdown("### 2️⃣ Applications of SVD")
     
     st.markdown("""
-    **Data Compression:**  
-
-        Low-rank approximation: A ≈ Σᵢ₌₁ᵏ σᵢuᵢvᵢᵀ (keep top k singular values)
-
-
+    <div class="application-box">
+        <strong>Data Compression:</strong><br>
+        Low-rank approximation: A ≈ Σᵢ₌₁ᵏ σᵢuᵢvᵢᵀ (keep top k singular values)<br><br>
         
-        **Principal Component Analysis (PCA):**  
-
-        Find directions of maximum variance in data
-
-
+        <strong>Principal Component Analysis (PCA):</strong><br>
+        Find directions of maximum variance in data<br><br>
         
-        **Pseudoinverse:**  
-
-        A⁺ = VΣ⁺Uᵀ where Σ⁺ has 1/σᵢ on diagonal
-
-
+        <strong>Pseudoinverse:</strong><br>
+        A⁺ = VΣ⁺Uᵀ where Σ⁺ has 1/σᵢ on diagonal<br><br>
         
-        **Image Processing:**  
-
+        <strong>Image Processing:</strong><br>
         Noise reduction, feature extraction, compression
-    """)
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== TAB 9: APPLICATIONS ====================
 with tabs[8]:
@@ -852,36 +745,24 @@ with tabs[8]:
     st.markdown("### 1️⃣ Machine Learning")
     
     st.markdown("""
-    **Principal Component Analysis (PCA):**  
-
-        • Dimensionality reduction  
-
-        • Feature extraction  
-
-        • Data visualization  
-
-        • Uses eigendecomposition of covariance matrix
-
-
+    <div class="application-box">
+        <strong>Principal Component Analysis (PCA):</strong><br>
+        • Dimensionality reduction<br>
+        • Feature extraction<br>
+        • Data visualization<br>
+        • Uses eigendecomposition of covariance matrix<br><br>
         
-        **Linear Regression:**  
-
-        • Minimize ||Ax - b||²  
-
-        • Solution: x = (AᵀA)⁻¹Aᵀb  
-
-        • Uses least squares and pseudoinverse
-
-
+        <strong>Linear Regression:</strong><br>
+        • Minimize ||Ax - b||²<br>
+        • Solution: x = (AᵀA)⁻¹Aᵀb<br>
+        • Uses least squares and pseudoinverse<br><br>
         
-        **Recommender Systems:**  
-
-        • Matrix factorization  
-
-        • SVD for collaborative filtering  
-
+        <strong>Recommender Systems:</strong><br>
+        • Matrix factorization<br>
+        • SVD for collaborative filtering<br>
         • Low-rank approximations
-    """)
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("### 2️⃣ Computer Graphics")
@@ -910,26 +791,19 @@ with tabs[8]:
     st.markdown("### 3️⃣ Network Analysis")
     
     st.markdown("""
-    **PageRank Algorithm:**  
-
-        • Google's ranking algorithm  
-
-        • Uses eigenvector of adjacency matrix  
-
-        • Dominant eigenvector gives importance scores
-
-
+    <div class="application-box">
+        <strong>PageRank Algorithm:</strong><br>
+        • Google's ranking algorithm<br>
+        • Uses eigenvector of adjacency matrix<br>
+        • Dominant eigenvector gives importance scores<br><br>
         
-        **Graph Theory:**  
-
-        • Adjacency matrices  
-
-        • Spectral graph theory  
-
-        • Community detection  
-
+        <strong>Graph Theory:</strong><br>
+        • Adjacency matrices<br>
+        • Spectral graph theory<br>
+        • Community detection<br>
         • Network centrality measures
-    """)
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== TAB 10: PRACTICE PROBLEMS ====================
 with tabs[9]:
@@ -1003,7 +877,7 @@ Eigenvalues: λ₁ = 5, λ₂ = 2
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #9ca3af; padding: 1rem;">
-    **MA102 - Linear Algebra**  
-
+    <strong>MA102 - Linear Algebra</strong><br>
     <small>UTel University | Department of Mathematics</small>
-""")
+</div>
+""", unsafe_allow_html=True)
