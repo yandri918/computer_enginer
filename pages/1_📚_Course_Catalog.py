@@ -269,7 +269,7 @@ for code, course in sorted_courses:
         if code in ["MA101"]:  # Add more course codes as we create pages
             st.markdown("---")
             if st.button(f"📖 Deep Dive into {code}", key=f"dive_{code}", use_container_width=True):
-                st.info(f"💡 Navigate to **pages/courses/{code}_*.py** in the sidebar for detailed course materials!")
+                st.success(f"✅ Navigate to **📐 MA101 Calculus** in the sidebar to access detailed course materials!")
 
 # Summary statistics
 if filtered_courses:
