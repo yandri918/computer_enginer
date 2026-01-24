@@ -195,9 +195,9 @@ with tabs[1]:
             V = I × R
         </div>
         where:<br>
-        • V = Voltage (Volts)<br>
-        • I = Current (Amperes)<br>
-        • R = Resistance (Ohms)
+        &bull; V = Voltage (Volts)<br>
+        &bull; I = Current (Amperes)<br>
+        &bull; R = Resistance (Ohms)
     </div>
     """, unsafe_allow_html=True)
     
@@ -261,9 +261,9 @@ with tabs[1]:
         <div style="text-align: center; margin: 1rem 0;">
             R_total = R₁ + R₂ + R₃ + ...
         </div>
-        • Same current through all<br>
-        • Voltages add up<br>
-        • Total resistance increases
+        &bull; Same current through all<br>
+        &bull; Voltages add up<br>
+        &bull; Total resistance increases
         """, unsafe_allow_html=True)
     
     with col2:
@@ -272,9 +272,9 @@ with tabs[1]:
         <div style="text-align: center; margin: 1rem 0;">
             1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + ...
         </div>
-        • Same voltage across all<br>
-        • Currents add up<br>
-        • Total resistance decreases
+        &bull; Same voltage across all<br>
+        &bull; Currents add up<br>
+        &bull; Total resistance decreases
         """, unsafe_allow_html=True)
 
 # ==================== TAB 3: AC & DC ANALYSIS ====================
@@ -325,10 +325,10 @@ with tabs[2]:
             v(t) = V_m sin(ωt + φ)
         </div>
         where:<br>
-        • V_m = Peak voltage<br>
-        • ω = 2πf (angular frequency)<br>
-        • φ = Phase angle<br>
-        • V_rms = V_m / √2 (RMS voltage)
+        &bull; V_m = Peak voltage<br>
+        &bull; ω = 2πf (angular frequency)<br>
+        &bull; φ = Phase angle<br>
+        &bull; V_rms = V_m / √2 (RMS voltage)
     </div>
     """, unsafe_allow_html=True)
     
@@ -382,14 +382,14 @@ with tabs[3]:
     st.markdown("""
     <div class="theory-box">
         <strong>Intrinsic Semiconductors:</strong><br>
-        • Pure semiconductor (Si, Ge)<br>
-        • Equal number of electrons and holes<br>
-        • Conductivity increases with temperature<br><br>
+        &bull; Pure semiconductor (Si, Ge)<br>
+        &bull; Equal number of electrons and holes<br>
+        &bull; Conductivity increases with temperature<br><br>
         
         <strong>Extrinsic Semiconductors:</strong><br>
-        • <strong>N-type:</strong> Doped with donors (P, As) - excess electrons<br>
-        • <strong>P-type:</strong> Doped with acceptors (B, Ga) - excess holes<br>
-        • Majority and minority carriers
+        &bull; <strong>N-type:</strong> Doped with donors (P, As) - excess electrons<br>
+        &bull; <strong>P-type:</strong> Doped with acceptors (B, Ga) - excess holes<br>
+        &bull; Majority and minority carriers
     </div>
     """, unsafe_allow_html=True)
     
@@ -404,8 +404,8 @@ with tabs[3]:
         3. <strong>Built-in Potential:</strong> ~0.7V for Si, ~0.3V for Ge<br><br>
         
         <strong>Biasing:</strong><br>
-        • <strong>Forward Bias:</strong> P positive, N negative - current flows<br>
-        • <strong>Reverse Bias:</strong> P negative, N positive - minimal current
+        &bull; <strong>Forward Bias:</strong> P positive, N negative - current flows<br>
+        &bull; <strong>Reverse Bias:</strong> P negative, N positive - minimal current
     </div>
     """, unsafe_allow_html=True)
     
@@ -415,9 +415,9 @@ with tabs[3]:
     st.markdown("""
     <div class="component-box">
         <strong>Band Gap Energy (E_g):</strong><br>
-        • <strong>Conductors:</strong> E_g ≈ 0 (overlapping bands)<br>
-        • <strong>Semiconductors:</strong> E_g = 0.7-1.5 eV (Si: 1.12 eV)<br>
-        • <strong>Insulators:</strong> E_g > 3 eV<br><br>
+        &bull; <strong>Conductors:</strong> E_g ≈ 0 (overlapping bands)<br>
+        &bull; <strong>Semiconductors:</strong> E_g = 0.7-1.5 eV (Si: 1.12 eV)<br>
+        &bull; <strong>Insulators:</strong> E_g > 3 eV<br><br>
         
         At room temperature, thermal energy can excite electrons across band gap in semiconductors.
     </div>
@@ -432,13 +432,13 @@ with tabs[4]:
     st.markdown("""
     <div class="theory-box">
         <strong>Ideal Diode:</strong><br>
-        • Forward bias (V > 0): Acts like short circuit (R = 0)<br>
-        • Reverse bias (V < 0): Acts like open circuit (R = ∞)<br><br>
+        &bull; Forward bias (V > 0): Acts like short circuit (R = 0)<br>
+        &bull; Reverse bias (V < 0): Acts like open circuit (R = ∞)<br><br>
         
         <strong>Real Diode:</strong><br>
-        • Forward bias: V_D ≈ 0.7V (Si), current flows<br>
-        • Reverse bias: Small leakage current (~nA)<br>
-        • Breakdown: Large reverse voltage causes avalanche
+        &bull; Forward bias: V_D ≈ 0.7V (Si), current flows<br>
+        &bull; Reverse bias: Small leakage current (~nA)<br>
+        &bull; Breakdown: Large reverse voltage causes avalanche
     </div>
     """, unsafe_allow_html=True)
     
@@ -496,10 +496,10 @@ with tabs[4]:
     st.markdown("""
     <div class="circuit-box">
         <strong>Zener Diode Voltage Regulator:</strong><br>
-        • Operates in reverse breakdown region<br>
-        • Maintains constant voltage (V_Z)<br>
-        • Used for voltage regulation<br>
-        • Common values: 3.3V, 5V, 12V, 15V
+        &bull; Operates in reverse breakdown region<br>
+        &bull; Maintains constant voltage (V_Z)<br>
+        &bull; Used for voltage regulation<br>
+        &bull; Common values: 3.3V, 5V, 12V, 15V
     </div>
     """, unsafe_allow_html=True)
 
@@ -512,13 +512,13 @@ with tabs[5]:
     st.markdown("""
     <div class="theory-box">
         <strong>BJT Structure:</strong><br>
-        • <strong>NPN:</strong> N-P-N layers (most common)<br>
-        • <strong>PNP:</strong> P-N-P layers<br><br>
+        &bull; <strong>NPN:</strong> N-P-N layers (most common)<br>
+        &bull; <strong>PNP:</strong> P-N-P layers<br><br>
         
         <strong>Terminals:</strong><br>
-        • <strong>Emitter (E):</strong> Heavily doped, emits carriers<br>
-        • <strong>Base (B):</strong> Thin, lightly doped, controls current<br>
-        • <strong>Collector (C):</strong> Collects carriers<br><br>
+        &bull; <strong>Emitter (E):</strong> Heavily doped, emits carriers<br>
+        &bull; <strong>Base (B):</strong> Thin, lightly doped, controls current<br>
+        &bull; <strong>Collector (C):</strong> Collects carriers<br><br>
         
         <strong>Current Relationships:</strong><br>
         I_E = I_B + I_C<br>
@@ -553,18 +553,18 @@ with tabs[5]:
     st.markdown("""
     <div class="component-box">
         <strong>MOSFET Types:</strong><br>
-        • <strong>N-Channel:</strong> Electrons are majority carriers<br>
-        • <strong>P-Channel:</strong> Holes are majority carriers<br><br>
+        &bull; <strong>N-Channel:</strong> Electrons are majority carriers<br>
+        &bull; <strong>P-Channel:</strong> Holes are majority carriers<br><br>
         
         <strong>Operation Modes:</strong><br>
-        • <strong>Enhancement Mode:</strong> Normally OFF, needs V_GS > V_th<br>
-        • <strong>Depletion Mode:</strong> Normally ON<br><br>
+        &bull; <strong>Enhancement Mode:</strong> Normally OFF, needs V_GS > V_th<br>
+        &bull; <strong>Depletion Mode:</strong> Normally ON<br><br>
         
         <strong>Advantages over BJT:</strong><br>
-        • High input impedance (voltage controlled)<br>
-        • Faster switching<br>
-        • Lower power consumption<br>
-        • Used in digital circuits (CMOS)
+        &bull; High input impedance (voltage controlled)<br>
+        &bull; Faster switching<br>
+        &bull; Lower power consumption<br>
+        &bull; Used in digital circuits (CMOS)
     </div>
     """, unsafe_allow_html=True)
     
@@ -574,9 +574,9 @@ with tabs[5]:
     st.markdown("""
     <div class="example-box">
         <strong>Digital Switch Application:</strong><br>
-        • <strong>Cutoff:</strong> V_BE < 0.7V, transistor OFF (open switch)<br>
-        • <strong>Saturation:</strong> V_BE > 0.7V, I_B sufficient, transistor ON (closed switch)<br>
-        • Used in digital logic, motor drivers, relay control
+        &bull; <strong>Cutoff:</strong> V_BE < 0.7V, transistor OFF (open switch)<br>
+        &bull; <strong>Saturation:</strong> V_BE > 0.7V, I_B sufficient, transistor ON (closed switch)<br>
+        &bull; Used in digital logic, motor drivers, relay control
     </div>
     """, unsafe_allow_html=True)
 
@@ -624,15 +624,15 @@ with tabs[6]:
     st.markdown("""
     <div class="circuit-box">
         <strong>CE Amplifier Characteristics:</strong><br>
-        • High voltage gain (A_v = -g_m × R_C)<br>
-        • 180° phase shift (inverting)<br>
-        • Moderate input/output impedance<br>
-        • Most common configuration<br><br>
+        &bull; High voltage gain (A_v = -g_m × R_C)<br>
+        &bull; 180° phase shift (inverting)<br>
+        &bull; Moderate input/output impedance<br>
+        &bull; Most common configuration<br><br>
         
         <strong>Small Signal Model:</strong><br>
-        • g_m = transconductance = I_C / V_T<br>
-        • r_π = β / g_m (input resistance)<br>
-        • V_T ≈ 26 mV at room temperature
+        &bull; g_m = transconductance = I_C / V_T<br>
+        &bull; r_π = β / g_m (input resistance)<br>
+        &bull; V_T ≈ 26 mV at room temperature
     </div>
     """, unsafe_allow_html=True)
     
@@ -642,10 +642,10 @@ with tabs[6]:
     st.markdown("""
     <div class="component-box">
         <strong>Bandwidth:</strong><br>
-        • <strong>Lower cutoff (f_L):</strong> Due to coupling/bypass capacitors<br>
-        • <strong>Upper cutoff (f_H):</strong> Due to transistor capacitances<br>
-        • <strong>Bandwidth (BW):</strong> f_H - f_L<br>
-        • <strong>Gain-Bandwidth Product:</strong> A_v × BW = constant
+        &bull; <strong>Lower cutoff (f_L):</strong> Due to coupling/bypass capacitors<br>
+        &bull; <strong>Upper cutoff (f_H):</strong> Due to transistor capacitances<br>
+        &bull; <strong>Bandwidth (BW):</strong> f_H - f_L<br>
+        &bull; <strong>Gain-Bandwidth Product:</strong> A_v × BW = constant
     </div>
     """, unsafe_allow_html=True)
 
@@ -658,13 +658,13 @@ with tabs[7]:
     st.markdown("""
     <div class="theory-box">
         <strong>Basic Logic Gates:</strong><br>
-        • <strong>NOT:</strong> Y = A̅<br>
-        • <strong>AND:</strong> Y = A · B<br>
-        • <strong>OR:</strong> Y = A + B<br>
-        • <strong>NAND:</strong> Y = (A · B)̅<br>
-        • <strong>NOR:</strong> Y = (A + B)̅<br>
-        • <strong>XOR:</strong> Y = A ⊕ B<br>
-        • <strong>XNOR:</strong> Y = (A ⊕ B)̅
+        &bull; <strong>NOT:</strong> Y = A̅<br>
+        &bull; <strong>AND:</strong> Y = A · B<br>
+        &bull; <strong>OR:</strong> Y = A + B<br>
+        &bull; <strong>NAND:</strong> Y = (A · B)̅<br>
+        &bull; <strong>NOR:</strong> Y = (A + B)̅<br>
+        &bull; <strong>XOR:</strong> Y = A ⊕ B<br>
+        &bull; <strong>XNOR:</strong> Y = (A ⊕ B)̅
     </div>
     """, unsafe_allow_html=True)
     
@@ -700,11 +700,11 @@ with tabs[7]:
     st.markdown("""
     <div class="circuit-box">
         <strong>Boolean Laws:</strong><br>
-        • <strong>Identity:</strong> A + 0 = A, A · 1 = A<br>
-        • <strong>Null:</strong> A + 1 = 1, A · 0 = 0<br>
-        • <strong>Idempotent:</strong> A + A = A, A · A = A<br>
-        • <strong>Complement:</strong> A + A̅ = 1, A · A̅ = 0<br>
-        • <strong>De Morgan's:</strong> (A + B)̅ = A̅ · B̅, (A · B)̅ = A̅ + B̅
+        &bull; <strong>Identity:</strong> A + 0 = A, A · 1 = A<br>
+        &bull; <strong>Null:</strong> A + 1 = 1, A · 0 = 0<br>
+        &bull; <strong>Idempotent:</strong> A + A = A, A · A = A<br>
+        &bull; <strong>Complement:</strong> A + A̅ = 1, A · A̅ = 0<br>
+        &bull; <strong>De Morgan's:</strong> (A + B)̅ = A̅ · B̅, (A · B)̅ = A̅ + B̅
     </div>
     """, unsafe_allow_html=True)
     
@@ -740,11 +740,11 @@ with tabs[8]:
     st.markdown("""
     <div class="theory-box">
         <strong>Ideal Op-Amp Characteristics:</strong><br>
-        • Infinite input impedance (Z_in = ∞)<br>
-        • Zero output impedance (Z_out = 0)<br>
-        • Infinite voltage gain (A_v = ∞)<br>
-        • Infinite bandwidth<br>
-        • Zero offset voltage<br><br>
+        &bull; Infinite input impedance (Z_in = ∞)<br>
+        &bull; Zero output impedance (Z_out = 0)<br>
+        &bull; Infinite voltage gain (A_v = ∞)<br>
+        &bull; Infinite bandwidth<br>
+        &bull; Zero offset voltage<br><br>
         
         <strong>Golden Rules:</strong><br>
         1. No current flows into inputs (I_+ = I_- = 0)<br>
