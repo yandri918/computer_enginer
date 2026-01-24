@@ -87,13 +87,9 @@ for outcome in selected_course['learning_outcomes']:
     st.markdown(f"✅ {outcome}")
 
 # Deep dive links
-if selected_code in ["MA101", "ID101"]:
+if selected_code in ["MA101"]:
     st.markdown("---")
-    deep_dive_pages = {
-        "MA101": "📐 MA101 Calculus",
-        "ID101": "📝 ID101 Bahasa Indonesia"
-    }
-    st.info(f"💡 **Deep Dive Available!** Navigate to **{deep_dive_pages[selected_code]}** in the sidebar for comprehensive course materials.")
+    st.info(f"💡 **Deep Dive Available!** Navigate to **📐 MA101 Calculus** in the sidebar for comprehensive course materials.")
 
 # All courses overview
 st.markdown("---")
