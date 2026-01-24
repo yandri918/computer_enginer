@@ -839,8 +839,810 @@ class ConcreteObserver(Observer):
         print(f"Observer received: {state}")
     """, language="python")
 
-# Continue with remaining tabs...
-# (Due to length, I'll create the rest in the next message)
+# ==================== TAB 6: TESTING & DEBUGGING ====================
+with tabs[5]:
+    st.markdown("## 🧪 Testing & Debugging")
+    
+    st.markdown("### 1️⃣ Unit Testing")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <strong>Testing Principles:</strong><br>
+        • Write tests before code (TDD - Test Driven Development)<br>
+        • Test one thing at a time<br>
+        • Use descriptive test names<br>
+        • Aim for high code coverage (>80%)<br>
+        • Automate testing in CI/CD pipeline
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.code("""
+import unittest
+
+class Calculator:
+    def add(self, a, b):
+        return a + b
+    
+    def divide(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot divide by zero")
+        return a / b
+
+class TestCalculator(unittest.TestCase):
+    def setUp(self):
+        \"\"\"Run before each test\"\"\"
+        self.calc = Calculator()
+    
+    def test_add_positive_numbers(self):
+        result = self.calc.add(3, 5)
+        self.assertEqual(result, 8)
+    
+    def test_add_negative_numbers(self):
+        result = self.calc.add(-3, -5)
+        self.assertEqual(result, -8)
+    
+    def test_divide_normal(self):
+        result = self.calc.divide(10, 2)
+        self.assertEqual(result, 5.0)
+    
+    def test_divide_by_zero(self):
+        with self.assertRaises(ValueError):
+            self.calc.divide(10, 0)
+    
+    def tearDown(self):
+        \"\"\"Run after each test\"\"\"
+        pass
+
+# Run tests
+if __name__ == '__main__':
+    unittest.main()
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Debugging Techniques")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        **Print Debugging:**
+        ```python
+        def buggy_function(x):
+            print(f"Input: {x}")
+            result = x * 2
+            print(f"Result: {result}")
+            return result
+        ```
+        
+        **Assert Statements:**
+        ```python
+        def divide(a, b):
+            assert b != 0, "Divisor cannot be zero"
+            return a / b
+        ```
+        """)
+    
+    with col2:
+        st.markdown("""
+        **Using Debugger (pdb):**
+        ```python
+        import pdb
+
+        def complex_function(data):
+            pdb.set_trace()  # Breakpoint
+            processed = process_data(data)
+            return processed
+        ```
+        
+        **Logging:**
+        ```python
+        import logging
+
+        logging.basicConfig(level=logging.DEBUG)
+        logger = logging.getLogger(__name__)
+
+        def process(data):
+            logger.debug(f"Processing: {data}")
+            logger.info("Process complete")
+        ```
+        """)
+    
+    st.markdown("---")
+    st.markdown("### 3️⃣ Common Bug Patterns")
+    
+    st.markdown("""
+    <div class="example-box">
+        <strong>Off-by-One Errors:</strong><br>
+        ```python
+        # Wrong
+        for i in range(len(arr) - 1):  # Misses last element
+            print(arr[i])
+        
+        # Correct
+        for i in range(len(arr)):
+            print(arr[i])
+        ```
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="example-box">
+        <strong>Mutable Default Arguments:</strong><br>
+        ```python
+        # Wrong - list is shared across calls
+        def append_to(element, to=[]):
+            to.append(element)
+            return to
+        
+        # Correct
+        def append_to(element, to=None):
+            if to is None:
+                to = []
+            to.append(element)
+            return to
+        ```
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==================== TAB 7: ADVANCED TOPICS ====================
+with tabs[6]:
+    st.markdown("## 🚀 Advanced Topics")
+    
+    st.markdown("### 1️⃣ Memory Management")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <strong>Memory Concepts:</strong><br>
+        • <strong>Stack:</strong> Fast, automatic memory (local variables)<br>
+        • <strong>Heap:</strong> Manual memory allocation (dynamic objects)<br>
+        • <strong>Garbage Collection:</strong> Automatic memory reclamation<br>
+        • <strong>Memory Leaks:</strong> Unreleased memory causing issues
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.code("""
+# Python Memory Management
+import sys
+
+# Check object size
+x = [1, 2, 3, 4, 5]
+print(f"Size of list: {sys.getsizeof(x)} bytes")
+
+# Reference counting
+import gc
+gc.get_count()  # Get garbage collector stats
+
+# Context managers for resource management
+class FileManager:
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
+        self.file = None
+    
+    def __enter__(self):
+        self.file = open(self.filename, self.mode)
+        return self.file
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.file:
+            self.file.close()
+
+# Usage
+with FileManager('data.txt', 'w') as f:
+    f.write('Hello, World!')
+# File automatically closed
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Parallel Programming Basics")
+    
+    st.code("""
+# Threading for I/O-bound tasks
+import threading
+import time
+
+def worker(name, delay):
+    print(f"{name} starting")
+    time.sleep(delay)
+    print(f"{name} finished")
+
+# Create threads
+threads = []
+for i in range(3):
+    t = threading.Thread(target=worker, args=(f"Thread-{i}", i+1))
+    threads.append(t)
+    t.start()
+
+# Wait for all threads
+for t in threads:
+    t.join()
+
+# Multiprocessing for CPU-bound tasks
+from multiprocessing import Pool
+
+def square(x):
+    return x * x
+
+if __name__ == '__main__':
+    with Pool(4) as p:
+        results = p.map(square, range(10))
+        print(results)
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 3️⃣ Generators and Iterators")
+    
+    st.code("""
+# Generator function - memory efficient
+def fibonacci_generator(n):
+    \"\"\"Generate Fibonacci numbers up to n\"\"\"
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+# Usage
+for num in fibonacci_generator(10):
+    print(num, end=' ')
+
+# Generator expression
+squares = (x**2 for x in range(1000000))  # Memory efficient
+# vs
+squares_list = [x**2 for x in range(1000000)]  # Uses lots of memory
+
+# Custom iterator
+class Countdown:
+    def __init__(self, start):
+        self.current = start
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.current <= 0:
+            raise StopIteration
+        self.current -= 1
+        return self.current + 1
+
+# Usage
+for num in Countdown(5):
+    print(num)  # 5, 4, 3, 2, 1
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 4️⃣ Metaclasses and Decorators")
+    
+    st.code("""
+# Advanced decorator with arguments
+def repeat(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+@repeat(3)
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")  # Prints 3 times
+
+# Class decorator
+def singleton(cls):
+    instances = {}
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    return get_instance
+
+@singleton
+class Database:
+    def __init__(self):
+        print("Database initialized")
+
+# Metaclass example
+class Meta(type):
+    def __new__(cls, name, bases, dct):
+        # Add timestamp to all classes
+        import time
+        dct['created_at'] = time.time()
+        return super().__new__(cls, name, bases, dct)
+
+class MyClass(metaclass=Meta):
+    pass
+
+print(MyClass.created_at)
+    """, language="python")
+
+# ==================== TAB 8: BEST PRACTICES ====================
+with tabs[7]:
+    st.markdown("## 💡 Best Practices")
+    
+    st.markdown("### 1️⃣ SOLID Principles")
+    
+    st.markdown("""
+    <div class="algorithm-box">
+        <strong>S - Single Responsibility Principle</strong><br>
+        A class should have only one reason to change.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.code("""
+# Bad - Multiple responsibilities
+class User:
+    def __init__(self, name):
+        self.name = name
+    
+    def save_to_database(self):
+        # Database logic
+        pass
+    
+    def send_email(self):
+        # Email logic
+        pass
+
+# Good - Separated concerns
+class User:
+    def __init__(self, name):
+        self.name = name
+
+class UserRepository:
+    def save(self, user):
+        # Database logic
+        pass
+
+class EmailService:
+    def send(self, user, message):
+        # Email logic
+        pass
+    """, language="python")
+    
+    st.markdown("""
+    <div class="algorithm-box">
+        <strong>O - Open/Closed Principle</strong><br>
+        Open for extension, closed for modification.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.code("""
+# Bad - Need to modify class for new shapes
+class AreaCalculator:
+    def calculate(self, shape):
+        if shape.type == 'circle':
+            return 3.14 * shape.radius ** 2
+        elif shape.type == 'rectangle':
+            return shape.width * shape.height
+
+# Good - Extensible without modification
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Clean Code Principles")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        **Meaningful Names:**
+        ```python
+        # Bad
+        def calc(x, y):
+            return x + y
+        
+        # Good
+        def calculate_total_price(base_price, tax):
+            return base_price + tax
+        ```
+        
+        **Small Functions:**
+        ```python
+        # Functions should do ONE thing
+        def process_order(order):
+            validate_order(order)
+            calculate_total(order)
+            apply_discount(order)
+            save_to_database(order)
+        ```
+        """)
+    
+    with col2:
+        st.markdown("""
+        **Avoid Magic Numbers:**
+        ```python
+        # Bad
+        if age > 18:
+            allow_access()
+        
+        # Good
+        LEGAL_AGE = 18
+        if age > LEGAL_AGE:
+            allow_access()
+        ```
+        
+        **DRY (Don't Repeat Yourself):**
+        ```python
+        # Extract common logic
+        def validate_email(email):
+            return '@' in email and '.' in email
+        
+        def validate_user(user):
+            return validate_email(user.email)
+        ```
+        """)
+    
+    st.markdown("---")
+    st.markdown("### 3️⃣ Code Documentation")
+    
+    st.code("""
+def binary_search(arr: list[int], target: int) -> int:
+    \"\"\"
+    Perform binary search on a sorted array.
+    
+    Args:
+        arr: Sorted list of integers to search
+        target: Integer value to find
+    
+    Returns:
+        Index of target if found, -1 otherwise
+    
+    Raises:
+        ValueError: If arr is not sorted
+    
+    Examples:
+        >>> binary_search([1, 2, 3, 4, 5], 3)
+        2
+        >>> binary_search([1, 2, 3, 4, 5], 6)
+        -1
+    
+    Time Complexity: O(log n)
+    Space Complexity: O(1)
+    \"\"\"
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 4️⃣ Error Handling")
+    
+    st.code("""
+# Specific exceptions
+def divide(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+        return None
+    except TypeError:
+        print("Invalid types for division")
+        return None
+    else:
+        return result
+    finally:
+        print("Division operation completed")
+
+# Custom exceptions
+class InvalidInputError(Exception):
+    \"\"\"Raised when input validation fails\"\"\"
+    pass
+
+def process_age(age):
+    if age < 0:
+        raise InvalidInputError("Age cannot be negative")
+    if age > 150:
+        raise InvalidInputError("Age seems unrealistic")
+    return age
+
+# Context managers for cleanup
+from contextlib import contextmanager
+
+@contextmanager
+def database_connection(db_name):
+    conn = connect_to_database(db_name)
+    try:
+        yield conn
+    finally:
+        conn.close()
+    """, language="python")
+
+# ==================== TAB 9: PRACTICE PROBLEMS ====================
+with tabs[8]:
+    st.markdown("## 🧮 Practice Problems")
+    
+    st.markdown("""
+    <div class="practice-box">
+        <strong>💡 LeetCode-Style Problems</strong><br>
+        Practice these problems to master programming concepts!
+    </div>
+    """, unsafe_allow_html=True)
+    
+    problems = [
+        {
+            "title": "Problem 1: Two Sum",
+            "difficulty": "Easy",
+            "description": "Given an array of integers and a target, return indices of two numbers that add up to target.",
+            "example": "Input: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: nums[0] + nums[1] = 2 + 7 = 9",
+            "hint": "Use a hash map to store complements",
+            "solution": """
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+# Time: O(n), Space: O(n)
+            """
+        },
+        {
+            "title": "Problem 2: Valid Parentheses",
+            "difficulty": "Easy",
+            "description": "Given a string containing '(', ')', '{', '}', '[', ']', determine if the input string is valid.",
+            "example": "Input: s = '({[]})'\nOutput: True\n\nInput: s = '([)]'\nOutput: False",
+            "hint": "Use a stack to track opening brackets",
+            "solution": """
+def is_valid(s):
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            top = stack.pop() if stack else '#'
+            if mapping[char] != top:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
+
+# Time: O(n), Space: O(n)
+            """
+        },
+        {
+            "title": "Problem 3: Reverse Linked List",
+            "difficulty": "Medium",
+            "description": "Reverse a singly linked list.",
+            "example": "Input: 1 -> 2 -> 3 -> 4 -> 5\nOutput: 5 -> 4 -> 3 -> 2 -> 1",
+            "hint": "Use three pointers: prev, current, next",
+            "solution": """
+def reverse_list(head):
+    prev = None
+    current = head
+    
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    
+    return prev
+
+# Time: O(n), Space: O(1)
+            """
+        },
+        {
+            "title": "Problem 4: Maximum Subarray (Kadane's Algorithm)",
+            "difficulty": "Medium",
+            "description": "Find the contiguous subarray with the largest sum.",
+            "example": "Input: [-2,1,-3,4,-1,2,1,-5,4]\nOutput: 6\nExplanation: [4,-1,2,1] has the largest sum = 6",
+            "hint": "Keep track of current sum and maximum sum",
+            "solution": """
+def max_subarray(nums):
+    max_sum = current_sum = nums[0]
+    
+    for num in nums[1:]:
+        current_sum = max(num, current_sum + num)
+        max_sum = max(max_sum, current_sum)
+    
+    return max_sum
+
+# Time: O(n), Space: O(1)
+            """
+        },
+        {
+            "title": "Problem 5: Longest Palindromic Substring",
+            "difficulty": "Hard",
+            "description": "Find the longest palindromic substring in a string.",
+            "example": "Input: s = 'babad'\nOutput: 'bab' or 'aba'",
+            "hint": "Expand around center for each position",
+            "solution": """
+def longest_palindrome(s):
+    def expand_around_center(left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return right - left - 1
+    
+    start = end = 0
+    for i in range(len(s)):
+        len1 = expand_around_center(i, i)      # Odd length
+        len2 = expand_around_center(i, i + 1)  # Even length
+        max_len = max(len1, len2)
+        
+        if max_len > end - start:
+            start = i - (max_len - 1) // 2
+            end = i + max_len // 2
+    
+    return s[start:end + 1]
+
+# Time: O(n²), Space: O(1)
+            """
+        }
+    ]
+    
+    for idx, problem in enumerate(problems, 1):
+        with st.expander(f"📝 {problem['title']} - {problem['difficulty']}", expanded=False):
+            st.markdown(f"**Description:** {problem['description']}")
+            st.markdown(f"**Example:**\n```\n{problem['example']}\n```")
+            
+            if st.button(f"Show Hint", key=f"hint_prob_{idx}"):
+                st.info(f"💡 {problem['hint']}")
+            
+            if st.button(f"Show Solution", key=f"sol_prob_{idx}"):
+                st.code(problem['solution'], language="python")
+
+# ==================== TAB 10: COMPLEXITY ANALYSIS ====================
+with tabs[9]:
+    st.markdown("## 📊 Complexity Analysis")
+    
+    st.markdown("### 1️⃣ Big O Notation")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <strong>Common Time Complexities (Best to Worst):</strong><br>
+        • O(1) - Constant<br>
+        • O(log n) - Logarithmic<br>
+        • O(n) - Linear<br>
+        • O(n log n) - Linearithmic<br>
+        • O(n²) - Quadratic<br>
+        • O(n³) - Cubic<br>
+        • O(2ⁿ) - Exponential<br>
+        • O(n!) - Factorial
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Complexity visualization
+    st.markdown("#### 📈 Complexity Growth Comparison")
+    
+    n_values = list(range(1, 21))
+    complexity_data = []
+    
+    for n in n_values:
+        complexity_data.append({'n': n, 'O(1)': 1, 'type': 'O(1)'})
+        complexity_data.append({'n': n, 'O(log n)': np.log2(n) if n > 0 else 0, 'type': 'O(log n)'})
+        complexity_data.append({'n': n, 'O(n)': n, 'type': 'O(n)'})
+        complexity_data.append({'n': n, 'O(n log n)': n * np.log2(n) if n > 0 else 0, 'type': 'O(n log n)'})
+        complexity_data.append({'n': n, 'O(n²)': n**2, 'type': 'O(n²)'})
+    
+    df_complexity = pd.DataFrame(complexity_data)
+    df_complexity['value'] = df_complexity.apply(lambda row: row[row['type']], axis=1)
+    
+    complexity_chart = alt.Chart(df_complexity).mark_line(strokeWidth=2).encode(
+        x=alt.X('n:Q', title='Input Size (n)'),
+        y=alt.Y('value:Q', title='Operations', scale=alt.Scale(type='log')),
+        color=alt.Color('type:N', title='Complexity'),
+        tooltip=['n', 'type', 'value']
+    ).properties(
+        width=700,
+        height=400,
+        title="Time Complexity Growth (Log Scale)"
+    ).interactive()
+    
+    st.altair_chart(complexity_chart, use_container_width=True)
+    
+    st.markdown("---")
+    st.markdown("### 2️⃣ Analyzing Code Complexity")
+    
+    st.code("""
+# O(1) - Constant
+def get_first_element(arr):
+    return arr[0]  # Always one operation
+
+# O(n) - Linear
+def find_max(arr):
+    max_val = arr[0]
+    for num in arr:  # n iterations
+        if num > max_val:
+            max_val = num
+    return max_val
+
+# O(n²) - Quadratic
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):           # n iterations
+        for j in range(n - i - 1):  # n iterations
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+# O(log n) - Logarithmic
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:  # log n iterations
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+# O(n log n) - Linearithmic
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])    # log n levels
+    right = merge_sort(arr[mid:])
+    return merge(left, right)        # n operations per level
+    """, language="python")
+    
+    st.markdown("---")
+    st.markdown("### 3️⃣ Space Complexity")
+    
+    st.markdown("""
+    <div class="example-box">
+        <strong>Space Complexity Examples:</strong>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.code("""
+# O(1) Space - Constant
+def sum_array(arr):
+    total = 0  # Only one variable
+    for num in arr:
+        total += num
+    return total
+
+# O(n) Space - Linear
+def create_copy(arr):
+    return arr.copy()  # New array of size n
+
+# O(n) Space - Recursive call stack
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)  # n recursive calls on stack
+
+# O(n²) Space - 2D array
+def create_matrix(n):
+    return [[0] * n for _ in range(n)]  # n x n matrix
+    """, language="python")
 
 # Footer
 st.markdown("---")
