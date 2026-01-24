@@ -425,7 +425,7 @@ with tabs[3]:
     with col2:
         st.markdown("**Right-hand side b:**")
         b1 = st.number_input("b₁", -10.0, 10.0, 5.0, 0.5)
-        b2 = st.number_input("b₂", -10.0, 10.0, 11.0, 0.5)
+        b2 = st.number_input("b₂", -10.0, 10.0, 7.0, 0.5)
     
     b_vec = np.array([b1, b2])
     
