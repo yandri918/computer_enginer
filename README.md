@@ -2,216 +2,151 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://computer-engineering-utel.streamlit.app)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > **Interactive Curriculum Visualization System**  
-> Explore the Bachelor in Computer Engineering program with advanced Altair visualizations
+> A comprehensive, interactive platform to explore the Bachelor in Computer Engineering program at UTel University. Built with Streamlit, Altair, and Plotly.
 
 ---
 
 ## 📋 Overview
 
-Interactive web application built with Streamlit and Altair to visualize and explore the Computer Engineering curriculum at UTel University. Features include course catalog, curriculum roadmap, prerequisite graphs, concentration comparison, and personalized learning path planning.
+This application provides a deep dive into the 8-semester Computer Engineering curriculum, offering interactive course modules, visualizations, and curated learning resources. It serves as both a roadmap for students and a demonstration of the technologies taught within the program.
 
-## ✨ Features
+## ✨ Key Features
 
-### 🏠 Home Dashboard
-- Program overview with key statistics
-- Course distribution by category (Altair pie chart)
-- Credit distribution by semester (Altair bar chart)
-- Concentration highlights
+### 🗺️ Comprehensive Roadmap
+- **8 Semesters**: From foundational sciences to advanced specializations.
+- **36+ Deep Dive Courses**: Detailed modules for every major subject.
+- **Interactive Visualizations**: Dynamic charts for grades, progress, and physics simulations.
 
-### 📚 Course Catalog
-- Browse all 24+ courses
-- Advanced filtering (category, semester, difficulty, credits, type)
-- Search functionality
-- Detailed course information with prerequisites
-- Interactive Altair visualizations
+### 📚 Deep Dive Modules
+Each course includes:
+- **Theory & Concepts**: Comprehensive explanations of core topics.
+- **Interactive Labs**: Python-based simulations (e.g., Physics, Calculus, Logic Gates).
+- **Code Examples**: Practical implementations in Python, C++, Java, and Assembly.
+- **📺 YouTube Resources**: Curated playlists for Beginner, Intermediate, and Advanced learners.
 
-### 🗺️ Curriculum Roadmap
-- Semester-by-semester Gantt chart
-- Cumulative credits progress (Altair area chart)
-- Recommended course sequence
-- Category breakdown per semester
+### 🎯 Specializations
+Compare and explore tracks:
+- **💰 Finance (FinTech)**
+- **💻 Information Technology (IT)**
+- **📊 Management**
+- **☁️ Cloud Computing**
+- **🤖 Artificial Intelligence**
 
-### 🎯 Concentrations
-- Compare 3 specializations:
-  - **Finance** - Financial Technology & Computing
-  - **IT** - Information Technology & Systems
-  - **Management** - IT Project Management & Leadership
-- Skills comparison (Altair grouped bar chart)
-- Career paths and salary information
-- Course requirements
+---
 
-### 📊 Analytics *(Coming Soon)*
-- Credit distribution heatmaps
-- Difficulty analysis
-- Course load optimization
+## 📚 Curriculum Structure
 
-### 🛤️ Learning Path *(Coming Soon)*
-- Personalized course planner
-- Prerequisite validation
-- Export to PDF/Excel
+### **Year 1: Foundations**
+| Semester 1 | Semester 2 |
+| :--- | :--- |
+| 📐 **MA101** Calculus | 🖥️ **CE103** Comp. Architecture |
+| 💻 **CE101** Programming | ⚡ **EE101** Electronics |
+| ⚛️ **PH101** Physics | 🔢 **MA102** Linear Algebra |
+
+### **Year 2: Core Engineering**
+| Semester 3 | Semester 4 |
+| :--- | :--- |
+| 💻 **CE201** OOP | 🏭 **BU201** Processing Industry |
+| ⚙️ **CE202** Assembly | 💻 **CE203** Operating Systems |
+| 📊 **MA201** Statistics | 🔍 **CE204** Algorithms |
+| | ⚡ **CE302** Digital Systems |
+
+### **Year 3: Advanced Systems**
+| Semester 5 | Semester 6 |
+| :--- | :--- |
+| 🌐 **CE205** Networks | 🗄️ **CE304** Databases |
+| 📐 **CE303** Systems Analysis | 🖥️ **CE305** Distributed Systems |
+| | 🌐 **CE306** Web Development |
+| | 🔢 **MA301** Higher Algebra |
+
+### **Year 4: Specializations & Capstone**
+| Semester 7 | Semester 8 (Advanced) |
+| :--- | :--- |
+| 💼 **BU101** Business | 🔐 **CE405** Cybersecurity |
+| 💰 **BU301** Entrepreneurship | 📱 **CE403** Mobile Dev |
+| 🌱 **SD101** Sustainability | ☁️ **CE404** Cloud Computing |
+| 🌐 **CE401** Web Dev II | 📊 **CE406** Big Data |
+| 🤖 **CE402** AI & ML | ⛓️ **CE407** Blockchain |
+| | 🌐 **CE408** IoT |
 
 ---
 
 ## 🚀 Quick Start
 
+### Prerequisites
+- Python 3.9 or higher
+- Git
+
 ### Installation
 
-```bash
-# Clone repository
-git clone https://github.com/yandri918/computer_enginer.git
-cd computer_enginer
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yandri918/computer_enginer.git
+    cd computer_enginer
+    ```
 
-# Install dependencies
-pip install -r requirements.txt
+2.  **Create a virtual environment (Optional but recommended)**
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
 
-# Run application
-streamlit run Home.py
-```
+3.  **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Application will open at `http://localhost:8501`
+4.  **Run the application**
+    ```bash
+    streamlit run Home.py
+    ```
 
----
-
-## 📚 Curriculum Highlights
-
-### Total Program
-- **24+ Courses**
-- **90+ Credits**
-- **12 Categories**
-- **3 Concentrations**
-- **8 Semesters**
-
-### Course Categories
-- 💻 Programming (4 courses)
-- 📐 Mathematics (4 courses)
-- 🖥️ Systems (4 courses)
-- 🧮 Algorithms & Data (2 courses)
-- 🤖 AI/ML (1 course)
-- 🔧 Software Engineering (1 course)
-- ⚡ Electronics (1 course)
-- 🔬 Science (1 course)
-- 💼 Business (1 course)
-- 🌍 General Education (1 course)
-- 🎯 Concentrations (3 courses)
+5.  Open your browser at `http://localhost:8501`.
 
 ---
 
 ## 🛠 Technology Stack
 
-- **Frontend**: Streamlit
-- **Visualizations**: Altair
-- **Data Processing**: Pandas
-- **Python**: 3.9+
-
----
-
-## 📊 Sample Visualizations
-
-### Course Distribution
-![Course Distribution](https://via.placeholder.com/800x400/3b82f6/ffffff?text=Course+Distribution+Pie+Chart)
-
-### Curriculum Roadmap
-![Roadmap](https://via.placeholder.com/800x400/7c3aed/ffffff?text=Semester+Gantt+Chart)
-
-### Skills Comparison
-![Skills](https://via.placeholder.com/800x400/10b981/ffffff?text=Concentration+Skills+Radar)
-
----
-
-## 📁 Project Structure
-
-```
-computer_enginer/
-├── Home.py                          # Main dashboard
-├── pages/
-│   ├── 1_📚_Course_Catalog.py      # Browse courses
-│   ├── 2_🗺️_Curriculum_Roadmap.py  # Semester view
-│   └── 4_🎯_Concentrations.py      # Compare tracks
-├── data/
-│   ├── courses.py                   # Course database
-│   └── concentrations.py            # Concentration data
-├── requirements.txt
-└── README.md
-```
-
----
-
-## 🎓 Concentrations
-
-### 💰 Finance
-- **Focus**: Financial Technology & Computing
-- **Salary**: $85K - $150K
-- **Growth**: 15% (2024-2034)
-- **Top Skills**: Mathematics (90%), Data Analysis (95%), Business (85%)
-
-### 💻 IT
-- **Focus**: Information Technology & Systems
-- **Salary**: $90K - $160K
-- **Growth**: 22% (2024-2034)
-- **Top Skills**: Systems (95%), Programming (85%), AI/ML (75%)
-
-### 📊 Management
-- **Focus**: IT Project Management & Leadership
-- **Salary**: $80K - $180K
-- **Growth**: 18% (2024-2034)
-- **Top Skills**: Business (90%), Leadership, Project Management
-
----
-
-## 🌐 Deployment
-
-### Streamlit Cloud
-
-1. Fork this repository
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Deploy with:
-   - Repository: `computer_enginer`
-   - Main file: `Home.py`
-   - Python version: 3.9+
+-   **Frontend Framework**: [Streamlit](https://streamlit.io/)
+-   **Data Visualization**: [Altair](https://altair-viz.github.io/), [Plotly](https://plotly.com/python/)
+-   **Data Processing**: [Pandas](https://pandas.pydata.org/), [NumPy](https://numpy.org/)
+-   **Language**: Python 3.9+
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! Please:
+Contributions are welcome! If you have suggestions for new course modules or improvements:
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
 ---
 
 ## 📄 License
 
-MIT License - feel free to use for educational purposes
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
 ## 👨‍💻 Author
 
 **Yandri Andriyanto**
-- GitHub: [@yandri918](https://github.com/yandri918)
-- Repository: [computer_enginer](https://github.com/yandri918/computer_enginer)
-
----
-
-## 📞 Support
-
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yandri918/computer_enginer/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yandri918/computer_enginer/discussions)
+-   GitHub: [@yandri918](https://github.com/yandri918)
+-   Project: [Computer Engineering Curriculum](https://github.com/yandri918/computer_enginer)
 
 ---
 
 <div align="center">
-
-**🎓 UTel University - Empowering Future Tech Leaders**
-
-Made with ❤️ using Streamlit & Altair
-
-[⬆ Back to Top](#-utel-university---computer-engineering-curriculum)
-
+    <strong>🎓 UTel University - Empowering Future Tech Leaders</strong><br>
+    Made with ❤️ using Streamlit
 </div>
