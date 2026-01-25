@@ -189,8 +189,12 @@ with tabs[0]:
     ]
     
     
+    
     for resource in resources:
-        st.markdown(f"📖 **{resource[\"title\"]}** by {resource[\"author\"]} ({resource[\"type\"]})")
+        title = resource['title']
+        author = resource['author']
+        rtype = resource['type']
+        st.markdown(f"📖 **{title}** by {author} ({rtype})")
 
 # ==================== TAB 2: SDLC ====================
 with tabs[1]:
