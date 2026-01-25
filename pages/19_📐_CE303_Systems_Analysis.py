@@ -413,7 +413,7 @@ with tabs[3]:
         <strong>Purpose:</strong> Show static structure of system (classes and relationships)<br><br>
         
         <strong>Class Notation:</strong><br>
-        ```
+        <pre>
         ┌─────────────────┐
         │   ClassName     │
         ├─────────────────┤
@@ -423,7 +423,7 @@ with tabs[3]:
         │ + method1()     │
         │ - method2()     │
         └─────────────────┘
-        ```
+        </pre>
         
         <strong>Visibility:</strong><br>
         • + Public<br>
