@@ -450,7 +450,7 @@ with tabs[3]:
     """, unsafe_allow_html=True)
     
     st.markdown("---")
-    st.markdown("### 3️⃣ Carbon Footprint</strong>
+    st.markdown("### 3️⃣ Carbon Footprint")
     
     st.markdown("""
     <div class="environment-box">
@@ -515,7 +515,7 @@ with tabs[4]:
     """, unsafe_allow_html=True)
     
     st.markdown("---")
-    st.markdown("### 2️⃣ Green AI</strong>
+    st.markdown("### 2️⃣ Green AI")
     
     st.markdown("""
     <div class="theory-box">
@@ -541,7 +541,7 @@ with tabs[4]:
     """, unsafe_allow_html=True)
     
     st.markdown("---")
-    st.markdown("### 3️⃣ IoT for Sustainability</strong>
+    st.markdown("### 3️⃣ IoT for Sustainability")
     
     st.markdown("""
     <div class="environment-box">
