@@ -128,7 +128,8 @@ tabs = st.tabs([
     "🚀 Advanced Topics",
     "💡 Best Practices",
     "🧮 Practice Problems",
-    "📊 Complexity Analysis"
+    "📊 Complexity Analysis",
+    "📺 YouTube Resources"
 ])
 
 # ==================== TAB 1: OVERVIEW ====================
@@ -1643,6 +1644,99 @@ def factorial(n):
 def create_matrix(n):
     return [[0] * n for _ in range(n)]  # n x n matrix
     """, language="python")
+
+# ==================== TAB 11: YOUTUBE RESOURCES ====================
+with tabs[10]:
+    st.markdown("## 📺 YouTube Learning Resources")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <h3>🎓 Curated YouTube Channels & Playlists</h3>
+        <p>High-quality video tutorials for learning Programming</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Beginner Level
+    st.markdown("### 🟢 Beginner Level")
+    
+    beginner_resources = [
+        {"title": "Python for Beginners", "channel": "Programming with Mosh", "url": "https://www.youtube.com/watch?v=_uQrJ0TkZlc", "description": "Complete Python course", "duration": "~6 hours"},
+        {"title": "CS50 Introduction to Programming", "channel": "Harvard CS50", "url": "https://www.youtube.com/c/cs50", "description": "Harvard's intro course", "duration": "Channel"},
+        {"title": "C Programming", "channel": "freeCodeCamp.org", "url": "https://www.youtube.com/watch?v=KJgsSFOSQv0", "description": "C programming tutorial", "duration": "~4 hours"}
+    ]
+    
+    for resource in beginner_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Intermediate Level
+    st.markdown("### 🟡 Intermediate Level")
+    
+    intermediate_resources = [
+        {"title": "Data Structures & Algorithms", "channel": "freeCodeCamp.org", "url": "https://www.youtube.com/watch?v=8hly31xKli0", "description": "Complete DSA course", "duration": "~5 hours"},
+        {"title": "Object Oriented Programming", "channel": "Programming with Mosh", "url": "https://www.youtube.com/watch?v=pTB0EiLXUC8", "description": "OOP principles", "duration": "~1 hour"},
+        {"title": "Design Patterns", "channel": "Christopher Okhravi", "url": "https://www.youtube.com/c/ChristopherOkhravi", "description": "Gang of Four patterns", "duration": "Channel"}
+    ]
+    
+    for resource in intermediate_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Advanced Level
+    st.markdown("### 🔴 Advanced Level")
+    
+    advanced_resources = [
+        {"title": "Advanced Algorithms", "channel": "MIT OpenCourseWare", "url": "https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c", "description": "MIT 6.046J", "duration": "~24 hours"},
+        {"title": "Competitive Programming", "channel": "Errichto", "url": "https://www.youtube.com/c/Errichto", "description": "Advanced algorithms", "duration": "Channel"},
+        {"title": "System Design", "channel": "Gaurav Sen", "url": "https://www.youtube.com/c/GauravSensei", "description": "System design interviews", "duration": "Channel"}
+    ]
+    
+    for resource in advanced_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Study Tips
+    st.markdown("### 💡 Study Tips")
+    
+    st.markdown("""
+    <div class="practice-box">
+        <strong>Recommended Learning Path:</strong><br>
+        1. Start with Python or C basics<br>
+        2. Practice coding daily (LeetCode, HackerRank)<br>
+        3. Learn data structures thoroughly<br>
+        4. Master algorithms and complexity analysis<br>
+        5. Study design patterns<br>
+        6. Build real projects<br>
+        7. Contribute to open source<br>
+        8. Prepare for coding interviews<br><br>
+        
+        <strong>Practice Platforms:</strong><br>
+        • <strong>LeetCode:</strong> Interview preparation<br>
+        • <strong>HackerRank:</strong> Skill certification<br>
+        • <strong>Codeforces:</strong> Competitive programming<br>
+        • <strong>Project Euler:</strong> Mathematical problems<br><br>
+        
+        <strong>Key Resources:</strong><br>
+        • <strong>Books:</strong> CLRS, Clean Code, Design Patterns<br>
+        • <strong>Tools:</strong> VS Code, Git, debuggers<br>
+        • <strong>Community:</strong> Stack Overflow, GitHub, Reddit r/programming
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")

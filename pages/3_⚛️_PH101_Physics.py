@@ -110,7 +110,8 @@ tabs = st.tabs([
     "🔬 Experiments",
     "🧮 Problem Solving",
     "📊 Simulations",
-    "🎓 Applications"
+    "🎓 Applications",
+    "📺 YouTube Resources"
 ])
 
 # ==================== TAB 1: OVERVIEW ====================
@@ -919,6 +920,100 @@ with tabs[9]:
         <strong>3. Touchscreen Technology:</strong><br>
         Capacitive sensing uses electric fields.<br>
         C = εA/d (capacitance)
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==================== TAB 11: YOUTUBE RESOURCES ====================
+with tabs[10]:
+    st.markdown("## 📺 YouTube Learning Resources")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <h3>🎓 Curated YouTube Channels & Playlists</h3>
+        <p>High-quality video tutorials for learning Physics</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Beginner Level
+    st.markdown("### 🟢 Beginner Level")
+    
+    beginner_resources = [
+        {"title": "Physics Explained", "channel": "Khan Academy", "url": "https://www.youtube.com/c/khanacademy", "description": "Comprehensive physics series", "duration": "Channel"},
+        {"title": "Physics Fundamentals", "channel": "The Organic Chemistry Tutor", "url": "https://www.youtube.com/c/TheOrganicChemistryTutor", "description": "Clear physics explanations", "duration": "Channel"},
+        {"title": "Crash Course Physics", "channel": "CrashCourse", "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV", "description": "Engaging physics intro", "duration": "~10 hours"}
+    ]
+    
+    for resource in beginner_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Intermediate Level
+    st.markdown("### 🟡 Intermediate Level")
+    
+    intermediate_resources = [
+        {"title": "MIT 8.01 Classical Mechanics", "channel": "MIT OpenCourseWare", "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP61qDex7XslwNJ-xxxEFzMNV", "description": "MIT physics course", "duration": "~40 hours"},
+        {"title": "Physics Lectures", "channel": "Michel van Biezen", "url": "https://www.youtube.com/c/MichelvanBiezen", "description": "Detailed problem solving", "duration": "Channel"},
+        {"title": "Electromagnetism", "channel": "Professor Dave Explains", "url": "https://www.youtube.com/c/ProfessorDaveExplains", "description": "E&M fundamentals", "duration": "Channel"}
+    ]
+    
+    for resource in intermediate_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Advanced Level
+    st.markdown("### 🔴 Advanced Level")
+    
+    advanced_resources = [
+        {"title": "Quantum Mechanics", "channel": "MIT OpenCourseWare", "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP60cspQn3N9dYRPiyVWDd80G", "description": "MIT 8.04 QM", "duration": "~40 hours"},
+        {"title": "Theoretical Physics", "channel": "Physics Explained", "url": "https://www.youtube.com/c/PhysicsExplainedVideos", "description": "Advanced topics", "duration": "Channel"},
+        {"title": "Feynman Lectures", "channel": "The Feynman Lectures", "url": "https://www.youtube.com/c/TheFeynmanLectures", "description": "Classic Feynman lectures", "duration": "Channel"}
+    ]
+    
+    for resource in advanced_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Study Tips
+    st.markdown("### 💡 Study Tips")
+    
+    st.markdown("""
+    <div class="example-box">
+        <strong>Recommended Learning Path:</strong><br>
+        1. Start with Khan Academy for fundamentals<br>
+        2. Watch Crash Course for engaging overviews<br>
+        3. Follow MIT OCW for rigorous treatment<br>
+        4. Practice problems with Michel van Biezen<br>
+        5. Use visualizations (PhET simulations)<br>
+        6. Solve textbook problems daily<br>
+        7. Connect concepts to real-world applications<br>
+        8. Review Feynman Lectures for deep insights<br><br>
+        
+        <strong>Study Resources:</strong><br>
+        • <strong>Simulations:</strong> PhET Interactive Simulations<br>
+        • <strong>Practice:</strong> HyperPhysics, Physics Classroom<br>
+        • <strong>Books:</strong> Halliday & Resnick, Feynman Lectures<br>
+        • <strong>Community:</strong> Physics Stack Exchange, r/AskPhysics<br><br>
+        
+        <strong>Problem Solving Tips:</strong><br>
+        • Draw diagrams and free-body diagrams<br>
+        • Identify known and unknown variables<br>
+        • Check units and dimensional analysis<br>
+        • Verify answers with limiting cases
     </div>
     """, unsafe_allow_html=True)
 

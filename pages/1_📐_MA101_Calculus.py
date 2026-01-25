@@ -124,7 +124,8 @@ tabs = st.tabs([
     "📊 Applications",
     "🎓 Graduate Topics",
     "🧮 Practice Problems",
-    "📈 Visualizations"
+    "📈 Visualizations",
+    "📺 YouTube Resources"
 ])
 
 # ==================== TAB 1: OVERVIEW ====================
@@ -1174,6 +1175,100 @@ with tabs[10]:
             point_type = "Maximum"
         
         st.info(f"📍 Critical Point ({point_type}): ({critical_x:.2f}, {critical_y:.2f})")
+
+# ==================== TAB 12: YOUTUBE RESOURCES ====================
+with tabs[11]:
+    st.markdown("## 📺 YouTube Learning Resources")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <h3>🎓 Curated YouTube Channels & Playlists</h3>
+        <p>High-quality video tutorials for learning Calculus</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Beginner Level
+    st.markdown("### 🟢 Beginner Level")
+    
+    beginner_resources = [
+        {"title": "Essence of Calculus", "channel": "3Blue1Brown", "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr", "description": "Visual calculus fundamentals", "duration": "~3 hours"},
+        {"title": "Calculus 1", "channel": "Professor Leonard", "url": "https://www.youtube.com/playlist?list=PLF797E961509B4EB5", "description": "Complete Calculus 1 course", "duration": "~40 hours"},
+        {"title": "Khan Academy Calculus", "channel": "Khan Academy", "url": "https://www.youtube.com/c/khanacademy", "description": "Comprehensive calculus series", "duration": "Channel"}
+    ]
+    
+    for resource in beginner_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Intermediate Level
+    st.markdown("### 🟡 Intermediate Level")
+    
+    intermediate_resources = [
+        {"title": "Calculus 2", "channel": "Professor Leonard", "url": "https://www.youtube.com/playlist?list=PLDesaqWTN6EQ2J4vgsN1HyBeRADEh4Cw-", "description": "Integration techniques", "duration": "~35 hours"},
+        {"title": "Multivariable Calculus", "channel": "MIT OpenCourseWare", "url": "https://www.youtube.com/playlist?list=PL4C4C8A7D06566F38", "description": "MIT 18.02 course", "duration": "~35 hours"},
+        {"title": "Calculus Blue", "channel": "Robert Ghrist", "url": "https://www.youtube.com/c/Prof essorGhrist", "description": "Advanced calculus topics", "duration": "Channel"}
+    ]
+    
+    for resource in intermediate_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Advanced Level
+    st.markdown("### 🔴 Advanced Level")
+    
+    advanced_resources = [
+        {"title": "Real Analysis", "channel": "The Bright Side of Mathematics", "url": "https://www.youtube.com/c/brightsideofmaths", "description": "Rigorous calculus", "duration": "Channel"},
+        {"title": "Differential Equations", "channel": "MIT OpenCourseWare", "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP63oTpyxCMLKt_JmB0WtSZfG", "description": "MIT 18.03 course", "duration": "~40 hours"},
+        {"title": "Vector Calculus", "channel": "Dr. Trefor Bazett", "url": "https://www.youtube.com/c/DrTreforBazett", "description": "Advanced vector calculus", "duration": "Channel"}
+    ]
+    
+    for resource in advanced_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Study Tips
+    st.markdown("### 💡 Study Tips")
+    
+    st.markdown("""
+    <div class="practice-box">
+        <strong>Recommended Learning Path:</strong><br>
+        1. Start with 3Blue1Brown for visual intuition<br>
+        2. Follow Professor Leonard for detailed lectures<br>
+        3. Practice problems from Khan Academy<br>
+        4. Move to MIT OCW for rigorous treatment<br>
+        5. Supplement with Dr. Trefor Bazett for clarity<br>
+        6. Use visualization tools (Desmos, GeoGebra)<br>
+        7. Solve problems daily for mastery<br>
+        8. Connect concepts to applications<br><br>
+        
+        <strong>Study Schedule:</strong><br>
+        • Watch 1-2 lectures per day<br>
+        • Solve 10-15 practice problems<br>
+        • Review previous concepts weekly<br>
+        • Work on applications and projects<br><br>
+        
+        <strong>Key Resources:</strong><br>
+        • <strong>Visualization:</strong> Desmos, GeoGebra, Wolfram Alpha<br>
+        • <strong>Practice:</strong> Paul's Online Math Notes, PatrickJMT<br>
+        • <strong>Books:</strong> Stewart Calculus, Spivak Calculus<br>
+        • <strong>Community:</strong> r/calculus, Math Stack Exchange
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")
