@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-from scipy import stats
 
 st.set_page_config(page_title="MA201 - Statistics and Probability", page_icon="📊", layout="wide")
 
@@ -387,7 +386,9 @@ with tabs[3]:
         p = st.slider("Probability of success (p)", 0.0, 1.0, 0.5, 0.05)
     
     x = np.arange(0, n+1)
-    pmf = stats.binom.pmf(x, n, p)
+    # Binomial PMF: C(n,k) * p^k * (1-p)^(n-k)
+    from math import comb
+    pmf = np.array([comb(n, k) * (p**k) * ((1-p)**(n-k)) for k in x])
     
     df_binom = pd.DataFrame({'k': x, 'P(X=k)': pmf})
     
@@ -437,7 +438,8 @@ with tabs[3]:
         sigma = st.slider("Std Dev (σ)", 0.1, 5.0, 1.0, 0.1)
     
     x_norm = np.linspace(mu - 4*sigma, mu + 4*sigma, 200)
-    pdf = stats.norm.pdf(x_norm, mu, sigma)
+    # Normal PDF: (1/(σ√(2π))) * e^(-(x-μ)²/(2σ²))
+    pdf = (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x_norm - mu) / sigma) ** 2)
     
     df_norm = pd.DataFrame({'x': x_norm, 'f(x)': pdf})
     
@@ -513,15 +515,37 @@ with tabs[4]:
     t_stat = (sample_mean - null_mean) / (sample_std / np.sqrt(sample_size))
     df = sample_size - 1
     
-    if tail_type == "Two-tailed":
-        p_value = 2 * (1 - stats.t.cdf(abs(t_stat), df))
-        critical_value = stats.t.ppf(1 - alpha/2, df)
-    elif tail_type == "Right-tailed":
-        p_value = 1 - stats.t.cdf(t_stat, df)
-        critical_value = stats.t.ppf(1 - alpha, df)
-    else:  # Left-tailed
-        p_value = stats.t.cdf(t_stat, df)
-        critical_value = -stats.t.ppf(1 - alpha, df)
+    # For large samples (n > 30), use normal approximation
+    # For exact t-distribution, would need scipy
+    if sample_size > 30:
+        # Normal approximation
+        if tail_type == "Two-tailed":
+            from math import erf
+            p_value = 2 * (1 - 0.5 * (1 + erf(abs(t_stat) / np.sqrt(2))))
+            critical_value = 1.96 if alpha == 0.05 else (2.576 if alpha == 0.01 else 1.645)
+        elif tail_type == "Right-tailed":
+            from math import erf
+            p_value = 1 - 0.5 * (1 + erf(t_stat / np.sqrt(2)))
+            critical_value = 1.645 if alpha == 0.05 else (2.326 if alpha == 0.01 else 1.282)
+        else:  # Left-tailed
+            from math import erf
+            p_value = 0.5 * (1 + erf(t_stat / np.sqrt(2)))
+            critical_value = -1.645 if alpha == 0.05 else (-2.326 if alpha == 0.01 else -1.282)
+    else:
+        # Simplified approximation for small samples
+        st.warning("⚠️ For n ≤ 30, using normal approximation. Results may be less accurate.")
+        if tail_type == "Two-tailed":
+            from math import erf
+            p_value = 2 * (1 - 0.5 * (1 + erf(abs(t_stat) / np.sqrt(2))))
+            critical_value = 2.0 if alpha == 0.05 else (2.6 if alpha == 0.01 else 1.7)
+        elif tail_type == "Right-tailed":
+            from math import erf
+            p_value = 1 - 0.5 * (1 + erf(t_stat / np.sqrt(2)))
+            critical_value = 1.7 if alpha == 0.05 else (2.4 if alpha == 0.01 else 1.3)
+        else:
+            from math import erf
+            p_value = 0.5 * (1 + erf(t_stat / np.sqrt(2)))
+            critical_value = -1.7 if alpha == 0.05 else (-2.4 if alpha == 0.01 else -1.3)
     
     st.markdown(f"""
     **Results:**
