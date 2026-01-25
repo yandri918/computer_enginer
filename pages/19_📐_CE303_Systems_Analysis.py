@@ -188,8 +188,9 @@ with tabs[0]:
         {"title": "Domain-Driven Design", "author": "Eric Evans", "type": "Advanced"}
     ]
     
+    
     for resource in resources:
-        st.markdown(f"📖 **{resource['title']}** by {resource['author']} ({resource['type']})")
+        st.markdown(f"📖 **{resource[\"title\"]}** by {resource[\"author\"]} ({resource[\"type\"]})")
 
 # ==================== TAB 2: SDLC ====================
 with tabs[1]:
@@ -1031,9 +1032,9 @@ with tabs[9]:
     
     for resource in beginner_resources:
         st.markdown(f"""
-        **[{resource['title']}]({resource['url']})**  
-        📺 Channel: {resource['channel']} | ⏱️ {resource['duration']}  
-        {resource['description']}
+        **[{resource["title"]}]({resource["url"]})**  
+        📺 Channel: {resource["channel"]} | ⏱️ {resource["duration"]}  
+        {resource["description"]}
         """)
         st.markdown("---")
     
@@ -1101,9 +1102,9 @@ with tabs[9]:
     
     for resource in advanced_resources:
         st.markdown(f"""
-        **[{resource['title']}]({resource['url']})**  
-        📺 Channel: {resource['channel']} | ⏱️ {resource['duration']}  
-        {resource['description']}
+        **[{resource["title"]}]({resource["url"]})**  
+        📺 Channel: {resource["channel"]} | ⏱️ {resource["duration"]}  
+        {resource["description"]}
         """)
         st.markdown("---")
     
