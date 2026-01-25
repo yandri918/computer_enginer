@@ -1069,12 +1069,14 @@ with tabs[9]:
         }
     ]
     
+    
     for resource in intermediate_resources:
-        st.markdown(f"""
-        **[{resource['title']}]({resource['url']})**  
-        📺 Channel: {resource['channel']} | ⏱️ {resource['duration']}  
-        {resource['description'}}
-        """)
+        title = resource['title']
+        url = resource['url']
+        channel = resource['channel']
+        duration = resource['duration']
+        description = resource['description']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
         st.markdown("---")
     
     # Advanced Level
