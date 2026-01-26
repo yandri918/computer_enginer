@@ -100,7 +100,8 @@ tabs = st.tabs([
     "📊 Orthogonality",
     "🎨 SVD & Decompositions",
     "🧮 Applications",
-    "🎯 Practice Problems"
+    "🎯 Practice Problems",
+    "📺 YouTube Resources"
 ])
 
 # ==================== TAB 1: OVERVIEW ====================
@@ -872,6 +873,93 @@ Eigenvalues: λ₁ = 5, λ₂ = 2
             
             if st.button(f"Show Solution", key=f"sol_{idx}"):
                 st.code(problem['solution'])
+
+# ==================== TAB 11: YOUTUBE RESOURCES ====================
+with tabs[10]:
+    st.markdown("## 📺 YouTube Learning Resources")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <h3>🎓 Curated YouTube Channels & Playlists</h3>
+        <p>High-quality video tutorials for learning Linear Algebra</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Beginner Level
+    st.markdown("### 🟢 Beginner Level")
+    
+    beginner_resources = [
+        {"title": "Essence of Linear Algebra", "channel": "3Blue1Brown", "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab", "description": "Visual intuition of vectors & matrices", "duration": "~3 hours"},
+        {"title": "Linear Algebra (Full Course)", "channel": "The Organic Chemistry Tutor", "url": "https://www.youtube.com/playlist?list=PL0o_zxa4K1BVoTPTCVFneWZSR82NDIY6M", "description": "Step-by-step calculations", "duration": "~10 hours"},
+        {"title": "Intro to Linear Algebra", "channel": "Khan Academy", "url": "https://www.youtube.com/playlist?list=PLFD0EB975BA0CC1E0", "description": "Fundamentals & examples", "duration": "Channel"}
+    ]
+    
+    for resource in beginner_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Intermediate Level
+    st.markdown("### 🟡 Intermediate Level")
+    
+    intermediate_resources = [
+        {"title": "MIT 18.06 Linear Algebra", "channel": "Gilbert Strang", "url": "https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D", "description": "Legendary MIT course", "duration": "~35 hours"},
+        {"title": "Linear Algebra Done Right", "channel": "Sheldon Axler", "url": "https://www.youtube.com/playlist?list=PLGAnmvB9m7zOBVCZBUUmSinFV0wEir2Vw", "description": "Theoretical approach (no determinants)", "duration": "~20 hours"},
+        {"title": "Applications of LA", "channel": "Steve Brunton", "url": "https://www.youtube.com/playlist?list=PLMrJAW86WRDNuzSjE13jq36qC6uUkSEeT", "description": "SVD, PCA, Data Science", "duration": "~10 hours"}
+    ]
+    
+    for resource in intermediate_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Advanced Level
+    st.markdown("### 🔴 Advanced Level")
+    
+    advanced_resources = [
+        {"title": "Advanced Linear Algebra", "channel": "Bright Side of Math", "url": "https://www.youtube.com/playlist?list=PLBh2i93oe2qvGz7qQe9y6F_rR4x3g_a1h", "description": "Rigorous proofs & theory", "duration": "Channel"},
+        {"title": "Numerical Linear Algebra", "channel": "NPTEL", "url": "https://www.youtube.com/playlist?list=PLyqSpQzTE6M_Jd07tK4v9Yy3d6e5vX9f", "description": "Computational methods", "duration": "~40 hours"},
+        {"title": "Tensor Algebra", "channel": "XylyXylyX", "url": "https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw7Rd81C_Xh4V4fW7g6s", "description": "Tensors for physics/ML", "duration": "~15 hours"}
+    ]
+    
+    for resource in advanced_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Study Tips
+    st.markdown("### 💡 Study Tips")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <strong>Recommended Learning Path:</strong><br>
+        1. Start with 3Blue1Brown for geometric intuition (Crucial!)<br>
+        2. Follow Gilbert Strang's lectures for deep understanding<br>
+        3. Solve problems manually (Gaussian elimination, eigenvalues)<br>
+        4. Use Python (NumPy) to implement algorithms<br>
+        5. Visualise transformations where possible<br>
+        6. Connect SVD to data compression and PCA<br>
+        7. Study vector spaces and subspaces rigorously<br><br>
+        
+        <strong>Essential Tools:</strong><br>
+        • <strong>Computation:</strong> NumPy, MATLAB, Octave<br>
+        • <strong>Visualization:</strong> Geogebra, Manim<br>
+        • <strong>Books:</strong> Introduction to Linear Algebra (Strang)<br>
+        • <strong>Community:</strong> r/LinearAlgebra, Math StackExchange
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")

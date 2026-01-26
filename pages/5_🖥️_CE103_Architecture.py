@@ -100,7 +100,8 @@ tabs = st.tabs([
     "🔄 Parallel Processing",
     "🏗️ Modern Architectures",
     "🧮 Performance Analysis",
-    "🎯 Practice Problems"
+    "🎯 Practice Problems",
+    "📺 YouTube Resources"
 ])
 
 # ==================== TAB 1: OVERVIEW ====================
@@ -856,6 +857,94 @@ Maximum speedup is limited by serial portion (20%)
             
             if st.button(f"Show Solution", key=f"sol_{idx}"):
                 st.code(problem['solution'])
+
+# ==================== TAB 11: YOUTUBE RESOURCES ====================
+with tabs[10]:
+    st.markdown("## 📺 YouTube Learning Resources")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <h3>🎓 Curated YouTube Channels & Playlists</h3>
+        <p>High-quality video tutorials for learning Computer Architecture</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Beginner Level
+    st.markdown("### 🟢 Beginner Level")
+    
+    beginner_resources = [
+        {"title": "Computer Architecture", "channel": "CrashCourse Computer Science", "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrcyK6XZ-h8j3c5jC8Fp", "description": "Engaging intro to hardware", "duration": "~5 hours"},
+        {"title": "How Computers Work", "channel": "Code.org", "url": "https://www.youtube.com/playlist?list=PLzdnOPI1iJNcsRwJhvksGRngGk19q2r1W", "description": "Bill Gates & others explain", "duration": "~1 hour"},
+        {"title": "Digital logic & CPU", "channel": "Ben Eater", "url": "https://www.youtube.com/c/BenEater", "description": "Build a computer from scratch", "duration": "Channel"}
+    ]
+    
+    for resource in beginner_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Intermediate Level
+    st.markdown("### 🟡 Intermediate Level")
+    
+    intermediate_resources = [
+        {"title": "Computer Organization", "channel": "Neso Academy", "url": "https://www.youtube.com/playlist?list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q", "description": "Detailed academic lectures", "duration": "~20 hours"},
+        {"title": "Comp Arch & Org", "channel": "Gate Smashers", "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHMonh3G6QNKq53C6oNXGrX", "description": "Exam-focused tutorials", "duration": "~15 hours"},
+        {"title": "Computer Components", "channel": "TechQuickie", "url": "https://www.youtube.com/c/Techquickie", "description": "Hardware explanations", "duration": "Channel"}
+    ]
+    
+    for resource in intermediate_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Advanced Level
+    st.markdown("### 🔴 Advanced Level")
+    
+    advanced_resources = [
+        {"title": "Computer Architecture (CMU)", "channel": "Onur Mutlu", "url": "https://www.youtube.com/c/OnurMutluLectures", "description": "Carnegie Mellon University", "duration": "~40 hours"},
+        {"title": "Advanced Arch", "channel": "MIT OpenCourseWare", "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP62Wf4TKStR397q2AsuU8W86", "description": "MIT 6.004 Computation", "duration": "~30 hours"},
+        {"title": "High Perf Comp", "channel": "Georgia Tech", "url": "https://www.youtube.com/playlist?list=PLAwxTw4SYaPnzO7ItU63yq_SjE2Wv-Jb_", "description": "HPCA lectures", "duration": "~25 hours"}
+    ]
+    
+    for resource in advanced_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Study Tips
+    st.markdown("### 💡 Study Tips")
+    
+    st.markdown("""
+    <div class="architecture-box">
+        <strong>Recommended Learning Path:</strong><br>
+        1. Watch Crash Course for big picture<br>
+        2. Follow Neso Academy for core concepts<br>
+        3. Build an 8-bit computer with Ben Eater (Highly recommended!)<br>
+        4. Study Patterson & Hennessy textbook<br>
+        5. Dive into CMU lectures for advanced topics<br>
+        6. Practice assembly programming (MIPS/RISC-V)<br>
+        7. Analyze real processor datasheets<br>
+        8. Simulate circuits with Logisim<br><br>
+        
+        <strong>Essential Tools:</strong><br>
+        • <strong>Simulation:</strong> Logisim, Gem5, Sniper<br>
+        • <strong>Assembly:</strong> MARS (MIPS), Ripes (RISC-V)<br>
+        • <strong>Visualization:</strong> CPU visualizers<br>
+        • <strong>Books:</strong> Computer Organization and Design
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")

@@ -100,7 +100,8 @@ tabs = st.tabs([
     "🎚️ Amplifiers",
     "🔢 Digital Electronics",
     "🎛️ Operational Amplifiers",
-    "🧮 Practice Problems"
+    "🧮 Practice Problems",
+    "📺 YouTube Resources"
 ])
 
 # ==================== TAB 1: OVERVIEW ====================
@@ -856,6 +857,93 @@ The output is inverted (negative) and amplified 10×.
             
             if st.button(f"Show Solution", key=f"sol_{idx}"):
                 st.code(problem['solution'])
+
+# ==================== TAB 11: YOUTUBE RESOURCES ====================
+with tabs[10]:
+    st.markdown("## 📺 YouTube Learning Resources")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <h3>🎓 Curated YouTube Channels & Playlists</h3>
+        <p>High-quality video tutorials for learning Electronics</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Beginner Level
+    st.markdown("### 🟢 Beginner Level")
+    
+    beginner_resources = [
+        {"title": "Electronics Fundamentals", "channel": "The Engineering Mindset", "url": "https://www.youtube.com/c/TheEngineeringMindset", "description": "Visual explanations of components", "duration": "Channel"},
+        {"title": "Basic Electronics", "channel": "GreatScott!", "url": "https://www.youtube.com/c/greatscottlab", "description": "Practical projects & theory", "duration": "Channel"},
+        {"title": "Intro to Circuits", "channel": "Khan Academy", "url": "https://www.youtube.com/playlist?list=PLSQl0a2vh4HChWxUj6e8xH7WzCacI7Aks", "description": "Circuit analysis basics", "duration": "~5 hours"}
+    ]
+    
+    for resource in beginner_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Intermediate Level
+    st.markdown("### 🟡 Intermediate Level")
+    
+    intermediate_resources = [
+        {"title": "Analog Electronics", "channel": "Razavi Electronics", "url": "https://www.youtube.com/playlist?list=PLm21qU5Obd5gC5hFq_kQWbY75aD5v4E2_", "description": "B. Razavi lectures", "duration": "~45 hours"},
+        {"title": "Circuit Analysis", "channel": "Michel van Biezen", "url": "https://www.youtube.com/playlist?list=PLX2gX-ftPVXU5B0gB2n1S3YJ1K9y5Q5_", "description": "Detailed problem solving", "duration": "~10 hours"},
+        {"title": "EEVblog", "channel": "Dave Jones", "url": "https://www.youtube.com/c/EEVblog", "description": "Hardware teardowns & design", "duration": "Channel"}
+    ]
+    
+    for resource in intermediate_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Advanced Level
+    st.markdown("### 🔴 Advanced Level")
+    
+    advanced_resources = [
+        {"title": "Microelectronics", "channel": "Behzad Razavi", "url": "https://www.youtube.com/playlist?list=PLm21qU5Obd5gC5hFq_kQWbY75aD5v4E2_", "description": "Advanced circuit design", "duration": "~40 hours"},
+        {"title": "Power Electronics", "channel": "NPTEL", "url": "https://www.youtube.com/playlist?list=PLD4ED2F3C28A675B7", "description": "Power systems & converters", "duration": "~30 hours"},
+        {"title": "RF Electronics", "channel": "W2AEW", "url": "https://www.youtube.com/c/w2aew", "description": "RF design & testing", "duration": "Channel"}
+    ]
+    
+    for resource in advanced_resources:
+        title = resource['title']
+        channel = resource['channel']
+        url = resource['url']
+        description = resource['description']
+        duration = resource['duration']
+        st.markdown(f"**[{title}]({url})**  \n📺 Channel: {channel} | ⏱️ {duration}  \n{description}")
+        st.markdown("---")
+    
+    # Study Tips
+    st.markdown("### 💡 Study Tips")
+    
+    st.markdown("""
+    <div class="theory-box">
+        <strong>Recommended Learning Path:</strong><br>
+        1. Master KVL, KCL, and resistor networks first<br>
+        2. Understand capacitors and inductors intuitively<br>
+        3. Simulate circuits with Falstad or LTspice<br>
+        4. Build physical circuits on breadboards<br>
+        5. Learn to use a multimeter and oscilloscope<br>
+        6. Study Op-Amps and Transistors deeply<br>
+        7. Analyze manufacturer datasheets<br><br>
+        
+        <strong>Essential Tools:</strong><br>
+        • <strong>Simulation:</strong> LTspice, Falstad, Multisim<br>
+        • <strong>Hardware:</strong> Breadboard, Multimeter, Arduino<br>
+        • <strong>Reference:</strong> Art of Electronics (Horowitz & Hill)<br>
+        • <strong>Community:</strong> r/Electronics, EEVblog Forum
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")
