@@ -175,9 +175,15 @@
             "resources": [
                 {
                     "type": "youtube",
-                    "title": "Fundamentals of Manufacturing Processes (MITx)",
-                    "url": "https://www.youtube.com/watch?v=F07gqE0aJXs",
-                    "description": "MITx Course Introduction"
+                    "title": "Introduction to Manufacturing Processes",
+                    "url": "https://www.youtube.com/watch?v=rdlZ8CpMqpM",
+                    "description": "The Efficient Engineer - Comprehensive Overview"
+                },
+                {
+                    "type": "youtube",
+                    "title": "What is Manufacturing?",
+                    "url": "https://www.youtube.com/watch?v=TxkZ6H2gq24",
+                    "description": "Market Business News - Concept Definition"
                 },
                 {
                     "type": "website",
