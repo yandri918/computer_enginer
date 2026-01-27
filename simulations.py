@@ -1024,6 +1024,222 @@ def render_ce402_simulation():
     else:
         st.info("Click the button to run the AI algorithm.")
 
+
+
+def render_ce403_simulation():
+    """Interactive Simulation for Mobile App Dev (CE403)"""
+    st.markdown("### 📱 Mobile UI Density Calculator")
+    st.markdown("Understand the relationship between Resolution (px), Density (dpi), and Abstract Units (dp/pt).")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        width_px = st.number_input("Screen Width (px)", 320, 4000, 1080)
+        height_px = st.number_input("Screen Height (px)", 480, 8000, 1920)
+        diag_inch = st.number_input("Diagonal Size (inch)", 3.0, 12.0, 6.0, step=0.1)
+        
+    # Calcs
+    ppi = np.sqrt(width_px**2 + height_px**2) / diag_inch
+    
+    # Classification
+    bucket = "mdpi (1x)"
+    scale = 1.0
+    if ppi > 160: bucket, scale = "hdpi (1.5x)", 1.5
+    if ppi > 240: bucket, scale = "xhdpi (2.0x)", 2.0
+    if ppi > 320: bucket, scale = "xxhdpi (3.0x)", 3.0
+    if ppi > 480: bucket, scale = "xxxhdpi (4.0x)", 4.0
+    
+    width_dp = width_px / scale
+    height_dp = height_px / scale
+    
+    with col2:
+        st.info(f"Pixel Density: **{ppi:.2f} ppi**")
+        st.success(f"Density Bucket: **{bucket}**")
+        st.metric("Width (dp)", f"{width_dp:.0f} dp")
+        st.metric("Height (dp)", f"{height_dp:.0f} dp")
+        
+    st.caption(f"Designing at 1x (mdpi), your canvas should be {width_dp:.0f} x {height_dp:.0f}.")
+
+def render_ce404_simulation():
+    """Interactive Simulation for Cloud Computing (CE404)"""
+    st.markdown("### ⚖️ Load Balancer Simulator")
+    st.markdown("Distribute incoming web traffic across multiple server instances.")
+    
+    traffic = st.slider("Incoming Requests per Second", 100, 5000, 1000)
+    servers = st.slider("Number of Active Servers", 1, 10, 2)
+    algorithm = st.selectbox("Balancing Algorithm", ["Round Robin", "Least Connections (Mock)", "IP Hash (Mock)"])
+    
+    if servers > 0:
+        load_per_server = traffic / servers
+        st.write(f"Estimated Load: **{load_per_server:.0f} req/sec** per server")
+        
+        # Visualize Server Load
+        load_data = []
+        for i in range(servers):
+            # Add some randomness for realism
+            variance = np.random.randint(-50, 50)
+            actual_load = max(0, load_per_server + variance)
+            status = "Healthy" if actual_load < 800 else "Overloaded"
+            load_data.append({"Server": f"Server {i+1}", "Load": actual_load, "Status": status})
+            
+        df_cloud = pd.DataFrame(load_data)
+        
+        chart = alt.Chart(df_cloud).mark_bar().encode(
+            x='Server',
+            y='Load',
+            color=alt.Color('Status', scale=alt.Scale(domain=['Healthy', 'Overloaded'], range=['#34d399', '#f87171'])),
+            tooltip=['Server', 'Load', 'Status']
+        )
+        st.altair_chart(chart, use_container_width=True)
+        
+        if load_per_server > 800:
+            st.error("⚠️ Servers are under heavy load! Scale up (add instances).")
+        else:
+            st.success("✅ System is stable.")
+
+def render_ce405_simulation():
+    """Interactive Simulation for Cybersecurity (CE405)"""
+    import hashlib
+    st.markdown("### 🔐 Hash Cracker & Entropy Checker")
+    
+    password = st.text_input("Test a Password (not your real one!)", type="password")
+    
+    if password:
+        # 1. Entropy / Strength
+        length = len(password)
+        has_upper = any(c.isupper() for c in password)
+        has_lower = any(c.islower() for c in password)
+        has_digit = any(c.isdigit() for c in password)
+        has_special = any(not c.isalnum() for c in password)
+        
+        score = length * 4
+        if has_upper: score += 5
+        if has_lower: score += 5
+        if has_digit: score += 10
+        if has_special: score += 15
+        
+        st.write("Strength Score:", score)
+        st.progress(min(score, 100))
+        
+        # 2. Hashing
+        md5_hash = hashlib.md5(password.encode()).hexdigest()
+        sha256_hash = hashlib.sha256(password.encode()).hexdigest()
+        
+        st.code(f"MD5:    {md5_hash}", language="text")
+        st.code(f"SHA256: {sha256_hash}", language="text")
+        
+        st.caption("Notice: Even a small change in password completely changes the hash (Avalanche Effect).")
+
+def render_ce406_simulation():
+    """Interactive Simulation for Big Data (CE406)"""
+    st.markdown("### 🐘 MapReduce Visualizer (Word Count)")
+    
+    text_input = st.text_area("Input Text Corpus", "Big data is big. Data is data. Big insights from big data.")
+    
+    if text_input:
+        st.write("#### 1. Map Phase (Splitting & Mapping)")
+        clean_text = ''.join(c.lower() if c.isalnum() or c.isspace() else ' ' for c in text_input)
+        words = clean_text.split()
+        mapped = [(w, 1) for w in words]
+        st.write(mapped[:10], "... (sampled)")
+        
+        st.write("#### 2. Shuffle & Sort")
+        grouped = {}
+        for k, v in mapped:
+            if k not in grouped: grouped[k] = []
+            grouped[k].append(v)
+        st.write(grouped)
+        
+        st.write("#### 3. Reduce Phase (Aggregation)")
+        reduced = {k: sum(v) for k, v in grouped.items()}
+        st.write(reduced)
+        
+        # Visualize
+        df_reduce = pd.DataFrame(list(reduced.items()), columns=['Word', 'Count']).sort_values('Count', ascending=False)
+        chart = alt.Chart(df_reduce).mark_bar().encode(
+            x=alt.X('Count'),
+            y=alt.Y('Word', sort='-x'),
+            tooltip=['Word', 'Count']
+        )
+        st.altair_chart(chart, use_container_width=True)
+
+def render_ce407_simulation():
+    """Interactive Simulation for Blockchain (CE407)"""
+    import hashlib
+    st.markdown("### ⛓️ Blockchain Mining Demo")
+    
+    block_number = st.number_input("Block Number", 1, 1000, 1)
+    data = st.text_input("Block Data", "Alice pays Bob 5 BTC")
+    difficulty = st.slider("Difficulty (Leading Zeros)", 1, 5, 3)
+    
+    st.write("Mining...")
+    nonce = 0
+    target_prefix = "0" * difficulty
+    
+    # Mining Loop (Limited for browser perf)
+    found = False
+    max_iter = 100000
+    
+    status_text = st.empty()
+    
+    if st.button("Start Mining"):
+        with st.spinner(f"Mining (Searching for hash starting with '{target_prefix}')..."):
+            for i in range(max_iter):
+                text = f"{block_number}{data}{nonce}"
+                hash_result = hashlib.sha256(text.encode()).hexdigest()
+                
+                if hash_result.startswith(target_prefix):
+                    found = True
+                    break
+                nonce += 1
+                
+        if found:
+            st.success(f"Block Mined! Nonce: {nonce}")
+            st.write(f"**Hash:** `{hash_result}`")
+        else:
+            st.error(f"Gave up after {max_iter} iterations. Try easier difficulty or simpler data.")
+
+def render_ce408_simulation():
+    """Interactive Simulation for IoT (CE408)"""
+    st.markdown("### 🏠 Smart Home IoT Dashboard")
+    
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Living Room Temp", "24.5 °C", "0.5 °C")
+    col2.metric("Humidity", "55 %", "-2 %")
+    col3.metric("Lights", "ON", delta_color="off")
+    
+    # Real-time Stream Simulation
+    st.subheader("Sensor Data Stream")
+    
+    if 'iot_data' not in st.session_state:
+        st.session_state.iot_data = pd.DataFrame(columns=['Time', 'Value', 'Sensor'])
+        
+    # Simulate new data point (mock)
+    new_time = len(st.session_state.iot_data)
+    new_temp = 24 + np.random.normal(0, 0.5)
+    new_hum = 55 + np.random.normal(0, 2.0)
+    
+    # Append (in a real app this would use a loop/callback, here we just show chart logic)
+    # Let's generate a static history chart instead of auto-updating loop to avoid streamlit blocking
+    
+    time_points = list(range(24)) # 24 hours
+    temps = [24 + np.random.normal(0, 1) + np.sin(t/4)*2 for t in time_points]
+    hums = [50 + np.random.normal(0, 2) - np.sin(t/4)*5 for t in time_points]
+    
+    df_iot = pd.DataFrame({
+        'Hour': time_points * 2,
+        'Value': temps + hums,
+        'Sensor': ['Temperature'] * 24 + ['Humidity'] * 24
+    })
+    
+    chart = alt.Chart(df_iot).mark_line(point=True).encode(
+        x='Hour',
+        y='Value',
+        color='Sensor',
+        tooltip=['Hour', 'Value', 'Sensor']
+    ).interactive()
+    
+    st.altair_chart(chart, use_container_width=True)
+
 # Map course ID to simulation function
 SIMULATION_MAP = {
     "MA101": render_ma101_simulation,
@@ -1048,5 +1264,11 @@ SIMULATION_MAP = {
     "MG301": render_mg301_simulation,
     "SD101": render_sd101_simulation,
     "CE401": render_ce401_simulation,
-    "CE402": render_ce402_simulation
+    "CE402": render_ce402_simulation,
+    "CE403": render_ce403_simulation,
+    "CE404": render_ce404_simulation,
+    "CE405": render_ce405_simulation,
+    "CE406": render_ce406_simulation,
+    "CE407": render_ce407_simulation,
+    "CE408": render_ce408_simulation
 }

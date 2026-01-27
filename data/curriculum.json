@@ -809,8 +809,21 @@
                 "Responsive layouts",
                 "Animations and gestures"
             ],
-            "filename": "32_📱_CE403_Mobile_App_Development.py",
-            "resources": []
+            "filename": "30_📱_CE403_Mobile_App_Development.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Android Developer Guides",
+                    "url": "https://developer.android.com/guide",
+                    "description": "Official Google Documentation"
+                },
+                {
+                    "type": "website",
+                    "title": "Flutter Documentation",
+                    "url": "https://docs.flutter.dev/",
+                    "description": "Cross-platform Development"
+                }
+            ]
         },
         {
             "id": "CE404",
@@ -819,22 +832,35 @@
             "credits": "3",
             "semester": "8",
             "difficulty": "6/7",
-            "hours": "7",
-            "description": "Comprehensive cloud computing course covering major cloud platforms (AWS, Azure, GCP), containerization (Docker),          orchestration (Kubernetes), serverless computing, and DevOps practices. Learn cloud architecture patterns,          infrastructure as code (Terraform), CI/CD pipelines, microservices, and cloud-native application development.          Emphasizes hands-on labs with real cloud deployments. Students will build and deploy scalable cloud applications          using industry-standard tools and best practices.",
+            "hours": "5",
+            "description": "Advanced cloud architecture, distributed systems, and serverless computing. Covers virtualization,          containerization (Docker, Kubernetes), microservices, cloud security, and DevOps. Students will deploy scalable          applications on major cloud platforms (AWS, Azure, GCP) and learn to manage cloud infrastructure.",
             "topics": [
                 "Cloud Computing\", page_icon=\"☁️\", layout=\"wide\")",
-                "IaaS, PaaS, SaaS models",
-                "Cloud service models",
-                "Regions and availability zones",
-                "Virtual machines and networking",
-                "Storage solutions (S3, EBS, Blob)",
-                "Docker containers and images",
-                "Docker Compose",
-                "Kubernetes pods and deployments",
-                "Services and ingress"
+                "Cloud service models (IaaS, PaaS, SaaS)",
+                "Virtualization (VMs, Hypervisors)",
+                "Containerization (Docker, Kubernetes)",
+                "Serverless computing (Lambda, Azure Functions)",
+                "Cloud storage (Object, Block, File)",
+                "Load balancing and auto-scaling",
+                "Cloud security models",
+                "Distributed databases",
+                "DevOps and CI/CD pipelines"
             ],
-            "filename": "33_☁️_CE404_Cloud_Computing.py",
-            "resources": []
+            "filename": "31_☁️_CE404_Cloud_Computing.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "AWS Architecture Center",
+                    "url": "https://aws.amazon.com/architecture",
+                    "description": "Cloud Design Patterns"
+                },
+                {
+                    "type": "website",
+                    "title": "Kubernetes Basics",
+                    "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+                    "description": "Container Orchestration"
+                }
+            ]
         },
         {
             "id": "CE405",
@@ -843,22 +869,35 @@
             "credits": "3",
             "semester": "8",
             "difficulty": "6/7",
-            "hours": "7",
-            "description": "Comprehensive introduction to cybersecurity covering cryptography, network security, ethical hacking, and security          best practices. Learn encryption algorithms, secure protocols, common attack vectors, defense mechanisms, penetration          testing, and security compliance. Emphasizes hands-on labs with tools like Wireshark, Metasploit, Burp Suite, and          Nmap. Students will learn to identify vulnerabilities, perform security audits, and implement security controls to          protect systems and data.",
+            "hours": "6",
+            "description": "Comprehensive study of network security, cryptography, and ethical hacking. Covers threat modeling,          vulnerability assessment, penetration testing, malware analysis, and security protocols. Students will learn to          secure networks, protect data, and defend against cyber attacks using industry-standard tools and practices.",
             "topics": [
                 "Cybersecurity\", page_icon=\"🔐\", layout=\"wide\")",
-                "Symmetric encryption (AES, DES)",
-                "Asymmetric encryption (RSA, ECC)",
-                "Hash functions (SHA-256, MD5)",
-                "Digital signatures and certificates",
-                "Public Key Infrastructure (PKI)",
-                "Firewalls and IDS/IPS",
-                "VPN and secure tunneling",
-                "TLS/SSL protocols",
-                "DNS security (DNSSEC)"
+                "Confidentiality, Integrity, Availability (CIA)",
+                "Cryptography (Symmetric, Asymmetric, Hashing)",
+                "Network security protocols (SSL/TLS, IPSec)",
+                "Firewalls and ID/IPS",
+                "Penetration testing phases",
+                "Web application security (OWASP Top 10)",
+                "Malware analysis and reverse engineering",
+                "Social engineering",
+                "Incident response and forensics"
             ],
-            "filename": "31_🔐_CE405_Cybersecurity.py",
-            "resources": []
+            "filename": "32_🔐_CE405_Cybersecurity.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "OWASP Top 10",
+                    "url": "https://owasp.org/www-project-top-ten/",
+                    "description": "Web Application Security Risks"
+                },
+                {
+                    "type": "website",
+                    "title": "Kali Linux Documentation",
+                    "url": "https://www.kali.org/docs/",
+                    "description": "Ethical Hacking Tools"
+                }
+            ]
         },
         {
             "id": "CE406",
@@ -866,23 +905,36 @@
             "icon": "📊",
             "credits": "3",
             "semester": "8",
-            "difficulty": "6/7",
-            "hours": "7",
-            "description": "Comprehensive big data analytics course covering distributed computing frameworks (Hadoop, Spark), data processing          pipelines, real-time analytics, data warehousing, and machine learning at scale. Learn MapReduce, HDFS, Hive, Pig,          Spark SQL, Spark Streaming, Kafka, and data visualization tools. Emphasizes hands-on experience with large datasets          and distributed systems. Students will build end-to-end data pipelines and perform analytics on petabyte-scale data.",
+            "difficulty": "7/7",
+            "hours": "6",
+            "description": "Study of large-scale data processing, storage, and analytics. Covers Hadoop ecosystem (HDFS, MapReduce),          Spark, NoSQL databases, data warehousing, and real-time data streaming. Students will build data pipelines          and perform analytics on massive datasets using distributed computing frameworks.",
             "topics": [
                 "Big Data Analytics\", page_icon=\"📊\", layout=\"wide\")",
-                "HDFS (Hadoop Distributed File System)",
+                "Batch vs Real-time processing",
+                "Hadoop Ecosystem (HDFS, YARN)",
                 "MapReduce programming model",
-                "YARN (resource management)",
-                "Hive (SQL on Hadoop)",
-                "Pig (data flow language)",
-                "RDDs, DataFrames, Datasets",
-                "Spark SQL",
-                "Spark Streaming",
-                "Spark MLlib"
+                "Apache Spark (Core, SQL, Streaming)",
+                "NoSQL Databases (Cassandra, HBase, MongoDB)",
+                "Data warehousing (Hive, Snowflake)",
+                "Data ingestion (Kafka, Flume)",
+                "Machine Learning on Big Data (Spark MLlib)",
+                "Data visualization (Tableau, PowerBI)"
             ],
-            "filename": "34_📊_CE406_Big_Data_Analytics.py",
-            "resources": []
+            "filename": "33_📊_CE406_Big_Data_Analytics.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Apache Spark Documentation",
+                    "url": "https://spark.apache.org/docs/latest/",
+                    "description": "Unified Analytics Engine"
+                },
+                {
+                    "type": "website",
+                    "title": "Hadoop Ecosystem",
+                    "url": "https://hadoop.apache.org/",
+                    "description": "Distributed Computing Framework"
+                }
+            ]
         },
         {
             "id": "CE407",
@@ -890,23 +942,36 @@
             "icon": "⛓️",
             "credits": "3",
             "semester": "8",
-            "difficulty": "6/7",
-            "hours": "7",
-            "description": "Comprehensive blockchain and cryptocurrency course covering distributed ledger technology, cryptographic principles,          Bitcoin, Ethereum, smart contracts, DeFi, NFTs, and consensus mechanisms. Learn blockchain architecture, cryptocurrency          economics, Solidity programming, decentralized applications (dApps), and blockchain security. Emphasizes hands-on          development with real blockchain networks. Students will build smart contracts, deploy dApps, and understand the          economic and social implications of blockchain technology.",
+            "difficulty": "7/7",
+            "hours": "6",
+            "description": "In-depth exploration of blockchain technology, cryptocurrencies, and decentralized applications (DApps).          Covers consensus algorithms (PoW, PoS), smart contracts, Ethereum, DeFi, and blockchain development.          Students will write smart contracts and understand the economic and technical implications of blockchain.",
             "topics": [
                 "Blockchain & Cryptocurrency\", page_icon=\"⛓️\", layout=\"wide\")",
-                "Distributed ledger technology",
-                "Cryptographic hash functions",
-                "Digital signatures (ECDSA)",
-                "Merkle trees",
-                "Consensus algorithms",
-                "Bitcoin protocol",
-                "UTXO model",
-                "Mining and proof-of-work",
-                "Bitcoin scripting"
+                "Distributed Ledger Technology (DLT)",
+                "Cryptographic primitives (Hash, Signatures)",
+                "Consensus mechanisms (PoW, PoS, DPoS)",
+                "Bitcoin and UTXO model",
+                "Ethereum and Smart Contracts (Solidity)",
+                "Decentralized Finance (DeFi)",
+                "NFTs and Digital Assets",
+                "Blockchain privacy and scalability",
+                "Web3 development"
             ],
-            "filename": "35_⛓️_CE407_Blockchain_Cryptocurrency.py",
-            "resources": []
+            "filename": "34_⛓️_CE407_Blockchain_Cryptocurrency.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Bitcoin Whitepaper",
+                    "url": "https://bitcoin.org/bitcoin.pdf",
+                    "description": "Satoshi Nakamoto's Original Paper"
+                },
+                {
+                    "type": "website",
+                    "title": "Ethereum Documentation",
+                    "url": "https://ethereum.org/en/developers/docs/",
+                    "description": "Smart Contract Development"
+                }
+            ]
         },
         {
             "id": "CE408",
@@ -915,22 +980,35 @@
             "credits": "3",
             "semester": "8",
             "difficulty": "5/7",
-            "hours": "7",
-            "description": "Comprehensive Internet of Things course covering IoT architecture, embedded systems, sensors, actuators,          communication protocols, edge computing, and IoT security. Learn Arduino and Raspberry Pi programming, MQTT,          CoAP, LoRaWAN, sensor integration, data processing at the edge, and IoT cloud platforms. Emphasizes hands-on          projects with real hardware. Students will build complete IoT systems from sensor to cloud, including smart home          automation, environmental monitoring, and industrial IoT applications.",
+            "hours": "5",
+            "description": "Design and implementation of IoT systems connecting physical devices to the internet. Covers sensors,          actuators, embedded systems, communication protocols (MQTT, CoAP), edge computing, and IoT security.          Students will build connected devices and visualize sensor data in the cloud.",
             "topics": [
                 "Internet of Things\", page_icon=\"🌐\", layout=\"wide\")",
-                "Arduino (Uno, Nano, ESP32)",
-                "Raspberry Pi (3, 4, Zero)",
-                "Sensors (DHT22, PIR, ultrasonic)",
-                "Actuators (servo, relay, LED)",
-                "Communication modules (WiFi, Bluetooth, LoRa)",
-                "MQTT (Message Queue Telemetry Transport)",
-                "CoAP (Constrained Application Protocol)",
-                "HTTP/REST APIs",
-                "WebSockets"
+                "IoT Architecture (Edge, Fog, Cloud)",
+                "Sensors and Actuators",
+                "Microcontrollers (Arduino, ESP32, Raspberry Pi)",
+                "Communication protocols (MQTT, CoAP, HTTP)",
+                "Wireless standards (BLE, Zigbee, LoRaWAN)",
+                "Edge computing and analytics",
+                "IoT Security challenges",
+                "Industrial IoT (IIoT)",
+                "Smart Cities and Home Automation"
             ],
-            "filename": "36_🌐_CE408_Internet_of_Things.py",
-            "resources": []
+            "filename": "35_🌐_CE408_Internet_of_Things.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Arduino Reference",
+                    "url": "https://www.arduino.cc/reference/en/",
+                    "description": "Hardware programming"
+                },
+                {
+                    "type": "website",
+                    "title": "MQTT Protocol",
+                    "url": "https://mqtt.org/",
+                    "description": "Standard for IoT Messaging"
+                }
+            ]
         }
     ],
     "Semester 2": [
