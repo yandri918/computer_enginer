@@ -10,11 +10,13 @@ sys.path.append(os.path.dirname(__file__))
 try:
     from simulations import SIMULATION_MAP, apply_custom_css
     from quizzes import render_quiz
+    from pdf_utils import generate_syllabus_pdf
 except ImportError:
     # Fallback if file not found (for testing)
     SIMULATION_MAP = {}
     def apply_custom_css(): pass
     def render_quiz(d): pass
+    def generate_syllabus_pdf(d): return b""
 
 # Load Data
 DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "curriculum.json")
@@ -199,7 +201,22 @@ def render_course_content(course_data):
     tab1, tab2, tab_sim, tab_exam = st.tabs(["📚 Syllabus & Topics", "📺 Learning Resources", "🛠️ Launch Simulation", "📝 Final Exam"])
 
     with tab1:
-        st.markdown("### 📋 Syllabus Breakdown")
+        col_syl1, col_syl2 = st.columns([3, 1])
+        with col_syl1:
+             st.markdown("### 📋 Syllabus Breakdown")
+        with col_syl2:
+            try:
+                pdf_bytes = generate_syllabus_pdf(course_data)
+                st.download_button(
+                    label="📄 Download PDF",
+                    data=pdf_bytes,
+                    file_name=f"Syllabus_{course_data['id']}.pdf",
+                    mime="application/pdf",
+                    key=f"dl_syl_{course_data['id']}"
+                )
+            except Exception as e:
+                pass
+
         for topic in course_data.get('topics', []):
             st.markdown(f"""
             <div style="padding: 12px 16px; margin-bottom: 8px; background: #f8fafc; border-radius: 8px; border-left: 3px solid #cbd5e1; display: flex; align-items: center;">

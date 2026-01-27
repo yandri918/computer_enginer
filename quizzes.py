@@ -123,16 +123,33 @@ def render_quiz(course_data):
                     st.balloons()
                     st.success(f"🎉 Congratulations! You Passed! Score: {final_score:.0f}%")
                     
-                    # Certificate Mockup
-                    st.markdown("""
-                    <div style="padding: 20px; background-color: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; text-align: center; margin-top: 20px;">
-                        <h2 style="color: #166534; margin:0;">CERTIFICATE OF COMPLETION</h2>
-                        <p style="color: #15803d;">This certifies that</p>
-                        <h3 style="color: #1e293b;">Student User</h3>
-                        <p>has successfully completed the course</p>
-                        <h3 style="color: #1e293b;">""" + course_data['name'] + """</h3>
-                        <p style="font-size: 0.8rem; color: #64748b;">Verified by UTel University • AgriSensa API</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    # Generate Certificate Logic
+                    try:
+                        from pdf_utils import generate_certificate_pdf
+                        pdf_bytes = generate_certificate_pdf("Student User", course_data['name'], final_score)
+                        
+                        col_c1, col_c2 = st.columns([1, 2])
+                        with col_c1:
+                            st.download_button(
+                                label="📜 Download Certified PDF",
+                                data=pdf_bytes,
+                                file_name=f"Certificate_{course_data['id']}.pdf",
+                                mime="application/pdf",
+                                type="primary"
+                            )
+                        with col_c2:
+                            st.info("Your official digital certificate is ready for download.")
+                            
+                    except ImportError:
+                         # Fallback if pdf_utils missing
+                        st.markdown("""
+                        <div style="padding: 20px; background-color: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; text-align: center; margin-top: 20px;">
+                            <h2 style="color: #166534; margin:0;">CERTIFICATE OF COMPLETION</h2>
+                            <p style="color: #15803d;">This certifies that</p>
+                            <h3 style="color: #1e293b;">Student User</h3>
+                            <p>has successfully completed the course</p>
+                            <h3 style="color: #1e293b;">""" + course_data['name'] + """</h3>
+                        </div>
+                        """, unsafe_allow_html=True)
                 else:
                     st.error(f"Score: {final_score:.0f}%. You did not pass. Please try again.")
