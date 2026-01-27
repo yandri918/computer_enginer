@@ -185,7 +185,11 @@ def render_ph101_simulation():
     k = 10  # Spring constant (assumed)
     m = k / (2 * np.pi * frequency)**2
     potential_energy = 0.5 * k * y**2
-    kinetic_energy = 0.5 * m * (-amplitude * np.exp(-damping*t) * (damping*np.cos(...) + 2*np.pi*frequency*np.sin(...)))**2 # Simplified
+    # Velocity v = dy/dt
+    # y' = A * [ -ζ * exp(-ζt) * cos(2πft + φ) - exp(-ζt) * 2πf * sin(2πft + φ) ]
+    # y' = -A * exp(-ζt) * [ ζ * cos(...) + 2πf * sin(...) ]
+    velocity = -amplitude * np.exp(-damping*t) * (damping * np.cos(2*np.pi*frequency*t + phase) + 2*np.pi*frequency * np.sin(2*np.pi*frequency*t + phase))
+    kinetic_energy = 0.5 * m * velocity**2
     
     st.info(f"System Properties: Mass = {m:.2f} kg, Spring Constant = {k} N/m")
 
