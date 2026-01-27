@@ -22,7 +22,20 @@
                 "Interfaces and abstract classes"
             ],
             "filename": "9_💻_CE201_OOP.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Object-Oriented Programming (Java)",
+                    "url": "https://www.youtube.com/watch?v=SiBw7os-_zI",
+                    "description": "FreeCodeCamp - 4 Hour Course"
+                },
+                {
+                    "type": "paper",
+                    "title": "Design Patterns",
+                    "url": "https://refactoring.guru/design-patterns",
+                    "description": "Refactoring Guru - Interactive Guide"
+                }
+            ]
         },
         {
             "id": "CE202",
@@ -94,7 +107,20 @@
                 "Random variables"
             ],
             "filename": "10_📊_MA201_Statistics.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Statistics 110: Probability",
+                    "url": "https://www.youtube.com/watch?v=KbB0FjPg0mw&list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo",
+                    "description": "Harvard University - Joe Blitzstein"
+                },
+                {
+                    "type": "paper",
+                    "title": "A Visual Introduction to Probability",
+                    "url": "https://seeing-theory.brown.edu/",
+                    "description": "Interactive probability theory guide"
+                }
+            ]
         }
     ],
     "Semester 4": [
@@ -266,7 +292,20 @@
                 "Trees (BST, AVL, Red-Black)"
             ],
             "filename": "2_💻_CE101_Programming.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "CS50: Introduction to Computer Science",
+                    "url": "https://www.youtube.com/watch?v=8mAITcNt710",
+                    "description": "Harvard University"
+                },
+                {
+                    "type": "pdf",
+                    "title": "Python 3 Documentation",
+                    "url": "https://docs.python.org/3/download.html",
+                    "description": "Official Python Documentation"
+                }
+            ]
         },
         {
             "id": "MA101",
@@ -290,7 +329,26 @@
                 "Fundamental Theorem of Calculus"
             ],
             "filename": "1_📐_MA101_Calculus.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Essence of Calculus",
+                    "url": "https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr",
+                    "description": "3Blue1Brown"
+                },
+                {
+                    "type": "youtube",
+                    "title": "Calculus 1 Full Course",
+                    "url": "https://www.youtube.com/watch?v=HfACrKJ_Y2w",
+                    "description": "Professor Leonard"
+                },
+                {
+                    "type": "pdf",
+                    "title": "Calculus Vol 1 - OpenStax",
+                    "url": "https://openstax.org/details/books/calculus-volume-1",
+                    "description": "Free Open Source Textbook"
+                }
+            ]
         },
         {
             "id": "PH101",
@@ -314,7 +372,20 @@
                 "Electromagnetic induction"
             ],
             "filename": "3_⚛️_PH101_Physics.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Classical Mechanics",
+                    "url": "https://www.youtube.com/watch?v=4a0FbQdH3dY",
+                    "description": "MIT OpenCourseWare - Walter Lewin"
+                },
+                {
+                    "type": "pdf",
+                    "title": "The Feynman Lectures on Physics",
+                    "url": "https://www.feynmanlectures.caltech.edu/",
+                    "description": "Caltech"
+                }
+            ]
         }
     ],
     "Semester 5": [
@@ -708,7 +779,20 @@
                 "Matrix inverses"
             ],
             "filename": "7_🔢_MA102_Linear_Algebra.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Linear Algebra",
+                    "url": "https://www.youtube.com/watch?v=7UJ4CFRGd-U",
+                    "description": "MIT OpenCourseWare - Gilbert Strang"
+                },
+                {
+                    "type": "youtube",
+                    "title": "Essence of Linear Algebra",
+                    "url": "https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+                    "description": "3Blue1Brown"
+                }
+            ]
         }
     ]
 }

@@ -108,7 +108,44 @@ def main():
             
     with tab3:
         st.subheader("Learning Resources")
-        st.info("YouTube integration coming soon.")
+        
+        resources = course_data.get('resources', [])
+        
+        if not resources:
+            st.info("No resources added for this course yet.")
+        else:
+            for res in resources:
+                if res['type'] == 'youtube':
+                    col1, col2 = st.columns([1, 2])
+                    with col1:
+                        st.video(res['url'])
+                    with col2:
+                        st.markdown(f"**📺 {res['title']}**")
+                        st.caption(res.get('description', ''))
+                
+                elif res['type'] in ['pdf', 'paper']:
+                    st.markdown(f"""
+                    <div style="padding: 1rem; background-color: #f0fdf4; border-radius: 8px; border-left: 4px solid #10b981; margin-bottom: 0.5rem;">
+                        <span style="font-size: 1.2rem;">📄</span>
+                        <a href="{res['url']}" target="_blank" style="text-decoration: none; font-weight: 600; color: #064e3b; margin-left: 8px;">
+                            {res['title']}
+                        </a>
+                        <br>
+                        <span style="color: #6b7280; font-size: 0.9rem; margin-left: 32px;">{res.get('description', 'PDF Document')}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                else: # Generic links/websites
+                    st.markdown(f"""
+                    <div style="padding: 1rem; background-color: #f8fafc; border-radius: 8px; border-left: 4px solid #64748b; margin-bottom: 0.5rem;">
+                        <span style="font-size: 1.2rem;">🔗</span>
+                        <a href="{res['url']}" target="_blank" style="text-decoration: none; font-weight: 600; color: #1e293b; margin-left: 8px;">
+                            {res['title']}
+                        </a>
+                        <br>
+                        <span style="color: #6b7280; font-size: 0.9rem; margin-left: 32px;">{res.get('description', 'External Link')}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
