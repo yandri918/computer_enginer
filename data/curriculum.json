@@ -731,7 +731,20 @@
                 "Pipelining and hazards"
             ],
             "filename": "5_🖥️_CE103_Architecture.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Computer Architecture",
+                    "url": "https://www.youtube.com/watch?v=4TzPJ6MngsE&list=PL5PHm2jkkXmidJOd59REog9jDnPDTG6IJ",
+                    "description": "Carnegie Mellon University - Onur Mutlu"
+                },
+                {
+                    "type": "pdf",
+                    "title": "Computer Organization and Design",
+                    "url": "https://www.elsevier.com/books/computer-organization-and-design-mips-edition/patterson/978-0-12-820109-1",
+                    "description": "Textbook Reference (Patterson & Hennessy)"
+                }
+            ]
         },
         {
             "id": "EE101",
@@ -755,7 +768,20 @@
                 "Zener diodes and regulators"
             ],
             "filename": "6_⚡_EE101_Electronics.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Circuits and Electronics",
+                    "url": "https://www.youtube.com/watch?v=7u6kFlczcPC0",
+                    "description": "MIT 6.002 - Anant Agarwal"
+                },
+                {
+                    "type": "website",
+                    "title": "All About Circuits",
+                    "url": "https://www.allaboutcircuits.com/textbook/",
+                    "description": "Comprehensive Online Textbook"
+                }
+            ]
         },
         {
             "id": "MA102",

@@ -261,11 +261,98 @@ def render_ce302_simulation():
 
     st.dataframe(df.style.apply(highlight_row, axis=1), use_container_width=True)
 
+def render_ce103_simulation():
+    """Interactive Simulation for Computer Architecture (CE103)"""
+    st.markdown("### 🖥️ Simple ALU & Number Systems")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**Input A**")
+        val_a = st.number_input("Decimal Value A", value=10, step=1)
+        bin_a = format(val_a & 0xFF, '08b')
+        hex_a = format(val_a & 0xFF, '02X')
+        st.code(f"BIN: {bin_a}\nHEX: 0x{hex_a}")
+        
+    with col2:
+        st.markdown("**Input B**")
+        val_b = st.number_input("Decimal Value B", value=6, step=1)
+        bin_b = format(val_b & 0xFF, '08b')
+        hex_b = format(val_b & 0xFF, '02X')
+        st.code(f"BIN: {bin_b}\nHEX: 0x{hex_b}")
+
+    st.markdown("---")
+    st.markdown("**ALU Operation**")
+    op = st.selectbox("Operation", ["ADD", "SUB", "AND", "OR", "XOR", "LSHIFT", "RSHIFT"])
+    
+    res = 0
+    if op == "ADD": res = val_a + val_b
+    elif op == "SUB": res = val_a - val_b
+    elif op == "AND": res = val_a & val_b
+    elif op == "OR": res = val_a | val_b
+    elif op == "XOR": res = val_a ^ val_b
+    elif op == "LSHIFT": res = val_a << 1
+    elif op == "RSHIFT": res = val_a >> 1
+    
+    # Mask to 8-bit for visualization simplicity
+    res_8bit = res & 0xFF
+    
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Result (Dec)", res)
+    c2.metric("Result (Bin)", format(res_8bit, '08b'))
+    c3.metric("Result (Hex)", f"0x{format(res_8bit, '02X')}")
+    
+    # Visual Bits
+    st.caption("8-bit Visualization:")
+    bits = [int(x) for x in format(res_8bit, '08b')]
+    cols = st.columns(8)
+    for i, bit in enumerate(bits):
+        cols[i].button(str(bit), key=f"bit_{i}", disabled=True, type="primary" if bit else "secondary")
+
+def render_ee101_simulation():
+    """Interactive Simulation for Electronics (EE101)"""
+    st.markdown("### ⚡ Circuit Simulator (Ohm's Law)")
+    
+    col1, col2 = st.columns([1, 2])
+    
+    with col1:
+        st.markdown("#### Parameters")
+        voltage = st.slider("Voltage (V)", 0.0, 24.0, 5.0, 0.5)
+        resistance = st.slider("Resistance (Ω)", 10.0, 1000.0, 100.0, 10.0)
+        
+        current = voltage / resistance * 1000 # mA
+        power = (voltage ** 2) / resistance # Watts
+        
+        st.markdown("#### Calculations")
+        st.metric("Current (I)", f"{current:.1f} mA")
+        st.metric("Power (P)", f"{power:.3f} W")
+        
+    with col2:
+        st.markdown("#### V-I Characteristic Plot")
+        # Generate VI curve for fixed R
+        v_range = np.linspace(0, 24, 100)
+        i_vals = (v_range / resistance) * 1000 # mA
+        
+        df_vi = pd.DataFrame({'Voltage (V)': v_range, 'Current (mA)': i_vals})
+        
+        # Point for current state
+        curr_point = pd.DataFrame({'Voltage (V)': [voltage], 'Current (mA)': [current]})
+        
+        base = alt.Chart(df_vi).mark_line().encode(x='Voltage (V)', y='Current (mA)')
+        point = alt.Chart(curr_point).mark_point(color='red', size=100, filled=True).encode(
+            x='Voltage (V)', y='Current (mA)', tooltip=['Voltage (V)', 'Current (mA)']
+        )
+        
+        st.altair_chart(base + point, use_container_width=True)
+        
+        st.info("Ohm's Law: $V = I \\cdot R$")
+
 # Map course ID to simulation function
 SIMULATION_MAP = {
     "MA101": render_ma101_simulation,
     "MA102": render_ma102_simulation,
     "CE101": render_ce101_simulation,
     "PH101": render_ph101_simulation,
-    "CE302": render_ce302_simulation
+    "CE302": render_ce302_simulation,
+    "CE103": render_ce103_simulation,
+    "EE101": render_ee101_simulation
 }
