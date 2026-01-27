@@ -9,10 +9,12 @@ sys.path.append(os.path.dirname(__file__))
 
 try:
     from simulations import SIMULATION_MAP, apply_custom_css
+    from quizzes import render_quiz
 except ImportError:
     # Fallback if file not found (for testing)
     SIMULATION_MAP = {}
     def apply_custom_css(): pass
+    def render_quiz(d): pass
 
 # Load Data
 DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "curriculum.json")
@@ -194,7 +196,7 @@ def render_course_content(course_data):
     st.markdown("") 
 
     # Content Tabs
-    tab1, tab2, tab_sim = st.tabs(["📚 Syllabus & Topics", "📺 Learning Resources", "🛠️ Launch Simulation"])
+    tab1, tab2, tab_sim, tab_exam = st.tabs(["📚 Syllabus & Topics", "📺 Learning Resources", "🛠️ Launch Simulation", "📝 Final Exam"])
 
     with tab1:
         st.markdown("### 📋 Syllabus Breakdown")
@@ -243,6 +245,9 @@ def render_course_content(course_data):
             st.warning("⚠️ Simulation lab under construction.")
             
         st.markdown('</div>', unsafe_allow_html=True)
+
+    with tab_exam:
+        render_quiz(course_data)
 
 if __name__ == "__main__":
     main()
