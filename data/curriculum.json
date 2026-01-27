@@ -322,10 +322,16 @@
             "filename": "16_�_CE303_Systems_Analysis.py",
             "resources": [
                 {
-                    "type": "youtube",
-                    "title": "Systems Analysis & Design",
-                    "url": "https://www.youtube.com/watch?v=_6t2A8S6d5U&list=PL4G4zTqU2C57cK6F1_OiwNf2qD1C5gXW2",
-                    "description": "Computer Science - Full Course"
+                    "type": "website",
+                    "title": "Systems Development Life Cycle (SDLC)",
+                    "url": "https://www.geeksforgeeks.org/software-development-life-cycle-sdlc/",
+                    "description": "GeeksforGeeks - Complete Guide"
+                },
+                {
+                    "type": "website",
+                    "title": "Agile vs Waterfall",
+                    "url": "https://www.atlassian.com/agile/waterfall-vs-agile",
+                    "description": "Atlassian - Methodology Comparison"
                 },
                 {
                     "type": "website",

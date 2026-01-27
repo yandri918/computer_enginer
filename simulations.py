@@ -643,6 +643,65 @@ def render_bu201_simulation():
     )
     st.altair_chart(chart, use_container_width=True)
 
+def render_ce303_simulation():
+    """Interactive Simulation for Systems Analysis (CE303)"""
+    st.markdown("### 📋 Requirements Prioritizer (MoSCoW Method)")
+    
+    st.markdown("Analyze and prioritize system requirements for an MVP (Minimum Viable Product).")
+    
+    # Pre-defined requirements for a mock E-commerce App
+    if 'reqs' not in st.session_state:
+        st.session_state.reqs = [
+            {"id": 1, "task": "User Login/Register", "effort": 3, "priority": "Must Have"},
+            {"id": 2, "task": "Product Search", "effort": 5, "priority": "Must Have"},
+            {"id": 3, "task": "Shopping Cart", "effort": 5, "priority": "Must Have"},
+            {"id": 4, "task": "Wishlist", "effort": 2, "priority": "Could Have"},
+            {"id": 5, "task": "AI Recommendations", "effort": 8, "priority": "Won't Have"},
+            {"id": 6, "task": "Apple Pay Support", "effort": 3, "priority": "Should Have"},
+            {"id": 7, "task": "Dark Mode", "effort": 2, "priority": "Could Have"}
+        ]
+        
+    # Interactive Editor
+    st.write("#### Backlog Management")
+    
+    cols = st.columns([3, 1, 2])
+    with cols[0]:
+        new_task = st.text_input("New Requirement")
+    with cols[1]:
+        new_effort = st.number_input("Effort (Days)", 1, 10, 3)
+    with cols[2]:
+        new_prio = st.selectbox("Priority", ["Must Have", "Should Have", "Could Have", "Won't Have"])
+        
+    if st.button("Add Requirement"):
+        if new_task:
+            new_id = max([r['id'] for r in st.session_state.reqs]) + 1
+            st.session_state.reqs.append({
+                "id": new_id, "task": new_task, "effort": new_effort, "priority": new_prio
+            })
+            
+    # Visualizing Priorities
+    df_reqs = pd.DataFrame(st.session_state.reqs)
+    
+    # Calculate Release Metrics
+    must_effort = df_reqs[df_reqs['priority'] == 'Must Have']['effort'].sum()
+    should_effort = df_reqs[df_reqs['priority'] == 'Should Have']['effort'].sum()
+    total_effort = df_reqs['effort'].sum()
+    
+    st.markdown("---")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("MVP Effort (Must)", f"{must_effort} days")
+    c2.metric("Target Release (Must + Should)", f"{must_effort + should_effort} days")
+    c3.metric("Total Scope", f"{total_effort} days")
+    
+    # Chart
+    bar = alt.Chart(df_reqs).mark_bar().encode(
+        y=alt.Y('priority', sort=["Must Have", "Should Have", "Could Have", "Won't Have"]),
+        x='effort',
+        color='priority',
+        tooltip=['task', 'effort']
+    )
+    st.altair_chart(bar, use_container_width=True)
+
 # Map course ID to simulation function
 SIMULATION_MAP = {
     "MA101": render_ma101_simulation,
@@ -659,5 +718,6 @@ SIMULATION_MAP = {
     "CE204": render_ce204_simulation,
     "CE301": render_ce301_simulation,
     "CE304": render_ce304_simulation,
-    "BU201": render_bu201_simulation
+    "BU201": render_bu201_simulation,
+    "CE303": render_ce303_simulation
 }
