@@ -1,42 +1,91 @@
+# 🎓 UTel Computer Engineering Hub
 
-# 🎓 UTel University - Computer Engineering Curriculum
+A next-generation **Learning Management System (LMS)** and curriculum visualization platform for the Computer Engineering department at UTel University. 
 
-**A Dynamic, Data-Driven Curriculum Engine**
+Built with **Streamlit**, this application transforms static course lists into an interactive, data-driven academic portal featuring real-time simulations, automated exams, and digital certification.
 
-This repository contains the source code for the UTel University Computer Engineering curriculum portal. It has been refactored from a static multi-page site into a dynamic engine driven by `data/curriculum.json`.
+![LMS Dashboard](https://img.shields.io/badge/Status-Active-success) ![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-ff4b4b)
 
-## 🚀 Deployment
+## ✨ Key Features
 
-This app is designed to be deployed on **Streamlit Cloud**.
+### 1. 🖥️ Modern Student Dashboard
+*   **Semantic Navigation**: Browse courses by Semester (1-8) using a clean dropdown interface.
+*   **Visual Course Grid**: Courses displayed as interactive cards with status indicators (In Progress / Completed).
+*   **Student Profile**: Sidebar tracking GPA, Credits, and smart notifications.
 
-### 1. New Deployment (Recommended)
-Since this is a new repository structure, it is best to create a fresh deployment.
+### 2. 🧪 Interactive Simulations (`simulations.py`)
+*   **Integrated Labs**: Hands-on learning modules embedded directly within course pages.
+*   **Real-time Visualization**:
+    *   **Calculus**: Interactive derivative and integral plotter.
+    *   **Logic Gates**: Boolean algebra visualizers.
+    *   **Production Lines**: Process automation simulators.
+    *   **Network Graphs**: Dijkstra pathfinding visualizers.
 
-1. Go to [Streamlit Cloud](https://streamlit.io/cloud).
-2. Click **"New app"**.
-3. Select this repository: `yandri918/computer_enginer`.
-4. **Main file path**: `Home_Dynamic.py` (This is crucial!).
-5. Click **Deploy**.
+### 3. 📝 Exam & Certification Engine (`quizzes.py`)
+*   **Auto-Graded Quizzes**: Built-in final exams with timer logic.
+*   **Realistic Question Bank**: Curriculum-aligned questions for courses like Blockchain, AI, and Cybersecurity.
+*   **Instant Certification**: Students scoring >80% receive a **Digital Certificate of Completion**.
 
-### 2. Updating Existing Deployment
-If you already have a deployment pointing to this folder (e.g., as a subdirectory of another repo), you need to change the entry point.
+### 4. 📄 PDF Export System (`pdf_utils.py`)
+*   **Syllabus Downloader**: Generate one-page PDF summaries for any course.
+*   **Certified Diplomas**: Download offical-looking PDF certificates with anti-fraud verification codes (mockup).
 
-1. Go to your App Settings on Streamlit Cloud.
-2. Change "Main file path" to `Home_Dynamic.py`.
-3. Save.
+---
 
-## 📁 Project Structure
+## 🛠️ Technology Stack
 
-- `Home_Dynamic.py`: The main engine. Reads JSON and renders the UI.
-- `data/curriculum.json`: The database of all courses, syllabi, and metadata.
-- `simulations.py`: Python logic for interactive components (e.g., Calculus plots, Matrix calculators).
-- `pages/`: (Optional) Legacy static files (can be archived).
+*   **Frontend/Backend**: [Streamlit](https://streamlit.io/) (Python)
+*   **Data Engine**: JSON-based Curriculum (`data/curriculum.json`)
+*   **Visualization**: Altair, Plotly
+*   **PDF Generation**: `fpdf`
+*   **Code Structure**: Modularized (`Home_Dynamic.py`, `simulations.py`, `quizzes.py`, `pdf_utils.py`)
 
-## 🛠️ Maintenance
+---
 
-- **To add a course**: Simply add an entry to `data/curriculum.json`.
-- **To update a syllabus**: Edit the text in `data/curriculum.json`.
-- **To add a simulation**: 
-    1. Write the function in `simulations.py`.
-    2. Add the function to `SIMULATION_MAP` in `simulations.py`.
-    3. Update the `id` in `data/curriculum.json` to match.
+## 🚀 Installation & Usage
+
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/yandri918/computer_enginer.git
+    cd computer_enginer
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Run the Application**
+    ```bash
+    streamlit run Home_Dynamic.py
+    ```
+
+4.  **Access the Portal**
+    Open your browser at `http://localhost:8501`
+
+---
+
+## 📂 Project Structure
+
+```
+computer_enginer/
+├── Home_Dynamic.py       # 🏠 Main Application Engine (Dashboard & Navigation)
+├── Home.py               # ↩️ Legacy Redirect Page
+├── simulations.py        # 🧪 Interactive Simulation Logic
+├── quizzes.py            # 📝 Exam & Certification Module
+├── pdf_utils.py          # 📄 PDF Generation Utilities
+├── requirements.txt      # 📦 Project Dependencies
+└── data/
+    └── curriculum.json   # 💾 The "Brain" (Course Data, Syllabus, Topics)
+```
+
+---
+
+## 🌟 Live Demo
+
+Access the deployed application here:
+👉 **[computerenginer-2.streamlit.app](https://computerenginer-2.streamlit.app/)**
+
+---
+
+*Developed for UTel University • Powered by AgriSensa API*
