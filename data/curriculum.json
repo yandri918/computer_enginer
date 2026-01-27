@@ -59,7 +59,20 @@
                 "Procedures and stack"
             ],
             "filename": "10_⚙️_CE202_Assembly.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "x86 Assembly Language",
+                    "url": "https://www.youtube.com/watch?v=HgEGAaYdABA&list=PLmbC-SnP4573WE5o6l960Ck0g76Z8eZ2K",
+                    "description": "Dave's Garage / Other Sources"
+                },
+                {
+                    "type": "website",
+                    "title": "x86-64 Assembly Guide",
+                    "url": "https://www.cs.virginia.edu/~evans/cs216/guides/x86.html",
+                    "description": "University of Virginia Guide"
+                }
+            ]
         },
         {
             "id": "CE203",
@@ -83,7 +96,20 @@
                 "Page replacement algorithms"
             ],
             "filename": "14_💻_CE203_Operating_Systems.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Operating Systems",
+                    "url": "https://www.youtube.com/watch?v=Qf6W5F6v3oA&list=PLsylUObW5M3CAh16dJ3hB0zXj0o6a0t7_",
+                    "description": "Neso Academy"
+                },
+                {
+                    "type": "pdf",
+                    "title": "Operating Systems: Three Easy Pieces",
+                    "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+                    "description": "Free Online Textbook (Arpaci-Dusseau)"
+                }
+            ]
         },
         {
             "id": "MA201",

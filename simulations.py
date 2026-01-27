@@ -344,7 +344,156 @@ def render_ee101_simulation():
         
         st.altair_chart(base + point, use_container_width=True)
         
+        st.altair_chart(base + point, use_container_width=True)
+        
         st.info("Ohm's Law: $V = I \\cdot R$")
+
+def render_ce201_simulation():
+    """Interactive Simulation for OOP (CE201)"""
+    st.markdown("### 🧬 Object-Oriented Designer")
+    
+    st.markdown("#### Class Definition: `Car`")
+    col1, col2 = st.columns(2)
+    with col1:
+        color = st.selectbox("Color", ["Red", "Blue", "Black", "White"])
+        model = st.text_input("Model", "Tesla Model 3")
+    with col2:
+        speed = st.slider("Max Speed (km/h)", 100, 300, 200)
+        is_electric = st.checkbox("Is Electric?", value=True)
+        
+    st.markdown("#### Object Instantiation")
+    if st.button("Create Object"):
+        st.code(f"""
+class Car:
+    def __init__(self, color, model, speed, is_electric):
+        self.color = "{color}"
+        self.model = "{model}"
+        self.max_speed = {speed}
+        self.is_electric = {is_electric}
+
+    def drive(self):
+        return f"Driving the {color} {model} at {speed} km/h!"
+
+# Object
+my_car = Car("{color}", "{model}", {speed}, {is_electric})
+print(my_car.drive())
+        """, language="python")
+        st.success(f"Output: Driving the {color} {model} at {speed} km/h!")
+
+def render_ce202_simulation():
+    """Interactive Simulation for Assembly (CE202)"""
+    st.markdown("### ⚙️ Simple Register Simulator (x86)")
+    
+    # Registers
+    if 'eax' not in st.session_state: st.session_state.eax = 0
+    if 'ebx' not in st.session_state: st.session_state.ebx = 0
+    
+    c1, c2 = st.columns(2)
+    c1.metric("EAX", f"0x{st.session_state.eax:08X}")
+    c2.metric("EBX", f"0x{st.session_state.ebx:08X}")
+    
+    st.markdown("#### Instructions")
+    col1, col2, col3 = st.columns([1, 1, 2])
+    
+    with col1:
+        instr = st.selectbox("Instruction", ["MOV", "ADD", "SUB", "INC", "DEC"])
+    with col2:
+        target = st.selectbox("Target", ["EAX", "EBX"])
+        
+    with col3:
+        val = 0
+        if instr in ["MOV", "ADD", "SUB"]:
+            val = st.number_input("Value (Imm)", 0, 100, 5)
+            
+    if st.button("Execute Step"):
+        if instr == "MOV":
+            if target == "EAX": st.session_state.eax = val
+            else: st.session_state.ebx = val
+        elif instr == "ADD":
+            if target == "EAX": st.session_state.eax += val
+            else: st.session_state.ebx += val
+        elif instr == "SUB":
+            if target == "EAX": st.session_state.eax -= val
+            else: st.session_state.ebx -= val
+        elif instr == "INC":
+            if target == "EAX": st.session_state.eax += 1
+            else: st.session_state.ebx += 1
+        elif instr == "DEC":
+            if target == "EAX": st.session_state.eax -= 1
+            else: st.session_state.ebx -= 1
+            
+        st.rerun()
+
+def render_ce203_simulation():
+    """Interactive Simulation for OS (CE203) - CPU Scheduling"""
+    st.markdown("### ⏱️ CPU Scheduling Visualization (FIFO)")
+    
+    processes = [
+        {"id": "P1", "burst": 5, "color": "#ef4444"},
+        {"id": "P2", "burst": 3, "color": "#3b82f6"},
+        {"id": "P3", "burst": 8, "color": "#10b981"},
+        {"id": "P4", "burst": 6, "color": "#f59e0b"}
+    ]
+    
+    # Allow reordering
+    st.text("Drag to reorder processes (Simulated by manual input order for now):")
+    cols = st.columns(4)
+    order = []
+    for i, p in enumerate(processes):
+        p['order'] = cols[i].number_input(f"{p['id']} Order", 1, 4, i+1)
+        
+    processes.sort(key=lambda x: x['order'])
+    
+    # Gantt Chart Calculation
+    start_time = 0
+    gantt = []
+    
+    for p in processes:
+        gantt.append({
+            "Process": p['id'],
+            "Start": start_time,
+            "End": start_time + p['burst'],
+            "Color": p['color']
+        })
+        start_time += p['burst']
+        
+    df_gantt = pd.DataFrame(gantt)
+    
+    chart = alt.Chart(df_gantt).mark_bar().encode(
+        x='Start',
+        x2='End',
+        y='Process',
+        color=alt.Color('Process', scale=None, legend=None),
+        tooltip=['Process', 'Start', 'End']
+    ).properties(height=200)
+    
+    st.altair_chart(chart, use_container_width=True)
+    
+    avg_turnaround = sum(x['End'] for x in gantt) / 4
+    st.info(f"Average Turnaround Time: {avg_turnaround:.2f} units")
+
+def render_ma201_simulation():
+    """Interactive Simulation for Statistics (MA201)"""
+    st.markdown("### 📊 Normal Distribution Visualizer")
+    
+    mu = st.slider("Mean (μ)", -5.0, 5.0, 0.0, 0.5)
+    sigma = st.slider("Standard Deviation (σ)", 0.1, 5.0, 1.0, 0.1)
+    
+    x = np.linspace(mu - 4*sigma, mu + 4*sigma, 200)
+    y = (1/(sigma * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x - mu)/sigma)**2)
+    
+    df_dist = pd.DataFrame({'x': x, 'Probability Density': y})
+    
+    area = alt.Chart(df_dist).mark_area(opacity=0.3, color='#3b82f6').encode(
+        x='x',
+        y='Probability Density'
+    )
+    line = alt.Chart(df_dist).mark_line(color='#3b82f6').encode(
+        x='x',
+        y='Probability Density'
+    )
+    
+    st.altair_chart(area + line, use_container_width=True)
 
 # Map course ID to simulation function
 SIMULATION_MAP = {
@@ -354,5 +503,9 @@ SIMULATION_MAP = {
     "PH101": render_ph101_simulation,
     "CE302": render_ce302_simulation,
     "CE103": render_ce103_simulation,
-    "EE101": render_ee101_simulation
+    "EE101": render_ee101_simulation,
+    "CE201": render_ce201_simulation,
+    "CE202": render_ce202_simulation,
+    "CE203": render_ce203_simulation,
+    "MA201": render_ma201_simulation
 }
