@@ -366,9 +366,15 @@
             "resources": [
                 {
                     "type": "youtube",
-                    "title": "Database Systems",
-                    "url": "https://www.youtube.com/watch?v=TJPc6085a6I&list=PL_c9BZzLwBRK0Ter2WZdVjW05Bs0YMX3p",
-                    "description": "CMU - Andy Pavlo"
+                    "title": "SQL and Databases - Full Course",
+                    "url": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+                    "description": "FreeCodeCamp - Beginner to Advanced"
+                },
+                {
+                    "type": "website",
+                    "title": "DBMS Tutorial",
+                    "url": "https://www.geeksforgeeks.org/database-management-system/",
+                    "description": "GeeksforGeeks - Comprehensive Guide"
                 },
                 {
                     "type": "website",
