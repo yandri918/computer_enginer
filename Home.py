@@ -23,14 +23,14 @@ def main():
     """, unsafe_allow_html=True)
 
     st.markdown("## 🎓 Computer Engineering Curriculum")
-    st.info("The interactive curriculum for Semesters 1-8 has been moved to a new high-performance instance.")
+    st.info("The interactive curriculum for Semesters 1-8 is now hosted on the dedicated instance.")
 
     st.markdown("### Access Full Curriculum")
     st.markdown("Click the button below to open the official application with all interactive simulations and resources.")
 
     st.markdown("""
     <div style="text-align: center; padding: 2rem;">
-        <a href="https://computerenginer.streamlit.app/" target="_blank" style="
+        <a href="https://computerenginer-2.streamlit.app/" target="_blank" style="
             background-color: #2563eb;
             color: white;
             padding: 1rem 2rem;
@@ -42,7 +42,7 @@ def main():
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.2s;
         ">
-            🚀 Open App (computerenginer.streamlit.app)
+            🚀 Open App (computerenginer-2.streamlit.app)
         </a>
     </div>
     """, unsafe_allow_html=True)
