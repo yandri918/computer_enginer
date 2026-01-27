@@ -174,16 +174,16 @@
             "filename": "12_🏭_BU201_Processing_Industry.py",
             "resources": [
                 {
-                    "type": "youtube",
-                    "title": "Introduction to Manufacturing Processes",
-                    "url": "https://www.youtube.com/watch?v=rdlZ8CpMqpM",
-                    "description": "The Efficient Engineer - Comprehensive Overview"
+                    "type": "website",
+                    "title": "Manufacturing - Britannica",
+                    "url": "https://www.britannica.com/technology/manufacturing",
+                    "description": "Comprehensive Encyclopedia Article"
                 },
                 {
-                    "type": "youtube",
-                    "title": "What is Manufacturing?",
-                    "url": "https://www.youtube.com/watch?v=TxkZ6H2gq24",
-                    "description": "Market Business News - Concept Definition"
+                    "type": "website",
+                    "title": "What is Manufacturing? (TWI)",
+                    "url": "https://www.twi-global.com/technical-knowledge/faqs/what-is-manufacturing",
+                    "description": "Technical Definition and Processes"
                 },
                 {
                     "type": "website",
