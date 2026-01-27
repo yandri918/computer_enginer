@@ -171,32 +171,52 @@
                 "Capacity planning",
                 "Quality management (TQM, Six Sigma)"
             ],
-            "filename": "13_🏭_BU201_Processing_Industry.py",
-            "resources": []
+            "filename": "12_🏭_BU201_Processing_Industry.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Industrial Processes",
+                    "url": "https://www.aiche.org/",
+                    "description": "AIChE Resources"
+                }
+            ]
         },
         {
             "id": "CE204",
             "name": "Algorithms",
-            "icon": "🔍",
+            "icon": "�",
             "credits": "4",
             "semester": "4",
             "difficulty": "6/7",
-            "hours": "10",
-            "description": "Comprehensive study of fundamental algorithms and data structures. Covers algorithm analysis, complexity theory,          sorting and searching algorithms, graph algorithms, dynamic programming, and advanced data structures. Emphasizes          both theoretical foundations (correctness proofs, complexity analysis) and practical implementation. Students will          learn to design efficient algorithms and choose appropriate data structures for real-world problems.",
+            "hours": "7",
+            "description": "Advanced study of algorithm design and analysis. Covers time and space complexity, divide and conquer,          dynamic programming, greedy algorithms, graph algorithms (BFS, DFS, Dijkstra, A*), and NP-completeness.          Students refine their problem-solving skills and prepare for technical interviews.",
             "topics": [
-                "Algorithms and Data Structures\", page_icon=\"🔍\", layout=\"wide\")",
-                "Algorithm analysis (Big O, Theta, Omega)",
-                "Recurrence relations",
-                "Master theorem",
-                "Amortized analysis",
-                "Proof techniques",
-                "Arrays and linked lists",
-                "Stacks and queues",
-                "Trees (BST, AVL, Red-Black)",
-                "Heaps and priority queues"
+                "Algorithms\", page_icon=\"�\", layout=\"wide\")",
+                "Asymptotic analysis (Big O)",
+                "Sorting and searching",
+                "Divide and conquer",
+                "Dynamic programming",
+                "Greedy algorithms",
+                "Graph traversals",
+                "Shortest paths",
+                "Minimum spanning trees",
+                "String matching"
             ],
-            "filename": "15_🔍_CE204_Algorithms.py",
-            "resources": []
+            "filename": "11_🔢_CE204_Algorithms.py",
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Algorithms",
+                    "url": "https://www.youtube.com/watch?v=0IAPZzGSbME&list=PLUl4u3cNGP63EdVPNLG3ToM6La6P7EXDl",
+                    "description": "MIT 6.006 - Erik Demaine"
+                },
+                {
+                    "type": "website",
+                    "title": "VisuAlgo",
+                    "url": "https://visualgo.net/en",
+                    "description": "Visualizing Data Structures and Algorithms"
+                }
+            ]
         },
         {
             "id": "CE301",
@@ -219,8 +239,21 @@
                 "TCP and UDP",
                 "HTTP, DNS, SMTP, FTP"
             ],
-            "filename": "18_🌐_CE301_Computer_Networks.py",
-            "resources": []
+            "filename": "13_🌐_CE301_Computer_Networks.py",
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Computer Networking",
+                    "url": "https://www.youtube.com/watch?v=qkHbzULe9eM&list=PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx",
+                    "description": "Neso Academy"
+                },
+                {
+                    "type": "website",
+                    "title": "Beej's Guide to Network Programming",
+                    "url": "https://beej.us/guide/bgnet/",
+                    "description": "Classic Socket Programming Guide"
+                }
+            ]
         },
         {
             "id": "CE302",
@@ -228,47 +261,61 @@
             "icon": "⚡",
             "credits": "3",
             "semester": "4",
-            "difficulty": "4/7",
+            "difficulty": "5/7",
             "hours": "6",
-            "description": "Comprehensive study of digital logic design, combinational and sequential circuits, and peripheral interfacing.          Covers Boolean algebra, logic gates, flip-flops, registers, counters, memory systems, and I/O interfacing.          Emphasizes both theoretical foundations and practical implementation using HDL (Verilog/VHDL). Students will          design and simulate digital circuits and interface with real-world peripherals.",
+            "description": "Study of digital logic design and synthesis. Covers boolean algebra, combinational and sequential          logic circuits, FSMs, and hardware description languages (Verilog/VHDL). Students design and simulate          complex digital systems.",
             "topics": [
-                "Digital Systems and Peripherals\", page_icon=\"⚡\", layout=\"wide\")",
-                "Number systems (Binary, Octal, Hex)",
-                "Boolean algebra and theorems",
-                "Logic gates (AND, OR, NOT, NAND, NOR, XOR)",
-                "Karnaugh maps (K-maps)",
-                "Quine-McCluskey method",
-                "Adders and subtractors",
-                "Multiplexers and demultiplexers",
-                "Encoders and decoders",
-                "Comparators"
+                "Digital Systems\", page_icon=\"⚡\", layout=\"wide\")",
+                "Boolean algebra and logic gates",
+                "Karnaugh maps",
+                "Combinational circuits",
+                "Sequential circuits",
+                "Flip-flops and latches",
+                "Finite State Machines (FSM)",
+                "Counters and registers",
+                "Verilog HDL",
+                "FPGA basics"
             ],
-            "filename": "16_⚡_CE302_Digital_Systems.py",
-            "resources": []
+            "filename": "15_⚡_CE302_Digital_Systems.py",
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Digital Electronics",
+                    "url": "https://www.youtube.com/watch?v=M0mx8S05v60&list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm",
+                    "description": "Neso Academy"
+                }
+            ]
         },
         {
             "id": "CE303",
             "name": "Systems Analysis",
-            "icon": "📐",
+            "icon": "�",
             "credits": "3",
             "semester": "4",
-            "difficulty": "5/7",
-            "hours": "7",
-            "description": "Comprehensive study of systems analysis and design methodologies for developing information systems. Covers          Software Development Life Cycle (SDLC), requirements engineering, system modeling using UML, database design,          software architecture, and design patterns. Emphasizes both structured and object-oriented approaches. Students          will analyze business requirements, design system solutions, and create comprehensive system documentation.",
+            "difficulty": "3/7",
+            "hours": "5",
+            "description": "Study of methodologies for analyzing and designing complex information systems. Covers SDLC,          requirements engineering, UML modeling, and system architecture. Emphasizes bridging the gap          between business needs and technical solutions.",
             "topics": [
-                "Systems Analysis and Design\", page_icon=\"📐\", layout=\"wide\")",
-                "Systems development life cycle",
+                "Systems Analysis\", page_icon=\"�\", layout=\"wide\")",
+                "Systems Development Life Cycle (SDLC)",
+                "Requirements gathering",
                 "Feasibility analysis",
-                "Requirements gathering techniques",
-                "Stakeholder analysis",
-                "Project management basics",
-                "Functional vs non-functional requirements",
-                "Use case modeling",
-                "Data flow diagrams (DFD)",
-                "Entity-relationship diagrams (ERD)"
+                "UML diagrams (Use Case, Class, Sequence)",
+                "Data flow diagrams",
+                "System architecture design",
+                "User interface design",
+                "Quality assurance",
+                "Project management basics"
             ],
-            "filename": "19_📐_CE303_Systems_Analysis.py",
-            "resources": []
+            "filename": "16_�_CE303_Systems_Analysis.py",
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Agile Manifesto",
+                    "url": "https://agilemanifesto.org/",
+                    "description": "Software Development Principles"
+                }
+            ]
         },
         {
             "id": "CE304",
@@ -276,23 +323,36 @@
             "icon": "🗄️",
             "credits": "3",
             "semester": "4",
-            "difficulty": "5/7",
-            "hours": "7",
-            "description": "Comprehensive study of database management systems (DBMS), covering relational database theory, SQL programming,          database design and normalization, transaction management, query optimization, and NoSQL databases. Emphasizes both          theoretical foundations and practical implementation. Students will design databases, write complex SQL queries,          optimize performance, and work with modern database technologies.",
+            "difficulty": "4/7",
+            "hours": "6",
+            "description": "Comprehensive study of database management systems. Covers relational model, SQL, normalization,          indexing, transaction management, and NoSQL databases. Students design and implement robust database          schemas for real-world applications.",
             "topics": [
                 "Databases\", page_icon=\"🗄️\", layout=\"wide\")",
-                "Relational model and algebra",
-                "Entity-Relationship modeling",
-                "Functional dependencies",
-                "Normalization (1NF to BCNF)",
-                "SQL data types and constraints",
-                "DDL (CREATE, ALTER, DROP)",
-                "DML (SELECT, INSERT, UPDATE, DELETE)",
-                "Joins (INNER, LEFT, RIGHT, FULL)",
-                "Subqueries and CTEs"
+                "Relational model",
+                "SQL (DDL, DML, DCL)",
+                "ER modeling",
+                "Normalization (1NF, 2NF, 3NF, BCNF)",
+                "Indexing and hashing",
+                "Transactions and concurrency",
+                "ACID properties",
+                "NoSQL overview",
+                "Database security"
             ],
-            "filename": "20_🗄️_CE304_Databases.py",
-            "resources": []
+            "filename": "17_🗄️_CE304_Databases.py",
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Database Systems",
+                    "url": "https://www.youtube.com/watch?v=TJPc6085a6I&list=PL_c9BZzLwBRK0Ter2WZdVjW05Bs0YMX3p",
+                    "description": "CMU - Andy Pavlo"
+                },
+                {
+                    "type": "website",
+                    "title": "SQLZoo",
+                    "url": "https://sqlzoo.net/",
+                    "description": "Interactive SQL Tutorial"
+                }
+            ]
         }
     ],
     "Semester 1": [

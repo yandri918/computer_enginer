@@ -495,6 +495,112 @@ def render_ma201_simulation():
     
     st.altair_chart(area + line, use_container_width=True)
 
+    st.altair_chart(area + line, use_container_width=True)
+
+def render_ce204_simulation():
+    """Interactive Simulation for Algorithms (CE204)"""
+    st.markdown("### 🔢 Sorting Algorithm Visualizer")
+    
+    algo = st.selectbox("Algorithm", ["Bubble Sort", "Quick Sort (Visual Only)"])
+    n = st.slider("Number of Elements", 10, 50, 20)
+    
+    if st.button("Generate New Array"):
+        st.session_state.arr = np.random.randint(1, 100, n).tolist()
+        
+    if 'arr' not in st.session_state:
+        st.session_state.arr = np.random.randint(1, 100, n).tolist()
+        
+    arr = st.session_state.arr.copy()
+    
+    # Simple Bubble Sort Step-by-Step (Simulated)
+    # For a real visualizer we'd need animation, here we show init vs sorted
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**Initial Array**")
+        st.bar_chart(pd.DataFrame({'Value': arr}))
+        
+    with col2:
+        st.markdown("**Sorted Array**")
+        arr.sort()
+        st.bar_chart(pd.DataFrame({'Value': arr}))
+        
+    st.info("ℹ️ Full animation requires more complex state management. This compares Initial vs Sorted states.")
+    
+    st.code("""
+# Bubble Sort Implementation
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    """, language="python")
+
+def render_ce301_simulation():
+    """Interactive Simulation for Computer Networks (CE301)"""
+    st.markdown("### 🌐 IPv4 Subnet Calculator")
+    
+    ip_str = st.text_input("IP Address", "192.168.1.1")
+    cidr = st.slider("CIDR / Prefix", 1, 32, 24)
+    
+    try:
+        # Simple manual calculation avoiding 'ipaddress' module complexities for now/compatibility
+        parts = list(map(int, ip_str.split('.')))
+        if len(parts) != 4: raise ValueError
+        
+        ip_bin = 0
+        for p in parts: ip_bin = (ip_bin << 8) + p
+        
+        mask_bin = (0xFFFFFFFF << (32 - cidr)) & 0xFFFFFFFF
+        net_bin = ip_bin & mask_bin
+        broad_bin = net_bin | (~mask_bin & 0xFFFFFFFF)
+        
+        def to_ip(n):
+            return f"{(n >> 24) & 0xFF}.{(n >> 16) & 0xFF}.{(n >> 8) & 0xFF}.{n & 0xFF}"
+            
+        net_addr = to_ip(net_bin)
+        broad_addr = to_ip(broad_bin)
+        hosts = (2 ** (32 - cidr)) - 2 if cidr < 31 else 0
+        
+        col1, col2 = st.columns(2)
+        col1.metric("Network Address", net_addr)
+        col2.metric("Broadcast Address", broad_addr)
+        
+        col3, col4 = st.columns(2)
+        col3.metric("Subnet Mask", to_ip(mask_bin))
+        col4.metric("Usable Hosts", f"{hosts:,}")
+        
+    except:
+        st.error("Invalid IP Address format")
+
+def render_ce304_simulation():
+    """Interactive Simulation for Databases (CE304)"""
+    st.markdown("### 🗄️ SQL Playground (Mock)")
+    
+    # Mock Database
+    students = pd.DataFrame({
+        'id': [1, 2, 3, 4],
+        'name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'gpa': [3.8, 3.2, 3.9, 2.5]
+    })
+    
+    st.markdown("**Table: `students`**")
+    st.dataframe(students)
+    
+    query_type = st.radio("Query", ["SELECT *", "SELECT WHERE gpa > 3.5", "COUNT(*)"])
+    
+    st.markdown("**Result:**")
+    if query_type == "SELECT *":
+        st.code("SELECT * FROM students;")
+        st.dataframe(students)
+    elif query_type == "SELECT WHERE gpa > 3.5":
+        st.code("SELECT * FROM students WHERE gpa > 3.5;")
+        st.dataframe(students[students['gpa'] > 3.5])
+    elif query_type == "COUNT(*)":
+        st.code("SELECT COUNT(*) FROM students;")
+        st.metric("Count", len(students))
+
 # Map course ID to simulation function
 SIMULATION_MAP = {
     "MA101": render_ma101_simulation,
@@ -507,5 +613,8 @@ SIMULATION_MAP = {
     "CE201": render_ce201_simulation,
     "CE202": render_ce202_simulation,
     "CE203": render_ce203_simulation,
-    "MA201": render_ma201_simulation
+    "MA201": render_ma201_simulation,
+    "CE204": render_ce204_simulation,
+    "CE301": render_ce301_simulation,
+    "CE304": render_ce304_simulation
 }
