@@ -527,7 +527,26 @@
                 "Ideals and quotient rings"
             ],
             "filename": "21_🔢_MA301_Higher_Algebra.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "youtube",
+                    "title": "Abstract Algebra (Socratica)",
+                    "url": "https://www.youtube.com/watch?v=IP7nW_hKB7I&list=PLi01XoE8jYoi3SgnnGorR_XOW3IcK-TP6",
+                    "description": "Visual Introduction to Group Theory"
+                },
+                {
+                    "type": "website",
+                    "title": "Wolfram MathWorld - Algebra",
+                    "url": "https://mathworld.wolfram.com/Algebra.html",
+                    "description": "Comprehensive Mathematical Encyclopedia"
+                },
+                {
+                    "type": "pdf",
+                    "title": "Abstract Algebra: Theory and Applications",
+                    "url": "http://CXx2e.pdf",
+                    "description": "Open Source Textbook (Judson)"
+                }
+            ]
         }
     ],
     "Semester 6": [
