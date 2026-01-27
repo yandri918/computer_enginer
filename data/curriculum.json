@@ -572,7 +572,20 @@
                 "Crowdfunding systems"
             ],
             "filename": "23_💰_FI301_Finance.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Finance & Capital Markets",
+                    "url": "https://www.khanacademy.org/economics-finance-domain/core-finance",
+                    "description": "Khan Academy - Comprehensive Guide"
+                },
+                {
+                    "type": "website",
+                    "title": "Investopedia Dictionary",
+                    "url": "https://www.investopedia.com/financial-term-dictionary-4769738",
+                    "description": "Financial Terms Reference"
+                }
+            ]
         },
         {
             "id": "IT301",
@@ -596,7 +609,20 @@
                 "Encryption and PKI"
             ],
             "filename": "24_💻_IT301_IT.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "What is Cloud Computing?",
+                    "url": "https://aws.amazon.com/what-is-cloud-computing/",
+                    "description": "AWS Official Guide"
+                },
+                {
+                    "type": "website",
+                    "title": "Azure Fundamentals",
+                    "url": "https://learn.microsoft.com/en-us/azure/fundamentals/",
+                    "description": "Microsoft Learn"
+                }
+            ]
         },
         {
             "id": "MG301",
@@ -620,7 +646,20 @@
                 "Gantt charts and critical path"
             ],
             "filename": "25_📊_MG301_Management.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "Project Management Guide",
+                    "url": "https://www.wrike.com/project-management-guide/",
+                    "description": "Comprehensive PM Methodologies"
+                },
+                {
+                    "type": "website",
+                    "title": "What is Scrum?",
+                    "url": "https://www.scrum.org/resources/what-is-scrum",
+                    "description": "Scrum.org Official Guide"
+                }
+            ]
         },
         {
             "id": "SD101",
@@ -644,7 +683,20 @@
                 "Smart grids and IoT"
             ],
             "filename": "27_🌱_SD101_Sustainable_Development.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "The 17 Goals (SDGs)",
+                    "url": "https://sdgs.un.org/goals",
+                    "description": "United Nations Official Site"
+                },
+                {
+                    "type": "website",
+                    "title": "What is Sustainability?",
+                    "url": "https://www.mcgill.ca/sustainability/files/sustainability/what-is-sustainability.pdf",
+                    "description": "Concept Overview"
+                }
+            ]
         }
     ],
     "Semester 7": [

@@ -765,6 +765,152 @@ def render_ma301_simulation():
     if len(sequence) == n:
         st.success(f"Since order equals group size, **{generator}** is a GENERATOR of $Z_{{{n}}}$.")
 
+def render_fi301_simulation():
+    """Interactive Simulation for Finance (FI301)"""
+    st.markdown("### 💰 Investment Growth Calculator")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        principal = st.number_input("Initial Principal ($)", 1000, 1000000, 10000, step=1000)
+        rate = st.slider("Annual Interest Rate (%)", 1.0, 15.0, 7.0, 0.1)
+    with col2:
+        years = st.slider("Time Period (Years)", 5, 40, 20)
+        contribution = st.number_input("Monthly Contribution ($)", 0, 5000, 500, step=100)
+        
+    # Calculate Growth
+    data = []
+    balance = principal
+    monthly_rate = rate / 100 / 12
+    
+    for month in range(years * 12 + 1):
+        if month > 0:
+            balance = balance * (1 + monthly_rate) + contribution
+        
+        if month % 12 == 0: # Record yearly
+            year = month // 12
+            total_invested = principal + (contribution * month)
+            interest = balance - total_invested
+            data.append({"Year": year, "Type": "Principal + Contributions", "Amount": total_invested})
+            data.append({"Year": year, "Type": "Interest Earned", "Amount": interest})
+            
+    df_fi = pd.DataFrame(data)
+    
+    st.markdown(f"#### Future Value: **${balance:,.2f}**")
+    
+    chart = alt.Chart(df_fi).mark_area().encode(
+        x="Year",
+        y="Amount",
+        color=alt.Color("Type", scale=alt.Scale(domain=['Principal + Contributions', 'Interest Earned'], range=['#94a3b8', '#10b981'])),
+        tooltip=["Year", "Type", "Amount"]
+    )
+    st.altair_chart(chart, use_container_width=True)
+
+def render_it301_simulation():
+    """Interactive Simulation for IT (IT301) - Cloud Cost Estimator"""
+    st.markdown("### ☁️ Cloud Infrastructure Estimator")
+    
+    st.caption("Estimate monthly costs for a typical cloud setup (Mock Data).")
+    
+    inputs = {}
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Compute")
+        inputs['vCPUs'] = st.slider("Total vCPUs", 2, 64, 8) * 20 # $20/vcpu
+        inputs['RAM (GB)'] = st.slider("Total RAM (GB)", 4, 128, 16) * 5 # $5/gb
+        
+    with col2:
+        st.subheader("Storage & Net")
+        inputs['Storage (TB)'] = st.slider("Object Storage (TB)", 1, 50, 5) * 25 # $25/TB
+        inputs['Bandwidth (TB)'] = st.slider("Outbound Traffic (TB)", 0, 100, 10) * 80 # $80/TB
+        
+    total_cost = sum(inputs.values())
+    
+    c1, c2 = st.columns([1, 1])
+    with c1:
+        st.metric("Estimated Monthly Bill", f"${total_cost:,}")
+    
+        df_cost = pd.DataFrame([{'Service': k, 'Cost': v} for k, v in inputs.items()])
+        
+        chart = alt.Chart(df_cost).mark_arc(innerRadius=60).encode(
+            theta='Cost',
+            color=alt.Color('Service', scale=alt.Scale(scheme='category20b')),
+            tooltip=['Service', 'Cost']
+        )
+        st.altair_chart(chart, use_container_width=True)
+        
+    with c2:
+        st.write("**Breakdown:**")
+        st.dataframe(df_cost)
+
+def render_mg301_simulation():
+    """Interactive Simulation for Management (MG301) - Gantt Project"""
+    st.markdown("### 📅 Project Schedule (Gantt)")
+    
+    # Mock Project Data
+    default_tasks = [
+        {"Task": "Market Research", "Start": 0, "Duration": 5, "Phase": "Planning"},
+        {"Task": "Prototype Design", "Start": 4, "Duration": 7, "Phase": "Design"},
+        {"Task": "Development", "Start": 10, "Duration": 14, "Phase": "Execution"},
+        {"Task": "Testing", "Start": 22, "Duration": 5, "Phase": "Execution"},
+        {"Task": "Launch", "Start": 26, "Duration": 2, "Phase": "Deployment"}
+    ]
+    
+    df_proj = pd.DataFrame(default_tasks)
+    df_proj['End'] = df_proj['Start'] + df_proj['Duration']
+    
+    # Simple editor (Optional, skipping for brevity to focus on visualization)
+    
+    chart = alt.Chart(df_proj).mark_bar().encode(
+        x='Start',
+        x2='End',
+        y=alt.Y('Task', sort=None), # Keep original order
+        color='Phase',
+        tooltip=['Task', 'Start', 'Duration', 'Phase']
+    ).interactive()
+    
+    st.altair_chart(chart, use_container_width=True)
+    st.info("Critical Path ends at Day " + str(df_proj['End'].max()))
+
+def render_sd101_simulation():
+    """Interactive Simulation for Sustainable Dev (SD101)"""
+    st.markdown("### 🌱 Personal Carbon Footprint")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        transport = st.slider("Weekly Driving (km)", 0, 500, 100)
+        flights = st.number_input("Flights per Year (Short haul)", 0, 20, 2)
+    with col2:
+        energy = st.slider("Monthly Electricity (kWh)", 50, 1000, 200)
+        meat = st.select_slider("Meat Consumption", options=["None", "Low", "Medium", "High"], value="Medium")
+        
+    # Mock Calculations (kg CO2 per year)
+    co2_transport = transport * 52 * 0.19 
+    co2_flights = flights * 500
+    co2_energy = energy * 12 * 0.5
+    
+    meat_factors = {"None": 0, "Low": 500, "Medium": 1500, "High": 3000}
+    co2_food = meat_factors[meat]
+    
+    total = co2_transport + co2_flights + co2_energy + co2_food
+    
+    st.metric("Annual CO2 Emissions", f"{total/1000:.2f} tonnes")
+    
+    df_co2 = pd.DataFrame({
+        'Source': ['Transport', 'Flights', 'Energy', 'Food'],
+        'CO2 (kg)': [co2_transport, co2_flights, co2_energy, co2_food]
+    })
+    
+    chart = alt.Chart(df_co2).mark_bar().encode(
+        x='CO2 (kg)',
+        y='Source',
+        color='Source',
+        tooltip=['Source', 'CO2 (kg)']
+    )
+    st.altair_chart(chart, use_container_width=True)
+    
+    if total < 4000: st.success("Great! Your footprint is below average.")
+    else: st.warning("Consider reducing flights or energy usage.")
+
 # Map course ID to simulation function
 SIMULATION_MAP = {
     "MA101": render_ma101_simulation,
@@ -783,5 +929,9 @@ SIMULATION_MAP = {
     "CE304": render_ce304_simulation,
     "BU201": render_bu201_simulation,
     "CE303": render_ce303_simulation,
-    "MA301": render_ma301_simulation
+    "MA301": render_ma301_simulation,
+    "FI301": render_fi301_simulation,
+    "IT301": render_it301_simulation,
+    "MG301": render_mg301_simulation,
+    "SD101": render_sd101_simulation
 }
