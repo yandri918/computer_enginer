@@ -344,8 +344,6 @@ def render_ee101_simulation():
         
         st.altair_chart(base + point, use_container_width=True)
         
-        st.altair_chart(base + point, use_container_width=True)
-        
         st.info("Ohm's Law: $V = I \\cdot R$")
 
 def render_ce201_simulation():
@@ -493,8 +491,6 @@ def render_ma201_simulation():
         y='Probability Density'
     )
     
-    st.altair_chart(area + line, use_container_width=True)
-
     st.altair_chart(area + line, use_container_width=True)
 
 def render_ce204_simulation():
