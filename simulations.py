@@ -597,6 +597,52 @@ def render_ce304_simulation():
         st.code("SELECT COUNT(*) FROM students;")
         st.metric("Count", len(students))
 
+def render_bu201_simulation():
+    """Interactive Simulation for Processing Industry (BU201)"""
+    st.markdown("### 🏭 Production Line Simulator")
+    
+    st.markdown("Optimize a manufacturing process by balancing speed and quality.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        batch_size = st.slider("Batch Size", 100, 1000, 500, 50)
+        speed = st.slider("Conveyor Speed (m/s)", 1.0, 10.0, 5.0, 0.5)
+    
+    with col2:
+        maintenance = st.slider("Maintenance Freq (%)", 10, 100, 80)
+        # Quality drops as speed increases and maintenance decreases
+        quality_factor = 1.0 - (speed / 20.0) + (maintenance / 200.0)
+        quality = min(max(quality_factor, 0.5), 0.99)
+    
+    # Simulation Results
+    units_produced = int(batch_size * speed * 0.1)
+    defects = int(units_produced * (1.0 - quality))
+    good_units = units_produced - defects
+    revenue = good_units * 5  # $5 per unit
+    cost = (units_produced * 2) + (maintenance * 10) # $2 material + maintenance cost
+    profit = revenue - cost
+    
+    st.markdown("#### 📊 Production Metrics")
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total Output", f"{units_produced} units")
+    c2.metric("Defects", f"{defects} units", delta=f"-{(1-quality)*100:.1f}%", delta_color="inverse")
+    c3.metric("Good Units", f"{good_units} units")
+    c4.metric("Net Profit", f"${profit:,.2f}", delta="Profit" if profit > 0 else "Loss")
+    
+    # Visualization
+    df_prod = pd.DataFrame({
+        'Category': ['Good Units', 'Defects'],
+        'Count': [good_units, defects],
+        'Color': ['#10b981', '#ef4444']
+    })
+    
+    chart = alt.Chart(df_prod).mark_arc(innerRadius=50).encode(
+        theta=alt.Theta(field="Count", type="quantitative"),
+        color=alt.Color(field="Color", type="nominal", scale=None, legend=None),
+        tooltip=['Category', 'Count']
+    )
+    st.altair_chart(chart, use_container_width=True)
+
 # Map course ID to simulation function
 SIMULATION_MAP = {
     "MA101": render_ma101_simulation,
@@ -612,5 +658,6 @@ SIMULATION_MAP = {
     "MA201": render_ma201_simulation,
     "CE204": render_ce204_simulation,
     "CE301": render_ce301_simulation,
-    "CE304": render_ce304_simulation
+    "CE304": render_ce304_simulation,
+    "BU201": render_bu201_simulation
 }
