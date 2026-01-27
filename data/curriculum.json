@@ -734,9 +734,9 @@
             "resources": [
                 {
                     "type": "youtube",
-                    "title": "Computer Architecture",
-                    "url": "https://www.youtube.com/watch?v=4TzPJ6MngsE&list=PL5PHm2jkkXmidJOd59REog9jDnPDTG6IJ",
-                    "description": "Carnegie Mellon University - Onur Mutlu"
+                    "title": "Digital Design & Computer Architecture",
+                    "url": "https://www.youtube.com/playlist?list=PL5Q2soXY2Zi_gq9VpZm9L8Bf_70zDGPpD",
+                    "description": "ETH Zurich (Spring 2023) - Onur Mutlu"
                 },
                 {
                     "type": "pdf",
