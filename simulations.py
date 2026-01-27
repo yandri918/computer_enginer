@@ -906,10 +906,123 @@ def render_sd101_simulation():
         color='Source',
         tooltip=['Source', 'CO2 (kg)']
     )
-    st.altair_chart(chart, use_container_width=True)
-    
     if total < 4000: st.success("Great! Your footprint is below average.")
     else: st.warning("Consider reducing flights or energy usage.")
+
+def render_ce401_simulation():
+    """Interactive Simulation for Web Development (CE401)"""
+    st.markdown("### 🌐 CSS Box Model & Layout Explorer")
+    
+    st.markdown("Visualize how Margin, Border, and Padding affect an element.")
+    
+    col1, col2 = st.columns([1, 2])
+    
+    with col1:
+        st.subheader("Properties")
+        margin = st.slider("Margin (px)", 0, 50, 20)
+        padding = st.slider("Padding (px)", 0, 50, 20)
+        border = st.slider("Border (px)", 0, 20, 5)
+        color = st.color_picker("Content Color", "#3b82f6")
+        
+        st.subheader("Flexbox")
+        justify = st.selectbox("Justify Content", ["flex-start", "center", "flex-end", "space-between"])
+        align = st.selectbox("Align Items", ["stretch", "center", "flex-start", "flex-end"])
+        
+    with col2:
+        st.subheader("Live Preview")
+        
+        # HTML/CSS Construction
+        st.markdown(f"""
+        <div style="
+            display: flex; 
+            justify-content: {justify}; 
+            align-items: {align};
+            background-color: #f1f5f9; 
+            border: 2px dashed #94a3b8; 
+            height: 300px; 
+            padding: 10px;
+            border-radius: 8px;">
+            <div style="
+                margin: {margin}px; 
+                padding: {padding}px; 
+                border: {border}px solid #1e293b; 
+                background-color: {color}; 
+                color: white; 
+                border-radius: 4px;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                <strong>Box 1</strong><br>
+                M: {margin} | P: {padding}
+            </div>
+            <div style="
+                margin: {margin}px; 
+                padding: {padding}px; 
+                border: {border}px solid #1e293b; 
+                background-color: #ec4899; 
+                color: white; 
+                border-radius: 4px;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                <strong>Box 2</strong><br>
+                Static
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 10px; font-family: monospace; color: #64748b;">
+            container {{ display: flex; justify-content: {justify}; align-items: {align}; }}
+        </div>
+        """, unsafe_allow_html=True)
+
+def render_ce402_simulation():
+    """Interactive Simulation for AI (CE402) - K-Means Clustering"""
+    st.markdown("### 🤖 K-Means Clustering Visualizer")
+    
+    st.markdown("Unsupervised learning algorithm to group data points.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        n_points = st.slider("Data Points", 50, 500, 200)
+    with col2:
+        k = st.slider("Number of Clusters (k)", 2, 6, 3)
+        
+    if st.button("Generate & Cluster New Data"):
+        # Generate random data
+        X = np.random.rand(n_points, 2) * 100
+        
+        # Simple K-Means Implementation
+        # 1. Random Centroids
+        centroids = X[np.random.choice(X.shape[0], k, replace=False)]
+        
+        labels = np.zeros(n_points)
+        
+        # Run a fixed number of iterations (e.g., 10) for demo speed
+        for _ in range(10):
+            # Assign points to nearest centroid
+            distances = np.sqrt(((X - centroids[:, np.newaxis])**2).sum(axis=2))
+            labels = np.argmin(distances, axis=0)
+            
+            # Update centroids
+            new_centroids = np.array([X[labels == i].mean(axis=0) if np.sum(labels==i) > 0 else centroids[i] for i in range(k)])
+            
+            if np.allclose(centroids, new_centroids):
+                break
+            centroids = new_centroids
+            
+        # Store for display
+        st.session_state.ai_data = pd.DataFrame({'x': X[:, 0], 'y': X[:, 1], 'cluster': labels.astype(str)})
+        st.session_state.ai_centroids = pd.DataFrame({'x': centroids[:, 0], 'y': centroids[:, 1], 'cluster': [f"C{i}" for i in range(k)]})
+        
+    if 'ai_data' in st.session_state:
+        # Scatter Plot
+        points = alt.Chart(st.session_state.ai_data).mark_circle(size=60).encode(
+            x='x', y='y', color='cluster', tooltip=['x', 'y', 'cluster']
+        )
+        
+        centers = alt.Chart(st.session_state.ai_centroids).mark_point(shape='cross', size=400, color='black', filled=True).encode(
+            x='x', y='y', tooltip=['cluster']
+        )
+        
+        st.altair_chart(points + centers, use_container_width=True)
+        st.success(f"Converged with k={k} clusters.")
+    else:
+        st.info("Click the button to run the AI algorithm.")
 
 # Map course ID to simulation function
 SIMULATION_MAP = {
@@ -933,5 +1046,7 @@ SIMULATION_MAP = {
     "FI301": render_fi301_simulation,
     "IT301": render_it301_simulation,
     "MG301": render_mg301_simulation,
-    "SD101": render_sd101_simulation
+    "SD101": render_sd101_simulation,
+    "CE401": render_ce401_simulation,
+    "CE402": render_ce402_simulation
 }

@@ -722,7 +722,26 @@
                 "Middleware and error handling"
             ],
             "filename": "26_🌐_CE401_Web_Development.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "MDN Web Docs",
+                    "url": "https://developer.mozilla.org/en-US/",
+                    "description": "The Bible of Web Development"
+                },
+                {
+                    "type": "website",
+                    "title": "React Official Docs",
+                    "url": "https://react.dev/",
+                    "description": "Learn React from the Creators"
+                },
+                {
+                    "type": "youtube",
+                    "title": "Web Development Full Course",
+                    "url": "https://www.youtube.com/watch?v=nu_pCVPKzTk",
+                    "description": "FreeCodeCamp - Full Stack Guide"
+                }
+            ]
         },
         {
             "id": "CE402",
@@ -746,7 +765,26 @@
                 "Feature engineering"
             ],
             "filename": "29_🤖_CE402_Artificial_Intelligence.py",
-            "resources": []
+            "resources": [
+                {
+                    "type": "website",
+                    "title": "DeepLearning.AI",
+                    "url": "https://www.deeplearning.ai/",
+                    "description": "Andrew Ng's AI Courses"
+                },
+                {
+                    "type": "website",
+                    "title": "Hugging Face",
+                    "url": "https://huggingface.co/learn",
+                    "description": "The AI Community & Model Hub"
+                },
+                {
+                    "type": "youtube",
+                    "title": "Neural Networks (3Blue1Brown)",
+                    "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+                    "description": "Visualizing Deep Learning"
+                }
+            ]
         }
     ],
     "Semester 8": [
