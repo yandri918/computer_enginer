@@ -255,15 +255,15 @@
             "resources": [
                 {
                     "type": "youtube",
-                    "title": "Computer Networking",
-                    "url": "https://www.youtube.com/watch?v=qkHbzULe9eM&list=PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx",
-                    "description": "Neso Academy"
+                    "title": "Networking Fundamentals (Full Course)",
+                    "url": "https://www.youtube.com/watch?v=qiQR5rTSshw",
+                    "description": "Simplilearn - Comprehensive Beginner Guide"
                 },
                 {
                     "type": "website",
-                    "title": "Beej's Guide to Network Programming",
-                    "url": "https://beej.us/guide/bgnet/",
-                    "description": "Classic Socket Programming Guide"
+                    "title": "What is Computer Networking?",
+                    "url": "https://www.cloudflare.com/learning/network-layer/what-is-computer-networking/",
+                    "description": "Cloudflare Learning Center"
                 }
             ]
         },
