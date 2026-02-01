@@ -290,8 +290,8 @@ def main():
             status_color = "#10b981" if idx % 3 == 0 else "#f59e0b" # Green vs Amber
             status_text = "Completed" if idx % 3 == 0 else "In Progress"
             
-            # Button Label with Status Indicator
-            label = f"{course['icon']} {course['id']}\n{course['name']}"
+            # Button Label WITHOUT emoji - professional appearance
+            label = f"{course['id']}\n{course['name']}"
             
             if st.button(
                 label, 
