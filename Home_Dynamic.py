@@ -29,7 +29,7 @@ def load_data():
         return json.load(f)
 
 def main():
-    st.set_page_config(page_title="UTel Curriculum Hub", page_icon="🎓", layout="wide")
+    st.set_page_config(page_title="UTel Academic Portal | Computer Engineering", page_icon="🎓", layout="wide")
     
     # Apply global styles
     apply_custom_css()
@@ -42,74 +42,226 @@ def main():
     if 'selected_course_id' not in st.session_state:
         st.session_state.selected_course_id = None
         
+    # --- MODERN CSS WITH GLASSMORPHISM ---
+    st.markdown("""
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+        
+        /* Import Font Awesome */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+        
+        /* CSS Variables */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Global Styles */
+        html, body, [class*="css"] {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Hide Streamlit Branding */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        
+        /* Premium Hero Section */
+        .hero-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-box h1 {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ffffff, #bfdbfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-box p {
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Icon Styling */
+        .fas, .far, .fab {
+            margin-right: 0.5rem;
+        }
+        
+        /* Course Cards */
+        .stButton>button {
+            width: 100%;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .stButton>button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Tabs */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 2rem;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            background-color: transparent !important;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        /* Course Content Card */
+        .course-content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-md);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Topic Items */
+        .topic-item {
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 3px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        
+        .topic-item:hover {
+            background: #e0f2fe;
+            border-left-color: #3b82f6;
+            transform: translateX(4px);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #3b82f6;
+        }
+        
+        /* Sidebar Profile */
+        .profile-section {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-box h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-box p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    """, unsafe_allow_html=True)
+        
     # --- SIDEBAR: STUDENT PROFILE (LMS Style) ---
     with st.sidebar:
-        st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=80)
-        st.markdown("### Welcome, **Student**")
-        st.caption("Computer Engineering • Semester 6")
+        st.markdown("""
+        <div class="profile-section">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="80" style="border-radius: 50%; margin-bottom: 0.5rem;">
+            <h3 style="margin: 0.5rem 0 0 0; font-size: 1.1rem;">Welcome, <strong>Student</strong></h3>
+            <p style="margin: 0.25rem 0; color: #64748b; font-size: 0.9rem;">Computer Engineering • Semester 6</p>
+        </div>
+        """, unsafe_allow_html=True)
         
         # MOCK PROGRESS
-        st.markdown("#### 🎓 Academic Progress")
+        st.markdown("#### <i class='fas fa-graduation-cap'></i> Academic Progress", unsafe_allow_html=True)
         st.progress(0.72)
         col_s1, col_s2 = st.columns(2)
         col_s1.metric("GPA", "3.85")
         col_s2.metric("Credits", "112/144")
         
         st.divider()
-        st.markdown("#### 🔔 Notifications")
+        st.markdown("#### <i class='fas fa-bell'></i> Notifications", unsafe_allow_html=True)
         st.info("Mid-term exams for **MA301** starting next week.")
-        
-    # --- MAIN STYLE ---
-    st.markdown("""
-    <style>
-    /* Global Clean Tech Font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-    
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-    }
-    
-    /* Hero Section */
-    .hero-box {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        padding: 2rem;
-        border-radius: 16px;
-        color: white;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Course Cards */
-    .course-card-btn {
-        width: 100%;
-        height: 100%;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        background: white;
-        padding: 10px;
-        transition: all 0.2s;
-    }
-    
-    /* Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 2rem;
-    }
-    .stTabs [data-baseweb="tab"] {
-        background-color: transparent !important;
-        font-weight: 600;
-        font-size: 1rem;
-    }
-    
-    /* Headings */
-    h1, h2, h3 { color: #1e293b; letter-spacing: -0.02em; }
-    </style>
-    """, unsafe_allow_html=True)
 
     # --- HERO SECTION ---
     st.markdown("""
     <div class="hero-box">
-        <h1 style="color:white; margin:0;">🎓 UTel Academic Portal</h1>
-        <p style="opacity: 0.8; margin-top: 0.5rem; font-size: 1.1rem;">
+        <h1><i class="fas fa-graduation-cap"></i> UTel Academic Portal</h1>
+        <p>
             Access your courses, simulations, and learning resources in one unified hub.
         </p>
     </div>
@@ -117,7 +269,7 @@ def main():
 
     # --- SEMESTER & COURSE NAVIGATION ---
     
-    st.subheader("📚 My Courses")
+    st.markdown("## <i class='fas fa-book-open'></i> My Courses", unsafe_allow_html=True)
     
     semesters = list(curriculum.keys())
     semesters.sort(key=lambda x: int(x.split(" ")[1]) if x.split(" ")[1].isdigit() else 99)
@@ -171,15 +323,15 @@ def main():
 def render_course_content(course_data):
     """Renders the detailed content for a single course."""
     st.markdown(f"""
-    <div style="background: white; padding: 2rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+    <div class="course-content-card">
         <div style="display: flex; justify-content: space-between; align-items: start;">
             <div>
                 <span style="background: #eff6ff; color: #2563eb; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">{course_data['id']}</span>
                 <h1 style="margin-top: 0.5rem; margin-bottom: 0.5rem; font-size: 2.2rem;">{course_data['name']}</h1>
                 <div style="display: flex; gap: 1.5rem; color: #64748b; font-size: 0.95rem;">
-                    <span>⚡ Difficulty: <b>{course_data['difficulty']}</b></span>
-                    <span>🕒 {course_data['hours']} Hrs/Week</span>
-                    <span>🏆 {course_data['credits']} Credits</span>
+                    <span><i class="fas fa-signal"></i> Difficulty: <b>{course_data['difficulty']}</b></span>
+                    <span><i class="fas fa-clock"></i> {course_data['hours']} Hrs/Week</span>
+                    <span><i class="fas fa-trophy"></i> {course_data['credits']} Credits</span>
                 </div>
             </div>
             <div style="text-align: right;">
@@ -198,12 +350,17 @@ def render_course_content(course_data):
     st.markdown("") 
 
     # Content Tabs
-    tab1, tab2, tab_sim, tab_exam = st.tabs(["📚 Syllabus & Topics", "📺 Learning Resources", "🛠️ Launch Simulation", "📝 Final Exam"])
+    tab1, tab2, tab_sim, tab_exam = st.tabs([
+        "📚 Syllabus & Topics", 
+        "📺 Learning Resources", 
+        "🛠️ Launch Simulation", 
+        "📝 Final Exam"
+    ])
 
     with tab1:
         col_syl1, col_syl2 = st.columns([3, 1])
         with col_syl1:
-             st.markdown("### 📋 Syllabus Breakdown")
+             st.markdown("### <i class='fas fa-list-check'></i> Syllabus Breakdown", unsafe_allow_html=True)
         with col_syl2:
             try:
                 pdf_bytes = generate_syllabus_pdf(course_data)
@@ -219,13 +376,13 @@ def render_course_content(course_data):
 
         for topic in course_data.get('topics', []):
             st.markdown(f"""
-            <div style="padding: 12px 16px; margin-bottom: 8px; background: #f8fafc; border-radius: 8px; border-left: 3px solid #cbd5e1; display: flex; align-items: center;">
-                <span style="margin-right: 12px; color: #64748b;">•</span> {topic}
+            <div class="topic-item">
+                <span style="margin-right: 12px; color: #64748b;"><i class="fas fa-check-circle"></i></span> {topic}
             </div>
             """, unsafe_allow_html=True)
             
     with tab2:
-        st.markdown("### 📺 Curated Materials")
+        st.markdown("### <i class='fas fa-video'></i> Curated Materials", unsafe_allow_html=True)
         resources = course_data.get('resources', [])
         if not resources:
             st.info("Additional resources are being curated.")
@@ -233,13 +390,21 @@ def render_course_content(course_data):
             r_cols = st.columns(2)
             for i, res in enumerate(resources):
                 with r_cols[i % 2]:
-                    icon = "🎥" if res['type'] == 'youtube' else "🔗"
-                    color = "#ef4444" if res['type'] == 'youtube' else "#3b82f6"
+                    if res['type'] == 'youtube':
+                        icon = "fab fa-youtube"
+                        color = "#ef4444"
+                    elif res['type'] == 'pdf':
+                        icon = "fas fa-file-pdf"
+                        color = "#dc2626"
+                    else:
+                        icon = "fas fa-link"
+                        color = "#3b82f6"
+                    
                     st.markdown(f"""
                     <a href="{res['url']}" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div style="padding: 1.25rem; border: 1px solid #e2e8f0; border-radius: 12px; height: 100%; transition: all 0.2s; background: white;">
+                        <div class="resource-card">
                              <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem; margin-right: 0.75rem; color: {color};">{icon}</span>
+                                <span style="font-size: 1.5rem; margin-right: 0.75rem; color: {color};"><i class="{icon}"></i></span>
                                 <h4 style="margin: 0; font-size: 1rem;">{res['title']}</h4>
                              </div>
                              <p style="margin: 0; color: #64748b; font-size: 0.9rem;">{res.get('description','Access external resource')}</p>
